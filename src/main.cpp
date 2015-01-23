@@ -87,12 +87,12 @@ int main(int arc, char **argv){
 
 
     //testing
-  //  /*
+    /*
     for(int i = 0; i < tokenindex; i++){
         cout << "savedTokens[ " << i << " ] = " << savedTokens[i] << endl;
 
     }
-//    */
+    */
     //testing
 
     int pid=fork();
