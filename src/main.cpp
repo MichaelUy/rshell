@@ -57,7 +57,7 @@ bool execute(char* args[],int contype){
                 return false;
             }
        }
- exit(1);
+return true;
 }
 
 
@@ -164,7 +164,7 @@ int main(){
         j=-1;
 
     }
-    }
+}
 }
 
 
