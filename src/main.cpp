@@ -75,16 +75,15 @@ int main(){
     char connectorparsed[32000];
 	int tokenindex=0;
 	char* savedTokens[32000];
-    char* toke[32000];
     vector<char> myvector;
-    char* executable=NULL;
     char* args[3333];
-    int argnum=0;
     bool run=true;
     string connector="";
-    char andd[]={'&','&'};
-    char orr[]={'|','|'};
-    char semi[]={';'};
+    char andd[]={'&','&','\0'};
+    char orr[]={'|','|','\0'};
+    char semi[]={';','\0'};
+
+
     while(1){
     run=true;
     myvector.clear();
@@ -114,7 +113,7 @@ int main(){
             myvector.push_back(cmd[i]);
          }
     }
-    for(int i=0;i<myvector.size();i++){
+    for(size_t i=0;i<myvector.size();i++){
         connectorparsed[i]=myvector.at(i);
     }
     char* tokens= strtok(connectorparsed," ");
@@ -122,7 +121,6 @@ int main(){
     while(tokens!= NULL){
 
         savedTokens[tokenindex]= strdup(tokens);
-
         tokenindex++;
 		tokens=strtok(NULL," ");
 		}                   // done tokenizing
@@ -135,6 +133,8 @@ int main(){
 
     int contype=-1;
     for(int i=0, j=0;run;i++,j++){
+       // cout<< savedTokens[i]<<endl;
+
         if(savedTokens[i]==NULL){
          args[j]=NULL;
          run=execute(args,contype);
@@ -142,67 +142,30 @@ int main(){
 
         }
         else if(strcmp(savedTokens[i],andd)==0){
+           // cout<<" ANDD"<< endl;
             contype=3;
-           // cout<< "and"<< endl;
          }
         else if(strcmp(savedTokens[i],orr)==0){
+          // cout<< "ORR" << endl;
             contype=1;
-           // cout<< "or"<<endl;
          }
         else if(savedTokens[i][0] == semi[0] && savedTokens[i][1] == '\0'){
+          // cout << "SEMI"<< endl;
             contype=2;
            // cout << "semi"<< endl;
          }
         else{
             args[j]=savedTokens[i];
-           // cout << "arg: "<<savedTokens[i]<<endl;
+          // cout << "arg: "<<savedTokens[i]<<endl;
+          // cout<< "andd: " << andd << endl;
             continue;
         }
         run=execute(args,contype);
-       j=-1;
-
-    }
-/*
-
-    char  empty[]={'\0'};
-    char* arguments[3333];
-    int contype=-1;
-
-        for(int i=0, j=0;;i++, j++){
-          // if(savedTokens[i]==andd||savedTokens[i]==orr||savedTokens[i]==semi||savedTokens[i]==empty){
-           if(strcmp(savedTokens[i],andd)==0){
-                contype=3;
-           }
-           else  if(strcmp(savedTokens[i],orr)==0){
-                contype=1;
-            }
-           else if (strcmp(savedTokens[i],semi)==0){
-                contype=2;
-             }
-           else if  (strcmp(savedTokens[i],empty)==0){
-                contype=0;
-              run=execute(arguments,contype);
-               break;
-              }
-              else{
-                cout<< "j: "<< j<<", i: "<<i<<endl;
-                arguments[j]= savedTokens[i];
-               continue;
-               }
-               run=execute(arguments,contype);
-                for(int k=0;k<j;k++){
-                    args[k]='\0';
-
-                }
-
-               j=0;
-             }
-
-*/
-
+        j=-1;
 
     }
     }
+}
 
 
 
