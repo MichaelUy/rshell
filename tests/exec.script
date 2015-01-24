@@ -1,0 +1,655 @@
+Script started on Fri 23 Jan 2015 06:15:42 PM PST
+~
+muy003@hammer $ cd cs100/rshell
+~/cs100/rshell
+muy003@hammer $ make
+mkdir bin
+g++ ./src/main.cpp -o bin/rshell -Wall -Werror -ansi -pedantic
+~/cs100/rshell
+muy003@hammer $ bin/rshell
+muy003@hammer.cs.ucr.edu$ ls
+bin  exec.script  LICENSE  Makefile  README.md	src  tests
+muy003@hammer.cs.ucr.edu$ ls -a
+.  ..  bin  exec.script  .git  LICENSE	Makefile  README.md  src  tests
+muy003@hammer.cs.ucr.edu$ ls -aRl
+.:
+total 52
+drwx------ 6 muy003 classes  4096 Jan 23 18:12 .
+drwx------ 3 muy003 classes  4096 Jan 20 20:29 ..
+drwx------ 2 muy003 classes  4096 Jan 23 18:12 bin
+-rw------- 1 muy003 classes     0 Jan 23 18:12 exec.script
+drwx------ 8 muy003 classes  4096 Jan 23 18:09 .git
+-rw------- 1 muy003 classes 18027 Jan 20 20:29 LICENSE
+-rw------- 1 muy003 classes   322 Jan 23 17:13 Makefile
+-rw------- 1 muy003 classes   122 Jan 20 20:29 README.md
+drwx------ 2 muy003 classes  4096 Jan 23 18:07 src
+drwx------ 2 muy003 classes  4096 Jan 20 20:53 tests
+
+./bin:
+total 32
+drwx------ 2 muy003 classes  4096 Jan 23 18:12 .
+drwx------ 6 muy003 classes  4096 Jan 23 18:12 ..
+-rwx------ 1 muy003 classes 24245 Jan 23 18:12 rshell
+
+./.git:
+total 56
+drwx------  8 muy003 classes 4096 Jan 23 18:09 .
+drwx------  6 muy003 classes 4096 Jan 23 18:12 ..
+drwx------  2 muy003 classes 4096 Jan 20 20:29 branches
+-rw-------  1 muy003 classes  533 Jan 23 03:00 #COMMIT_EDITMSG#
+-rw-------  1 muy003 classes   22 Jan 23 18:09 COMMIT_EDITMSG
+-rw-------  1 muy003 classes  338 Jan 20 22:46 COMMIT_EDITMSG~
+-rw-------  1 muy003 classes  371 Jan 23 05:28 config
+-rw-------  1 muy003 classes   73 Jan 20 20:29 description
+-rw-------  1 muy003 classes   21 Jan 20 21:17 HEAD
+drwx------  2 muy003 classes 4096 Jan 20 20:29 hooks
+-rw-------  1 muy003 classes  560 Jan 23 18:08 index
+drwx------  2 muy003 classes 4096 Jan 20 20:29 info
+drwx------  3 muy003 classes 4096 Jan 20 20:29 logs
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 objects
+-rw-------  1 muy003 classes   94 Jan 20 20:29 packed-refs
+drwx------  5 muy003 classes 4096 Jan 20 20:29 refs
+
+./.git/branches:
+total 8
+drwx------ 2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 8 muy003 classes 4096 Jan 23 18:09 ..
+
+./.git/hooks:
+total 52
+drwx------ 2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 8 muy003 classes 4096 Jan 23 18:09 ..
+-rwx------ 1 muy003 classes  452 Jan 20 20:29 applypatch-msg.sample
+-rwx------ 1 muy003 classes  896 Jan 20 20:29 commit-msg.sample
+-rwx------ 1 muy003 classes  160 Jan 20 20:29 post-commit.sample
+-rwx------ 1 muy003 classes  548 Jan 20 20:29 post-receive.sample
+-rwx------ 1 muy003 classes  189 Jan 20 20:29 post-update.sample
+-rwx------ 1 muy003 classes  398 Jan 20 20:29 pre-applypatch.sample
+-rwx------ 1 muy003 classes 1578 Jan 20 20:29 pre-commit.sample
+-rwx------ 1 muy003 classes 1239 Jan 20 20:29 prepare-commit-msg.sample
+-rwx------ 1 muy003 classes 4951 Jan 20 20:29 pre-rebase.sample
+-rwx------ 1 muy003 classes 3611 Jan 20 20:29 update.sample
+
+./.git/info:
+total 12
+drwx------ 2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 8 muy003 classes 4096 Jan 23 18:09 ..
+-rw------- 1 muy003 classes  240 Jan 20 20:29 exclude
+
+./.git/logs:
+total 16
+drwx------ 3 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 8 muy003 classes 4096 Jan 23 18:09 ..
+-rw------- 1 muy003 classes 1742 Jan 23 18:09 HEAD
+drwx------ 4 muy003 classes 4096 Jan 20 23:00 refs
+
+./.git/logs/refs:
+total 16
+drwx------ 4 muy003 classes 4096 Jan 20 23:00 .
+drwx------ 3 muy003 classes 4096 Jan 20 20:29 ..
+drwx------ 2 muy003 classes 4096 Jan 20 21:17 heads
+drwx------ 3 muy003 classes 4096 Jan 20 23:00 remotes
+
+./.git/logs/refs/heads:
+total 16
+drwx------ 2 muy003 classes 4096 Jan 20 21:17 .
+drwx------ 4 muy003 classes 4096 Jan 20 23:00 ..
+-rw------- 1 muy003 classes 1516 Jan 23 18:09 exec
+-rw------- 1 muy003 classes  181 Jan 20 20:29 master
+
+./.git/logs/refs/remotes:
+total 12
+drwx------ 3 muy003 classes 4096 Jan 20 23:00 .
+drwx------ 4 muy003 classes 4096 Jan 20 23:00 ..
+drwx------ 2 muy003 classes 4096 Jan 20 23:00 origin
+
+./.git/logs/refs/remotes/origin:
+total 12
+drwx------ 2 muy003 classes 4096 Jan 20 23:00 .
+drwx------ 3 muy003 classes 4096 Jan 20 23:00 ..
+-rw------- 1 muy003 classes 1006 Jan 23 18:09 exec
+
+./.git/objects:
+total 168
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 .
+drwx------  8 muy003 classes 4096 Jan 23 18:09 ..
+drwx------  2 muy003 classes 4096 Jan 23 03:05 00
+drwx------  2 muy003 classes 4096 Jan 23 18:09 05
+drwx------  2 muy003 classes 4096 Jan 23 16:27 12
+drwx------  2 muy003 classes 4096 Jan 23 03:05 20
+drwx------  2 muy003 classes 4096 Jan 23 05:29 27
+drwx------  2 muy003 classes 4096 Jan 23 05:25 31
+drwx------  2 muy003 classes 4096 Jan 23 05:25 36
+drwx------  2 muy003 classes 4096 Jan 23 16:27 39
+drwx------  2 muy003 classes 4096 Jan 20 22:46 3f
+drwx------  2 muy003 classes 4096 Jan 23 16:24 40
+drwx------  2 muy003 classes 4096 Jan 23 02:57 42
+drwx------  2 muy003 classes 4096 Jan 20 20:29 4b
+drwx------  2 muy003 classes 4096 Jan 23 18:08 4c
+drwx------  2 muy003 classes 4096 Jan 23 05:29 53
+drwx------  2 muy003 classes 4096 Jan 20 22:46 57
+drwx------  2 muy003 classes 4096 Jan 23 03:00 59
+drwx------  2 muy003 classes 4096 Jan 23 18:09 62
+drwx------  2 muy003 classes 4096 Jan 20 22:48 64
+drwx------  2 muy003 classes 4096 Jan 23 17:51 65
+drwx------  2 muy003 classes 4096 Jan 20 20:29 70
+drwx------  2 muy003 classes 4096 Jan 20 22:46 7a
+drwx------  2 muy003 classes 4096 Jan 23 17:51 83
+drwx------  2 muy003 classes 4096 Jan 23 03:05 84
+drwx------  2 muy003 classes 4096 Jan 23 05:25 88
+drwx------  2 muy003 classes 4096 Jan 20 20:29 90
+drwx------  2 muy003 classes 4096 Jan 23 05:29 93
+drwx------  2 muy003 classes 4096 Jan 20 22:46 99
+drwx------  2 muy003 classes 4096 Jan 23 17:51 9e
+drwx------  2 muy003 classes 4096 Jan 23 03:05 b1
+drwx------  2 muy003 classes 4096 Jan 23 17:50 b7
+drwx------  2 muy003 classes 4096 Jan 23 05:29 c9
+drwx------  2 muy003 classes 4096 Jan 23 16:27 cc
+drwx------  2 muy003 classes 4096 Jan 23 02:56 d1
+drwx------  2 muy003 classes 4096 Jan 20 22:46 d3
+drwx------  2 muy003 classes 4096 Jan 20 20:29 d6
+drwx------  2 muy003 classes 4096 Jan 23 02:57 d7
+drwx------  2 muy003 classes 4096 Jan 23 18:09 f6
+drwx------  2 muy003 classes 4096 Jan 23 05:25 fc
+drwx------  2 muy003 classes 4096 Jan 20 20:29 info
+drwx------  2 muy003 classes 4096 Jan 20 20:29 pack
+
+./.git/objects/00:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 03:05 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  148 Jan 23 03:05 8b14476d2812c637b848808ed3ba9d3a9805f1
+
+./.git/objects/05:
+total 16
+drwx------  2 muy003 classes 4096 Jan 23 18:09 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  148 Jan 23 18:09 2d20dd2fe516f30bb1125664df6504de9d63f5
+-r--------  1 muy003 classes  229 Jan 23 17:50 91faab87ddab361d90bc6087eab032beb1e671
+
+./.git/objects/12:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 16:27 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  148 Jan 23 16:27 da6f72a33fa0a25591d8ae10fc82fdcf8fdfc2
+
+./.git/objects/20:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 03:05 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  739 Jan 23 03:05 f4858d0b386777ce7abcd415041b94654131b9
+
+./.git/objects/27:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 05:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  151 Jan 23 05:29 8a9c5fcddc1ba8d12397f52a6111f0baaf11c5
+
+./.git/objects/31:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 05:25 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  152 Jan 23 05:25 5e5050196e7ad5fa1b3ca6477ab3ebc601f21f
+
+./.git/objects/36:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 05:25 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  148 Jan 23 05:25 6c1736b6c526f14872b7e5427e1e78e7fb1b3d
+
+./.git/objects/39:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 16:27 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  191 Jan 23 16:27 5a167b75bc032783382033b739dffb59e89634
+
+./.git/objects/3f:
+total 12
+drwx------  2 muy003 classes 4096 Jan 20 22:46 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  341 Jan 20 22:46 181204e7cdb700d229d011c1a4aeee330b0b8f
+
+./.git/objects/40:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 16:24 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes 1579 Jan 23 16:24 ed82ac843ea25a4f634624277b5385282d78c9
+
+./.git/objects/42:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 02:57 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  148 Jan 23 02:57 6af0869dbc84e75cff26258a62b73a01de254b
+
+./.git/objects/4b:
+total 12
+drwx------  2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  135 Jan 20 20:29 181512337de32184c3af87f5afdb7cfcad5b48
+
+./.git/objects/4c:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 18:08 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes 1364 Jan 23 18:08 7e1914fde5fe7cce8cf2956eabe043160bb5e9
+
+./.git/objects/53:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 05:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  179 Jan 23 05:29 caa5300f5cd4037f648e36e67bf7e14c71229f
+
+./.git/objects/57:
+total 12
+drwx------  2 muy003 classes 4096 Jan 20 22:46 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  148 Jan 20 22:46 87c01ce0286e04691e806595b363058ca35335
+
+./.git/objects/59:
+total 16
+drwx------  2 muy003 classes 4096 Jan 23 03:00 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  184 Jan 23 03:00 8e44c86f66864b6d2f3dd45e78a9db55d24067
+-r--------  1 muy003 classes  730 Jan 20 22:46 a17b7cf7cccdfbc63880d8955853bca0e30f43
+
+./.git/objects/62:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 18:09 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  167 Jan 23 18:09 a8870cac5f2aec36fcce0d255b4f7663afdf00
+
+./.git/objects/64:
+total 12
+drwx------  2 muy003 classes 4096 Jan 20 22:48 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  180 Jan 20 22:48 46568723f626eee6bcf1790537ce80f0f44f8b
+
+./.git/objects/65:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 17:51 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  148 Jan 23 17:51 36709e3df5fad52cce75bc5d710d32ed8da696
+
+./.git/objects/70:
+total 12
+drwx------  2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes   85 Jan 20 20:29 6eafd0b3d1cc8fa94696a560ba4fbb3e09dc94
+
+./.git/objects/7a:
+total 12
+drwx------  2 muy003 classes 4096 Jan 20 22:46 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  119 Jan 20 22:46 f6a7c1e98c997346d6501fe6d282b7327d9d15
+
+./.git/objects/83:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 17:51 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  151 Jan 23 17:51 b7d3a6cda84d186d36c7fcf81cc002555d9f39
+
+./.git/objects/84:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 03:05 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  191 Jan 23 03:05 95ff116322c750824cc648d7611e54269109d7
+
+./.git/objects/88:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 05:25 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  163 Jan 23 05:25 79d45f21d21b153c619f9a70ccf8f9dc5c674c
+
+./.git/objects/90:
+total 12
+drwx------  2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  126 Jan 20 20:29 d95857f5c833ff9c850fafd1ea1272211b0074
+
+./.git/objects/93:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 05:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  971 Jan 23 05:29 3b645f32a4e7d95b729018ea75f40e027b2d80
+
+./.git/objects/99:
+total 12
+drwx------  2 muy003 classes 4096 Jan 20 22:46 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes 3468 Jan 20 22:46 96c1ef8e72b4b429f5bee0bed16e067901e2d8
+
+./.git/objects/9e:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 17:51 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  175 Jan 23 17:51 f4abdfb40f0b7890f81e012d925a428940fc24
+
+./.git/objects/b1:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 03:05 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  151 Jan 23 03:05 e6d30d223f2d6df10c9536178972d7669b16e7
+
+./.git/objects/b7:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 17:50 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes 1364 Jan 23 17:50 53ac6b1eae213a23061ee55ae5e657f17dbb00
+
+./.git/objects/c9:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 05:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  148 Jan 23 05:29 bde6bb2cdafaf8e2e4d140122caff2b6c1ce73
+
+./.git/objects/cc:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 16:27 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  151 Jan 23 16:27 3136838e382a50e792086c04586ed42e079d3a
+
+./.git/objects/d1:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 02:56 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  132 Jan 23 02:56 35aeaf03c2ecb6c10461a0a9ff7e24c04510eb
+
+./.git/objects/d3:
+total 12
+drwx------  2 muy003 classes 4096 Jan 20 22:46 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes   75 Jan 20 22:46 c43ba547f15c61ccf428f3d6f9a35b8e62a09f
+
+./.git/objects/d6:
+total 16
+drwx------  2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes 7710 Jan 20 20:29 a93266f748d606b884f9434ff662fe80b9dc21
+
+./.git/objects/d7:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 02:57 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  152 Jan 23 02:57 748cb7e9d68fe3759e231e3775ee33c2ab34f2
+
+./.git/objects/f6:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 18:09 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  152 Jan 23 18:09 e7350acd6c73f274f9001293233c810013c864
+
+./.git/objects/fc:
+total 12
+drwx------  2 muy003 classes 4096 Jan 23 05:25 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+-r--------  1 muy003 classes  975 Jan 23 05:25 161daec50f190c6c53f3d1e6799b556c0cc3ad
+
+./.git/objects/info:
+total 8
+drwx------  2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+
+./.git/objects/pack:
+total 8
+drwx------  2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 42 muy003 classes 4096 Jan 23 18:09 ..
+
+./.git/refs:
+total 20
+drwx------ 5 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 8 muy003 classes 4096 Jan 23 18:09 ..
+drwx------ 2 muy003 classes 4096 Jan 23 18:09 heads
+drwx------ 3 muy003 classes 4096 Jan 20 20:29 remotes
+drwx------ 2 muy003 classes 4096 Jan 20 20:29 tags
+
+./.git/refs/heads:
+total 8
+drwx------ 2 muy003 classes 4096 Jan 23 18:09 .
+drwx------ 5 muy003 classes 4096 Jan 20 20:29 ..
+-rw------- 1 muy003 classes   41 Jan 23 18:09 exec
+-rw------- 1 muy003 classes   41 Jan 20 20:29 master
+
+./.git/refs/remotes:
+total 12
+drwx------ 3 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 5 muy003 classes 4096 Jan 20 20:29 ..
+drwx------ 2 muy003 classes 4096 Jan 23 18:09 origin
+
+./.git/refs/remotes/origin:
+total 8
+drwx------ 2 muy003 classes 4096 Jan 23 18:09 .
+drwx------ 3 muy003 classes 4096 Jan 20 20:29 ..
+-rw------- 1 muy003 classes   41 Jan 23 18:09 exec
+-rw------- 1 muy003 classes   32 Jan 20 20:29 HEAD
+
+./.git/refs/tags:
+total 8
+drwx------ 2 muy003 classes 4096 Jan 20 20:29 .
+drwx------ 5 muy003 classes 4096 Jan 20 20:29 ..
+
+./src:
+total 68
+drwx------ 2 muy003 classes  4096 Jan 23 18:07 .
+drwx------ 6 muy003 classes  4096 Jan 23 18:12 ..
+-rwx------ 1 muy003 classes 25141 Jan 23 17:17 a.out
+-rw------- 1 muy003 classes  3988 Jan 23 18:07 main.cpp
+-rw------- 1 muy003 classes 28672 Jan 23 18:08 .main.cpp.swp
+
+./tests:
+total 8
+drwx------ 2 muy003 classes 4096 Jan 20 20:53 .
+drwx------ 6 muy003 classes 4096 Jan 23 18:12 ..
+muy003@hammer.cs.ucr.edu$ ls -a-R-l
+ls: invalid option -- '-'
+Try `ls --help' for more information.
+muy003@hammer.cs.ucr.edu$ ls -a -O OneFlag t  t That E   tExistsAndAnotherThatDoesnt
+ls: invalid option -- 'O'
+Try `ls --help' for more information.
+muy003@hammer.cs.ucr.edu$ & ls
+error in execvp: No such file or directory
+muy003@hammer.cs.ucr.edu$ ls &
+ls: cannot access &: No such file or directory
+muy003@hammer.cs.ucr.edu$ ls &&
+ls: cannot access &: No such file or directory
+muy003@hammer.cs.ucr.edu$ ls  && ls
+ls: cannot access &: No such file or directory
+muy003@hammer.cs.ucr.edu$  ls ls ls ls ls
+ls: cannot access ls: No such file or directory
+ls: cannot access ls: No such file or directory
+ls: cannot access ls: No such file or directory
+ls: cannot access ls: No such file or directory
+muy003@hammer.cs.ucr.edu$ ^C
+~/cs100/rshell
+muy003@hammer $ bin/rshell
+muy003@hammer.cs.ucr.edu$ ls || echo
+bin  exec.script  LICENSE  Makefile  README.md	src  tests
+muy003@hammer.cs.ucr.edu$ ls||echo
+bin  exec.script  LICENSE  Makefile  README.md	src  tests
+muy003@hammer.cs.ucr.edu$ ls -a  && echo4
+bin  exec.script  LICENSE  Makefile  README.md	src  tests
+error in execvp: No such file or directory
+muy003@hammer.cs.ucr.edu$ ^[[A^[[B        ^C
+~/cs100/rshell
+muy003@hammer $ bin/rshell
+muy003@hammer.cs.ucr.edu$ ls||&&   echo
+bin  exec.script  LICENSE  Makefile  README.md	src  tests
+muy003@hammer.cs.ucr.edu$ ls|&|&|&|&&|&   
+error in execvp: No such file or directory
+muy003@hammer.cs.ucr.edu$ ls ^[[A       ^C
+~/cs100/rshell
+muy003@hammer $ ls;echo;echo
+[0m[01;34mbin[0m/  exec.script  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtests[0m/
+[m
+
+~/cs100/rshell
+muy003@hammer $ ls;;echo
+bash: syntax error near unexpected token `;;'
+~/cs100/rshell
+muy003@hammer $ ||
+bash: syntax error near unexpected token `||'
+~/cs100/rshell
+muy003@hammer $ ;
+bash: syntax error near unexpected token `;'
+~/cs100/rshell
+muy003@hammer $ ;&&||
+bash: syntax error near unexpected token `;&'
+~/cs100/rshell
+muy003@hammer $ #hi
+~/cs100/rshell
+muy003@hammer $ echo #hi
+
+~/cs100/rshell
+muy003@hammer $  #echo && echo || echo test[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K#
+~/cs100/rshell
+muy003@hammer $ ## hi
+~/cs100/rshell
+muy003@hammer $ ls # -a
+[0m[01;34mbin[0m/  exec.script  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtests[0m/
+[m~/cs100/rshell
+muy003@hammer $ ls -a[K[K[K[K[Kls -l # test
+total 40
+drwx------ 2 muy003 classes  4096 Jan 23 18:12 [0m[01;34mbin[0m/
+-rw------- 1 muy003 classes     0 Jan 23 18:12 exec.script
+-rw------- 1 muy003 classes 18027 Jan 20 20:29 LICENSE
+-rw------- 1 muy003 classes   322 Jan 23 17:13 Makefile
+-rw------- 1 muy003 classes   122 Jan 20 20:29 README.md
+drwx------ 2 muy003 classes  4096 Jan 23 18:07 [01;34msrc[0m/
+drwx------ 2 muy003 classes  4096 Jan 20 20:53 [01;34mtests[0m/
+[m~/cs100/rshell
+muy003@hammer $ cs[Kd #
+~
+muy003@hammer $ #[K #echo && echo || echo test
+~
+muy003@hammer $ ls||#test
+loop $ echo
+assn6sub2.asm        [0m[01;34mDesktop[0m/               [01;32mFirefox_wallpaper.png[0m*  [01;34mPictures[0m/     [01;34mucr-cs100[0m/
+[01;34mcs100[0m/               [01;34mDocuments[0m/             [01;32mmain.cpp[0m*               [01;32mposix.cpp[0m*    [01;32muserfile.txt[0m*
+[01;32mcs10_homeworks.zip[0m*  [01;34mDownloads[0m/             [01;32mmakefile[0m*               [01;32mprivate.zip[0m*  [01;34mVideos[0m/
+[01;32mcs10_labs.zip[0m*       [01;32mex1.asm[0m*               [01;32mmessagefile.txt[0m*        [01;34mPublic[0m/
+[01;32mdata10.txt[0m*          [01;32mEX3.ASM[0m*               [01;34mMusic[0m/                  t.cpp
+[01;32mdatadefault[0m*         [01;32mfirefox-20.0.tar.bz2[0m*  [01;32mnotmain.cpp[0m*            [01;34mTemplates[0m/
+[m~
+muy003@hammer $ echo tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt#tttttttt tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt tttttt
+tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt#tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+~
+muy003@hammer $ true || eco[Kho
+~
+muy003@hammer $ false || ls
+assn6sub2.asm        [0m[01;34mDesktop[0m/               [01;32mFirefox_wallpaper.png[0m*  [01;34mPictures[0m/     [01;34mucr-cs100[0m/
+[01;34mcs100[0m/               [01;34mDocuments[0m/             [01;32mmain.cpp[0m*               [01;32mposix.cpp[0m*    [01;32muserfile.txt[0m*
+[01;32mcs10_homeworks.zip[0m*  [01;34mDownloads[0m/             [01;32mmakefile[0m*               [01;32mprivate.zip[0m*  [01;34mVideos[0m/
+[01;32mcs10_labs.zip[0m*       [01;32mex1.asm[0m*               [01;32mmessagefile.txt[0m*        [01;34mPublic[0m/
+[01;32mdata10.txt[0m*          [01;32mEX3.ASM[0m*               [01;34mMusic[0m/                  t.cpp
+[01;32mdatadefault[0m*         [01;32mfirefox-20.0.tar.bz2[0m*  [01;32mnotmain.cpp[0m*            [01;34mTemplates[0m/
+[m~
+muy003@hammer $ true; false||ls
+assn6sub2.asm        [0m[01;34mDesktop[0m/               [01;32mFirefox_wallpaper.png[0m*  [01;34mPictures[0m/     [01;34mucr-cs100[0m/
+[01;34mcs100[0m/               [01;34mDocuments[0m/             [01;32mmain.cpp[0m*               [01;32mposix.cpp[0m*    [01;32muserfile.txt[0m*
+[01;32mcs10_homeworks.zip[0m*  [01;34mDownloads[0m/             [01;32mmakefile[0m*               [01;32mprivate.zip[0m*  [01;34mVideos[0m/
+[01;32mcs10_labs.zip[0m*       [01;32mex1.asm[0m*               [01;32mmessagefile.txt[0m*        [01;34mPublic[0m/
+[01;32mdata10.txt[0m*          [01;32mEX3.ASM[0m*               [01;34mMusic[0m/                  t.cpp
+[01;32mdatadefault[0m*         [01;32mfirefox-20.0.tar.bz2[0m*  [01;32mnotmain.cpp[0m*            [01;34mTemplates[0m/
+[m~
+muy003@hammer $ false && echo
+~
+muy003@hammer $ true && echo
+
+~
+muy003@hammer $ false; ls
+assn6sub2.asm        [0m[01;34mDesktop[0m/               [01;32mFirefox_wallpaper.png[0m*  [01;34mPictures[0m/     [01;34mucr-cs100[0m/
+[01;34mcs100[0m/               [01;34mDocuments[0m/             [01;32mmain.cpp[0m*               [01;32mposix.cpp[0m*    [01;32muserfile.txt[0m*
+[01;32mcs10_homeworks.zip[0m*  [01;34mDownloads[0m/             [01;32mmakefile[0m*               [01;32mprivate.zip[0m*  [01;34mVideos[0m/
+[01;32mcs10_labs.zip[0m*       [01;32mex1.asm[0m*               [01;32mmessagefile.txt[0m*        [01;34mPublic[0m/
+[01;32mdata10.txt[0m*          [01;32mEX3.ASM[0m*               [01;34mMusic[0m/                  t.cpp
+[01;32mdatadefault[0m*         [01;32mfirefox-20.0.tar.bz2[0m*  [01;32mnotmain.cpp[0m*            [01;34mTemplates[0m/
+[m~
+muy003@hammer $ ls -a false
+ls: cannot access false: No such file or directory
+~
+muy003@hammer $ ls true && echo
+ls: cannot access true: No such file or directory
+~
+muy003@hammer $ true && false || echo wow
+wow
+~
+muy003@hammer $ false || true && wow
+bash: wow: command not found
+~
+muy003@hammer $ ls -aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+[0m[01;34m.[0m/                                    [01;34mDownloads[0m/              .lesshst
+[01;34m..[0m/                                   [01;34m.eggcups[0m/               [01;34m.local[0m/
+[01;34m.adobe[0m/                               [01;34m.emacs.d[0m/               [01;34m.macromedia[0m/
+assn6sub2.asm                         [01;32m.esd_auth[0m*              [01;32mmain.cpp[0m*
+[01;32m.bash_history[0m*                        [01;32mex1.asm[0m*                [01;32mmakefile[0m*
+.bash_logout                          [01;32mEX3.ASM[0m*                [01;32mmessagefile.txt[0m*
+.bashrc                               [01;32m.execooo06Fzfu[0m*         [01;34m.metacity[0m/
+.bashrc~                              [01;32m.execooo32vcqJ[0m*         [01;34m.minecraft[0m/
+[01;34m.cache[0m/                               [01;32m.execooo3gpTfd[0m*         [01;34m.mozilla[0m/
+[01;34m.config[0m/                              [01;32m.execooo6wtEX2[0m*         [01;34mMusic[0m/
+[01;34mcs100[0m/                                [01;32m.execooo7a7yev[0m*         [01;34m.nautilus[0m/
+[01;32mcs10_homeworks.zip[0m*                   [01;32m.execoooakjoXP[0m*         [01;32mnotmain.cpp[0m*
+[01;32mcs10_labs.zip[0m*                        [01;32m.execooodpR6rp[0m*         [01;34m.nv[0m/
+[01;32mdata10.txt[0m*                           [01;32m.execooodQWt7N[0m*         [01;34m.nx[0m/
+[01;32mdatadefault[0m*                          [01;32m.execoooFsTLXG[0m*         [01;34m.openoffice.org[0m/
+[01;34m.dbus[0m/                                [01;32m.execoook0P5M8[0m*         [01;34mPictures[0m/
+[01;32m.DCOPserver_alpha-14.cs.ucr.edu__0[0m*   [01;32m.execoooL1BcGY[0m*         [01;34m.pki[0m/
+[01;32m.DCOPserver_alpha-19.cs.ucr.edu__0[0m*   [01;32m.execoooP7y0TJ[0m*         [01;32mposix.cpp[0m*
+[01;32m.DCOPserver_alpha-32.cs.ucr.edu__0[0m*   [01;32m.execoootESePj[0m*         [01;32mprivate.zip[0m*
+[01;32m.DCOPserver_alpha-33.cs.ucr.edu__0[0m*   [01;32m.execoooXRtmBQ[0m*         [01;32m.procmailrc[0m*
+[01;32m.DCOPserver_alpha-40.cs.ucr.edu__0[0m*   [01;32mfirefox-20.0.tar.bz2[0m*   .profile
+[01;32m.DCOPserver_alpha-46.cs.ucr.edu__0[0m*   [01;32mFirefox_wallpaper.png[0m*  [01;34mPublic[0m/
+[01;32m.DCOPserver_kilo-10.cs.ucr.edu__0[0m*    [01;34m.fontconfig[0m/            [01;34m.pulse[0m/
+[01;32m.DCOPserver_kilo-11.cs.ucr.edu__0[0m*    [01;34m.gconf[0m/                 [01;32m.pulse-cookie[0m*
+[01;32m.DCOPserver_kilo-14.cs.ucr.edu__0[0m*    [01;34m.gconfd[0m/                [01;34m.qt[0m/
+[01;32m.DCOPserver_kilo-20.cs.ucr.edu__0[0m*    .gitconfig              [01;32m.recently-used.xbel[0m*
+[01;32m.DCOPserver_kilo-22.cs.ucr.edu__0[0m*    [01;34m.gitlearn[0m/              [01;34m.redhat[0m/
+[01;32m.DCOPserver_kilo-23.cs.ucr.edu__0[0m*    [01;34m.gnome[0m/                 [01;34m.ssh[0m/
+[01;32m.DCOPserver_kilo-31.cs.ucr.edu__0[0m*    [01;34m.gnome2[0m/                t.cpp
+[01;32m.DCOPserver_kilo-5.cs.ucr.edu__0[0m*     [01;34m.gnome2_private[0m/        [01;34mTemplates[0m/
+[01;32m.DCOPserver_kilo-6.cs.ucr.edu__0[0m*     [01;34m.gnote[0m/                 [01;34m.themes[0m/
+[01;32m.DCOPserver_sierra-13.cs.ucr.edu__0[0m*  [01;34m.gnupg[0m/                 [01;34m.thumbnails[0m/
+[01;32m.DCOPserver_tango-17.cs.ucr.edu__0[0m*   [01;34m.gstreamer-0.10[0m/        [01;34m.Trash[0m/
+.DCOPserver_well.cs.ucr.edu__1026     [01;32m.gtk-bookmarks[0m*         [01;34mucr-cs100[0m/
+[01;36m.DCOPserver_well.cs.ucr.edu_:1026[0m@    [01;32m.gtkrc-1.2-gnome2[0m*      [01;32muserfile.txt[0m*
+.DCOPserver_well.cs.ucr.edu__1037     [01;34m.gvfs[0m/                  [01;34mVideos[0m/
+[01;36m.DCOPserver_well.cs.ucr.edu_:1037[0m@    [01;32m.ICEauthority[0m*          [01;32m.viminfo[0m*
+[01;34mDesktop[0m/                              [01;34m.icons[0m/                 .vimrc
+[01;32m.dmrc[0m*                                [01;32m.imsettings.log[0m*        .vimrc.swp
+[01;34mDocuments[0m/                            [01;34m.kde[0m/                   .Xauthority
+[m~
+muy003@hammer $ false || false|false[C|false[C[C[C[C |false[1P|false[C false[4h [4l[C[C[1P[C[4h [4l[C[C[C[C[C[C[C[C || false || false || ls
+assn6sub2.asm        [0m[01;34mDesktop[0m/               [01;32mFirefox_wallpaper.png[0m*  [01;34mPictures[0m/     [01;34mucr-cs100[0m/
+[01;34mcs100[0m/               [01;34mDocuments[0m/             [01;32mmain.cpp[0m*               [01;32mposix.cpp[0m*    [01;32muserfile.txt[0m*
+[01;32mcs10_homeworks.zip[0m*  [01;34mDownloads[0m/             [01;32mmakefile[0m*               [01;32mprivate.zip[0m*  [01;34mVideos[0m/
+[01;32mcs10_labs.zip[0m*       [01;32mex1.asm[0m*               [01;32mmessagefile.txt[0m*        [01;34mPublic[0m/
+[01;32mdata10.txt[0m*          [01;32mEX3.ASM[0m*               [01;34mMusic[0m/                  t.cpp
+[01;32mdatadefault[0m*         [01;32mfirefox-20.0.tar.bz2[0m*  [01;32mnotmain.cpp[0m*            [01;34mTemplates[0m/
+[m~
+muy003@hammer $ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;&&
+bash: syntax error near unexpected token `;;'
+~
+muy003@hammer $ false |||||echo echo
+bash: syntax error near unexpected token `||'
+~
+muy003@hammer $ cat non e[K[Kexistant file.cpp[1Pfile.cpp
+cat: nonexistantfile.cpp: No such file or directory
+~
+muy003@hammer $ cat echo
+cat: echo: No such file or directory
+~
+muy003@hammer $ cat[K[K[Kls cat echo ls cat
+ls: cannot access cat: No such file or directory
+ls: cannot access echo: No such file or directory
+ls: cannot access ls: No such file or directory
+ls: cannot access cat: No such file or directory
+~
+muy003@hammer $ ls -X -x U -V
+ls: invalid option -- 'V'
+Try `ls --help' for more information.
+~
+muy003@hammer $ echo 23456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789vvvvv1 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567892345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 9123456789123456789123456789vvvvv12345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789vvvvv1234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567892345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789vvvvv123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789vvvvv1234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678923456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 456789123456789123456789123456789123456789123456789123456789vvvvv123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 6789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789vvvvv12345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678923456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 456789123456789123456789vvvvv123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567892345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 6789123456789123456789123456789123456789123456789123456789vvvvv12345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678923456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789vvvvv1234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567892345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 6789123456789123456789vvvvv12345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789vvvvv1234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567892345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789vvvvv123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789vvvvv1234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678923456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 123456789123456789123456789123456789123456789123456789vvvvv123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 3456789123456789123456789123456789123456789123456789123456789123456789123456789123456789vvvvv12345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678923456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 123456789123456789vvvvv123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567892345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 3456789123456789123456789123456789123456789123456789vvvvv12345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678923456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567 89123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123 45678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789vvvvv1234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345 67891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891 23456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456 78912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912345678912 34567891234567891234567891234567891234567892345678912345678912345678912345678912345678912345678912345678 91234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234567891234 56789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789123456789 12345678912345678912345678912345678912345678912345678912345678912345678912^C
+~
+muy003@hammer $ exit
+exit
+
+Script done on Fri 23 Jan 2015 07:03:52 PM PST
