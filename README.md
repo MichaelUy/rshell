@@ -12,7 +12,7 @@ rshell is a simple shell that is able to run basic syscalls utilizing:
 
 #Test Cases
 # ls tests
-1) ls \n
+1) ls 
 2) ls -a
 3) ls -aRl
 4) ls -a-R-l
