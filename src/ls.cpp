@@ -3,6 +3,7 @@
 #include <deque>
 #include <time.h>
 #include <pwd.h>
+#include <grp.h>
 
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -17,7 +18,7 @@ using namespace std;
 
 int main(int argc,char *argv[]){
 
-    char initdirName[]={'.'};
+    char initdirName[]={'.','\0'};
     char *dirName = initdirName;
     DIR *dirp = opendir(dirName);
     dirent *direntp;
