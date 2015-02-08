@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 #include <vector>
 #include <deque>
 #include <time.h>
@@ -43,8 +44,24 @@ string permissiontags (struct stat &the_goods){
     return ret;
 }
 
-void printls(vector<string> filenames,bool flaga,bool flagl,bool flagr ){
+int totalblocks(vector<string> filenames){
+    int ret = 0;
+    for(int i=0; i < filenames.size();i++){
+       struct stat the_goods;
+       if(-1 == stat(filenames[i].c_str(), &the_goods)){
+           perror("error on maxsize stat");
+           exit(1);
+        }
+        ret+= the_goods.st_blocks;
+    }
+    return ret;
+}
+
+void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr ){
     string displaytime;
+    if(flagl){
+         cout << "total " << totalblocks(filenames)/2 << endl;
+    }
     for(int i=0; i < filenames.size();i++){
         if(flagl){
             struct stat the_goods;
@@ -69,6 +86,7 @@ void printls(vector<string> filenames,bool flaga,bool flagl,bool flagr ){
             else{
                 cout << grgid->gr_name << " ";
             }
+            cout << setw(6)<< the_goods.st_size << " ";
             displaytime = ctime(&the_goods.st_mtime);
             displaytime = displaytime.substr(4,displaytime.length());
             displaytime = displaytime.substr(0,displaytime.length()-9);
@@ -97,6 +115,25 @@ int numlink(){                                    ///// implement
     int ret=0;
 
 return ret;
+}
+bool nocasenodot(string f,string s){
+
+    string first=f;
+    string second=s;
+    for(size_t i = 0; i < first.size(); i++){
+        first[i] = tolower(first[i]);
+    }
+    if(first[0]=='.' && (first[1] != '.' || first[1] != '\0')){
+        first.erase(first.begin());
+    }
+    for(size_t i = 0; i < second.size(); i++){
+        second[i] = tolower(second[i]);
+    }
+    if(second[0]=='.' && (second[1] != '.' || second[1] != '\0')){
+        second.erase(second.begin());
+    }
+
+    return first < second;
 }
 
 void getflags(const int argc,char *argv[]
@@ -156,6 +193,9 @@ int main(int argc,char *argv[]){
     }
 
     for(int i=0;i<dirlist.size();i++){
+        if(dirlist.size()>1){
+            cout<< dirlist[i]<<":"<<endl;
+        }
         DIR *dirp = opendir(dirlist[i].c_str());       // opendir(paths[i].c_str()); must open path
         if(dirp == NULL){
             perror("error on opendir");
@@ -174,7 +214,7 @@ int main(int argc,char *argv[]){
         }
 
         // sort the filenames
-        sort(filenames.begin(),filenames.end());
+        sort(filenames.begin(),filenames.end(), nocasenodot);
 
         printls(filenames,flaga,flagl,flagr);
         filenames.clear();      //empty the file names

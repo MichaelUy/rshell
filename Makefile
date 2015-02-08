@@ -1,23 +1,23 @@
 FILEPATH= ./src/main.cpp
-
+FILEPATH1=./src/ls.cpp
+OUTPATH= ./bin/rshell
+OUTPATH1= ./bin/ls
 CPPFLAGS = -Wall -Werror -ansi -pedantic
+POWER= g++
 objects = $(addprefix obj/, main.o)
-all:$(OBJS)
-	mkdir bin
-	g++ $(FILEPATH) -o bin/rshell $(CPPFLAGS)
-bin/rshell: $(objects) | bin
-	cc -o $@ $(objects)
+all:
+	mkdir -p ./bin
+	$(POWER) $(FILEPATH) $(CPPFLAGS) -o $(OUTPATH)
+	$(POWER) $(FILEPATH1) $(CPPFLAGS) -o $(OUTPATH1)
 
-obj/%.o: %.c
-	cc $(CFLAGS) -c -o $@ $<
+rshell:
+	mkdir -p ./bin
+	$(POWER) $(CFLAGS) $(FILEPATH) -o $(OUTPATH)
 
-$(objects): | obj
-
-
-
-obj:
-	mkdir obj
+ls:
+	mkdir -p ./bin
+	$(POWER) $(CFLAGS) $(FILEPATH1) -o $(OUTPATH1)
 
 clean:
-	rm -rf obj bin
+	rm -rf ./bin
 
