@@ -15,6 +15,7 @@
 #include <cstdlib>
 #include <linux/stat.h>
 #include <iomanip>
+#include <algorithm>
 using namespace std;
 
 string permissiontags (struct stat &the_goods){
@@ -43,38 +44,45 @@ string permissiontags (struct stat &the_goods){
     return ret;
 }
 
-void printls(vector<string> filenames, int flags ){
+void printls(vector<string> filenames,bool flaga,bool flagl,bool flagr ){
     string displaytime;
     for(int i=0; i < filenames.size();i++){
-        struct stat the_goods;
-        if(-1== stat(filenames[i].c_str(), &the_goods)){
-            perror("error on stat");
-            exit(1);
+        if(flagl){
+            struct stat the_goods;
+            if(-1== stat(filenames[i].c_str(), &the_goods)){
+                perror("error on stat");
+                exit(1);
+            }
+                                                                    ////requires iomanip formating
+            cout << permissiontags(the_goods) << " ";
+            cout << the_goods.st_nlink << " ";
+            struct passwd *pwuid = getpwuid(the_goods.st_uid);
+            if(pwuid == NULL){
+                perror("error on getpwuid");
+            }
+            else{
+                cout << pwuid->pw_name << " ";
+            }
+            struct group *grgid = getgrgid(the_goods.st_gid);
+            if(grgid == NULL){
+                perror("error on getgrgid");
+            }
+            else{
+                cout << grgid->gr_name << " ";
+            }
+            displaytime = ctime(&the_goods.st_mtime);
+            displaytime = displaytime.substr(4,displaytime.length());
+            displaytime = displaytime.substr(0,displaytime.length()-9);
+            cout << displaytime << " ";
+            displaytime="";
         }
-                                                                ////requires iomanip formating
-        cout << permissiontags(the_goods) << " ";
-        //cout << numlinks << " ";
-        struct passwd *pwuid = getpwuid(the_goods.st_uid);
-        if(pwuid == NULL){
-            perror("error on getpwuid");
+
+        cout << filenames[i] <<" ";
+        if(flagl && i != filenames.size()-1){
+            cout<< endl;
         }
-        else{
-            cout << pwuid->pw_name << " ";
-        }
-        struct group *grgid = getgrgid(the_goods.st_gid);
-        if(grgid == NULL){
-            perror("error on getgrgid");
-        }
-        else{
-            cout << grgid->gr_name << " ";
-        }
-        displaytime = ctime(&the_goods.st_mtime);
-        displaytime = displaytime.substr(4,displaytime.length());
-        displaytime = displaytime.substr(0,displaytime.length()-9);
-        cout << displaytime << " ";
-        displaytime="";
-        cout << filenames[i] << endl;
     }
+    cout<< endl;
 }
 
 void printdirs(){                           // handles -R
@@ -92,8 +100,43 @@ int numlink(){                                    ///// implement
 return ret;
 }
 
-int getflags(){
+void getflags(const int argc,char *argv[]
+    ,bool &flaga,bool &flagl,bool &flagr ,vector<string> &dirlist){
 
+    for(int i=1;i<argc;i++){
+        if(argv[i][0]=='-'){
+            if(argv[i][1]=='\0'){
+                perror("ls: cannot access -: ");
+                exit(1);
+            }
+            for(int j =1;argv[i][j]!='\0';j++){
+                if(argv[i][j] == 'a'){
+                    flaga=true;
+                    continue;
+                }
+               else if(argv[i][j] == 'l'){
+                    flagl=true;
+                    continue;
+                }
+                else if(argv[i][j] == 'r'){
+                    flagr=true;
+                    continue;
+                }
+                else{
+                    perror("ls: invalid option") ;
+                    exit(1);
+                }
+
+
+            }
+        }
+        // if it not a flag then it should be a directory
+        else{
+            dirlist.push_back(argv[i]);
+
+        }
+
+    }
 }
 
 int main(int argc,char *argv[]){
@@ -103,25 +146,42 @@ int main(int argc,char *argv[]){
     }
 
     vector<string> filenames, dirlist;      //create vectors for filenames and directories
-    int flags=0;                            //////flags and dirlist still unused
+    bool flaga=false;
+    bool flagl=false;
+    bool flagr=false;
 
-    char initdirName[]={'.','\0'};          ////////{
-    char *dirName = initdirName;
-    DIR *dirp = opendir(dirName);       // opendir(paths[i].c_str()); must open path
-    if(dirp == NULL){
-        perror("error on opendir");
+    getflags(argc,argv,flaga,flagl,flagr,dirlist);  // get flag boos and fill dirlist
+
+    if( dirlist.empty()){                      // if no directories set to local
+        dirlist.push_back(".");
     }
-    dirent *direntp;
-    while ((direntp = readdir(dirp))){      ///// create directory divided display function
-        if(direntp < 0 ){
-            perror("error on readdir");
+
+    for(int i=0;i<dirlist.size();i++){
+        DIR *dirp = opendir(dirlist[i].c_str());       // opendir(paths[i].c_str()); must open path
+        if(dirp == NULL){
+            perror("error on opendir");
         }
-        filenames.push_back(direntp->d_name);
-    }
+        dirent *direntp;
+        while ((direntp = readdir(dirp))){      ///// create directory divided display function
+            if(direntp < 0 ){
+                perror("error on readdir");
+            }
+            if(direntp->d_name[0]  == '.' && !(flaga) ){
+                //do nothing
+            }
+            else{
+                filenames.push_back(direntp->d_name);
+            }
+        }
 
-    printls(filenames,flags);
-                                        ////////////}
-    if(-1==closedir(dirp)){
-        perror("error on closedir");
+        // sort the filenames
+        sort(filenames.begin(),filenames.end());
+
+        printls(filenames,flaga,flagl,flagr);
+        filenames.clear();      //empty the file names
+                                            ////////////}
+        if(-1==closedir(dirp)){
+            perror("error on closedir");
+        }
     }
 }
