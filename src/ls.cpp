@@ -70,7 +70,7 @@ void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr, string 
     string hidden = ";45m";   // white background   -unfinished
 
     string displaytime;
-    string color="";                 // default color = green
+    string color="";                 // default color
 
 
     if(flagl){
@@ -195,8 +195,15 @@ void getflags(const int argc,char *argv[]
         }
         // if it not a flag then it should be a directory
         else{
-            if(argv[i] )
-            dirlist.push(argv[i]);
+            string check = argv[i];
+            if(check[check.size()-1]=='/'){
+                for(size_t c= check.size()-1;c>0;c--){
+                   if(check[c]=='/'){
+                        check=check.substr(0,check.size()-1);
+                   }
+                }
+            }
+            dirlist.push(check);
 
         }
 
