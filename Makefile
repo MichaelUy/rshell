@@ -12,11 +12,11 @@ all:
 
 rshell:
 	mkdir -p ./bin
-	$(POWER) $(CFLAGS) $(FILEPATH) -o $(OUTPATH)
+	$(POWER) $(CPPFLAGS) $(FILEPATH) -o $(OUTPATH)
 
 ls:
 	mkdir -p ./bin
-	$(POWER) $(CFLAGS) $(FILEPATH1) -o $(OUTPATH1)
+	$(POWER) $(CPPFLAGS) $(FILEPATH1) -o $(OUTPATH1)
 
 clean:
 	rm -rf ./bin
