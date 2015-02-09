@@ -67,7 +67,7 @@ void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr, string 
     string socketc = "\033[1;35m";  //magenta
     string pipec = "\033[0;40;33m"; //
     string blockc = "\033[1;33;40m";   //bold  yellow black bgd
-    string hidden = ";47m";   // white background   -unfinished
+    string hidden = ";45m";   // white background   -unfinished
 
     string displaytime;
     string color="";                 // default color = green
