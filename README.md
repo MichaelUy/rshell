@@ -42,8 +42,8 @@ I chose to follow the Gnu ls color coding standards
 - src -l
 - src/ -R
 - src src
-- src src
-- src src
+- src src -l
+- src src -a
 - -a src src
 - -l src src
 - -R src src
