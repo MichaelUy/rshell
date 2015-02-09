@@ -1,23 +1,35 @@
 Script started on Mon 09 Feb 2015 12:17:58 AM PST
-~
+~
+
 muy003@hammer $ cd cs100/rshell
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ make
 mkdir -p ./bin
 g++ ./src/main.cpp -Wall -Werror -ansi -pedantic -o ./bin/rshell
 g++ ./src/ls.cpp -Wall -Werror -ansi -pedantic -o ./bin/ls
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # ls test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin.
 bash: bin.: command not found
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls ,/ -R
 ,:
 error on opendir: No such file or directory
-~/cs100/rshell
-muy003@hammer $ bin/ls ./ -R
+~/cs100/rshell
+
+muy003@hammer $ # -R & ending '/'  test
+~/cs100/rshell
+
+muy003@hammer $ bin/ls ./ -R 
 .:
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
 
@@ -29,7 +41,11 @@ muy003@hammer $ bin/ls ./ -R
 
 ./tests:
 [mexec.script[m 
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # ../ test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls ../ -R
 ..:
 [1;34mrshell[m 
@@ -45,13 +61,25 @@ muy003@hammer $ bin/ls ../ -R
 
 ../rshell/tests:
 [mexec.script[m 
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # -a test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -a
 [1;34;45m.[m [1;34;45m..[m [ma.out[m [1;34mbin[m [1;34;45m.git[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ 
 bash: bin/: is a directory
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # i messed up
+~/cs100/rshell
+
+muy003@hammer $ # -l test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -l
 total 224
 -rwx------ 1 muy003 classes 179612 Feb  8 19:46 [ma.out[m 
@@ -62,7 +90,8 @@ drwx------ 2 muy003 classes   4096 Feb  9 00:14 [1;34mbin[m
 -rw------- 1 muy003 classes   6052 Feb  9 00:11 [mREADME.md[m 
 drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34msrc[m 
 drwx------ 2 muy003 classes   4096 Feb  9 00:12 [1;34mtests[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -R
 .:
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
@@ -75,16 +104,30 @@ muy003@hammer $ bin/ls -R
 
 ./tests:
 [mexec.script[m 
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # fake tag  test, returns fake flag
+~/cs100/rshell
+
+
 muy003@hammer $ bin/ls -z
 ls: cannot run invalid flag 'z'
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -T 
 ls: cannot run invalid flag 'T'
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # fake flag  in grouping test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -R -TR
 ls: cannot run invalid flag 'T'
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # repeated flag test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -R -R
 .:
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
@@ -97,10 +140,15 @@ muy003@hammer $ bin/ls -R -R
 
 ./tests:
 [mexec.script[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -lar
 ls: cannot run invalid flag 'r'
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # flags combined test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -laR
 .:
 total 236
@@ -1085,30 +1133,46 @@ total 88
 drwx------ 2 muy003 classes   4096 Feb  9 00:12 [1;34;45m.[m 
 drwx------ 6 muy003 classes   4096 Feb  9 00:14 [1;34;45m..[m 
 -rw------- 1 muy003 classes  73784 Jan 23 19:18 [mexec.script[m 
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # special //// test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls /////
 [1;34mbin[m [1;34mboot[m [mC:\nppdf32Log\debuglog.txt[m [1;34mcgroup[m [1;34mclass[m [1;34mdev[m [1;34metc[m [1;34mextra[m [1;34mhome[m [1;34mlib[m [1;34mlib64[m [1;34mlost+found[m [1;34mmedia[m [1;34mmisc[m [1;34mmnt[m [1;34mnet[m [1;34mopt[m [1;34mproc[m [1;34mroot[m [1;34msbin[m [1;34mselinux[m [1;34msrv[m [1;34msys[m [1;34mtmp[m [1;34musr[m [1;34mvar[m 
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # special test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls - - - -
 ls: cannot access -: : Success
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # folder tests
+~/cs100/rshell
+
 muy003@hammer $ bin/ls src
 [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls src -a
 [1;34;45m.[m [1;34;45m..[m [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m [;45m.nfs000000000041ddf400000024[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls src -l
 total 108
 -rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
 -rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
 -rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
 -rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls src -R
 src:
 [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls src -laR
 src:
 total 156
@@ -1119,26 +1183,37 @@ drwx------ 6 muy003 classes   4096 Feb  9 00:14 [1;34;45m..[m
 -rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
 -rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
 -rw------- 1 muy003 classes  40960 Feb  8 23:38 [;45m.nfs000000000041ddf400000024[m 
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # multiple folder test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -a src src
 src:
 [1;34;45m.[m [1;34;45m..[m [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m [;45m.nfs000000000041ddf400000024[m 
 [1;34;45m.[m [1;34;45m..[m [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m [;45m.nfs000000000041ddf400000024[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls - l
 ls: cannot access -: : Success
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -l src
 total 108
 -rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
 -rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
 -rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
 -rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # diffrent folder flag arangements test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -R src
 src:
 [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -lR src src
 src:
 total 108
@@ -1153,20 +1228,27 @@ total 108
 -rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
 -rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
 -rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls . src src
 .:
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
 src:
 [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
 [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls ...
 error on opendir: No such file or directory
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin;
 bash: bin: command not found
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # repeted flag in grouping test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls -lll
 total 256
 -rwx------ 1 muy003 classes 179612 Feb  8 19:46 [ma.out[m 
@@ -1177,10 +1259,12 @@ drwx------ 2 muy003 classes   4096 Feb  9 00:14 [1;34mbin[m
 -rw------- 1 muy003 classes   6052 Feb  9 00:11 [mREADME.md[m 
 drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34msrc[m 
 drwx------ 2 muy003 classes   4096 Feb  9 00:12 [1;34mtests[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls falsefile
 error on opendir: No such file or directory
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls . . . . . . . . . . . 
 .:
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
@@ -1203,14 +1287,20 @@ muy003@hammer $ bin/ls . . . . . . . . . . .
 .:
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-~/cs100/rshell
+~/cs100/rshell
+
+muy003@hammer $ # root ~ special character test
+~/cs100/rshell
+
 muy003@hammer $ bin/ls ~
 [massn6sub2.asm[m [1;34mcs100[m [mcs10_homeworks.zip[m [mcs10_labs.zip[m [mdata10.txt[m [mdatadefault[m [1;34mDesktop[m [1;34mDocuments[m [1;34mDownloads[m [mex1.asm[m [mEX3.ASM[m [mfirefox-20.0.tar.bz2[m [mFirefox_wallpaper.png[m [1;34mlab4[m [mmain.cpp[m [mmakefile[m [mmessagefile.txt[m [1;34mMusic[m [mnotmain.cpp[m [1;34mPictures[m [mposix.cpp[m [mprivate.zip[m [1;34mPublic[m [mt.cpp[m [1;34mTemplates[m [1;34mucr-cs100[m [muserfile.txt[m [1;34mVideos[m 
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ bin/ls \
 loop $ bin/ls
 error on opendir: Not a directory
-~/cs100/rshell
+~/cs100/rshell
+
 muy003@hammer $ exit
 exit
 
