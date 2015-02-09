@@ -17,6 +17,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <sstream>
+#include <stack>
 using namespace std;
 
 string permissiontags (struct stat &the_goods){
@@ -73,7 +74,10 @@ void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr, string 
 
 
     if(flagl){
-         cout << "total " << totalblocks(filenames,currpath)/2 << endl;
+         cout << "total " << totalblocks(filenames,currpath)/2;
+         if(!filenames.empty() ){
+            cout << endl;
+        }
     }
     for(size_t i=0; i < filenames.size();i++){
         struct stat the_goods;
@@ -155,9 +159,9 @@ bool nocasenodot(string f,string s){
 }
 
 void getflags(const int argc,char *argv[]
-    ,bool &flaga,bool &flagl,bool &flagr ,vector<string> &dirlist){
+    ,bool &flaga,bool &flagl,bool &flagr ,stack<string> &dirlist){
     size_t argcount = argc;
-    for(size_t i=1;i<argcount;i++){
+    for(size_t i=argcount-1;i!=0;i--){
         if(argv[i][0]=='-'){
             if(argv[i][1]=='\0'){
                 perror("ls: cannot access -: ");
@@ -172,7 +176,7 @@ void getflags(const int argc,char *argv[]
                     flagl=true;
                     continue;
                 }
-                else if(argv[i][j] == 'r'){
+                else if(argv[i][j] == 'R'){
                     flagr=true;
                     continue;
                 }
@@ -191,11 +195,39 @@ void getflags(const int argc,char *argv[]
         }
         // if it not a flag then it should be a directory
         else{
-            dirlist.push_back(argv[i]);
+            if(argv[i] )
+            dirlist.push(argv[i]);
 
         }
 
     }
+}
+
+
+
+
+void  recurse(stack<string> &dirlist, vector<string> &filenames, string currpath ){
+              if(filenames.size()>0){
+                for(size_t b = filenames.size()-1  ; (b+1)!=0  ;b--){
+                    struct stat the_goods;
+                    //cout <<"b: " << b << endl;
+                    if(-1== stat((currpath + "/" + filenames[b]).c_str(), &the_goods)){
+                        perror("error on main:stat");
+                        exit(1);
+                    }
+                    if(the_goods.st_mode & S_IFDIR &&
+                         !(filenames[b][0]=='.' &&
+                         (filenames[b][1]=='\0'||filenames[b][1]=='.'))){
+
+                        //cout <<"PUSHED: "<< filenames[b] << endl;;
+                        dirlist.push((currpath + "/" + filenames[b]));
+                    }
+
+                }
+        }
+
+
+//    return ret;
 }
 
 int main(int argc,char *argv[]){
@@ -204,7 +236,8 @@ int main(int argc,char *argv[]){
         exit(1);
     }
 
-    vector<string> filenames, dirlist;      //create vectors for filenames and directories
+    vector<string> filenames;
+    stack<string> dirlist;      //create vectors for filenames and a stack for directories
     bool flaga=false;
     bool flagl=false;
     bool flagr=false;
@@ -212,15 +245,16 @@ int main(int argc,char *argv[]){
     getflags(argc,argv,flaga,flagl,flagr,dirlist);  // get flag boos and fill dirlist
 
     if( dirlist.empty()){                      // if no directories set to local
-        dirlist.push_back(".");
+        dirlist.push(".");
     }
     string currpath ="";
-    for(size_t i=0;i<dirlist.size();i++){
-        currpath = dirlist[i];
-        if(dirlist.size()>1){
-            cout<< dirlist[i]<<":"<<endl;
+    while(!dirlist.empty()){
+        currpath = dirlist.top();
+        //cout<< currpath << endl;
+        if(dirlist.size()>1 || flagr ){
+            cout<< dirlist.top()<<":"<<endl;
         }
-        DIR *dirp = opendir(dirlist[i].c_str());       // opendir(paths[i].c_str()); must open path
+        DIR *dirp = opendir(dirlist.top().c_str());       // opendir(paths[i].c_str()); must open path
         if(dirp == NULL){
             perror("error on opendir");
 
@@ -242,13 +276,54 @@ int main(int argc,char *argv[]){
 
         // sort the filenames
         sort(filenames.begin(),filenames.end(), nocasenodot);
-
         printls(filenames,flaga,flagl,flagr, currpath);
+        dirlist.pop();
+                                    // remove curr directory
+        if(flagr){
+           recurse(dirlist,filenames,currpath);
+
+           if(!dirlist.empty()){
+                 cout << endl;
+           }
+        //bool ret = false;
+           // cout<<" filenames size: " << filenames.size() << endl;
+           /*
+            if(filenames.size()>0){
+
+                for(size_t b = filenames.size()-1  ; b!=0  ;b--){
+                    struct stat the_goods;
+                    //cout <<"b: " << b << endl;
+                    if(-1== stat((currpath + "/" + filenames[b]).c_str(), &the_goods)){
+                        perror("error on main:stat");
+                        exit(1);
+                    }
+                    if(the_goods.st_mode & S_IFDIR &&
+                         !(filenames[b][0]=='.' &&
+                         (filenames[b][1]=='\0'||filenames[b][1]=='.'))){
+
+                       // ret=true;
+                        dirlist.push((currpath + "/" + filenames[b]));
+                    }
+
+                }
+        }
+*/
+
+
+
+
+
+
+
+         //   cout << endl;
+        }
+
         filenames.clear();      //empty the file names
-                                            ////////////}
+
         if(-1==closedir(dirp)){
             perror("error on closedir");
             exit(1);
         }
+     }
+
     }
-}
