@@ -16,6 +16,7 @@
 #include <linux/stat.h>
 #include <iomanip>
 #include <algorithm>
+#include <sstream>
 using namespace std;
 
 string permissiontags (struct stat &the_goods){
@@ -44,12 +45,12 @@ string permissiontags (struct stat &the_goods){
     return ret;
 }
 
-int totalblocks(vector<string> filenames){
+int totalblocks(vector<string> filenames, string currpath){
     int ret = 0;
     for(size_t i=0; i < filenames.size();i++){
        struct stat the_goods;
-       if(-1 == stat(filenames[i].c_str(), &the_goods)){
-           perror("error on maxsize stat");
+       if(-1 == stat((currpath + "/" + filenames[i]).c_str(), &the_goods)){
+           perror("error on totalblocks stat");
            exit(1);
         }
         ret+= the_goods.st_blocks;
@@ -57,7 +58,7 @@ int totalblocks(vector<string> filenames){
     return ret;
 }
 
-void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr ){
+void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr, string currpath){
     string dirc = "\033[1;34m";     //blue
     string exec = "\033[0;32m";    //green
     string filec = "\033[m";        // nothing
@@ -72,11 +73,11 @@ void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr ){
 
 
     if(flagl){
-         cout << "total " << totalblocks(filenames)/2 << endl;
+         cout << "total " << totalblocks(filenames,currpath)/2 << endl;
     }
     for(size_t i=0; i < filenames.size();i++){
         struct stat the_goods;
-            if(-1== stat(filenames[i].c_str(), &the_goods)){
+            if(-1== stat((currpath + "/" + filenames[i]).c_str(), &the_goods)){
                 perror("error on stat");
                 exit(1);
             }
@@ -130,22 +131,9 @@ void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr ){
     cout<< endl;
 }
 
-void printdirs(){                           // handles -R
-
-}
 
 
-bool isalink(){                                    ////implement
-    bool ret=false;
 
-    return ret;
-}
-
-int numlink(){                                    ///// implement
-    int ret=0;
-
-return ret;
-}
 bool nocasenodot(string f,string s){
 
     string first=f;
@@ -189,7 +177,12 @@ void getflags(const int argc,char *argv[]
                     continue;
                 }
                 else{
-                    perror("ls: invalid option") ;
+                    stringstream str;
+                    str << "ls: cannot run invalid flag '";
+                    char inval= (argv[i][j]);
+                    str << inval << '\'';
+                    string s= str.str() ;
+                    cerr << s << endl;
                     exit(1);
                 }
 
@@ -221,19 +214,23 @@ int main(int argc,char *argv[]){
     if( dirlist.empty()){                      // if no directories set to local
         dirlist.push_back(".");
     }
-
+    string currpath ="";
     for(size_t i=0;i<dirlist.size();i++){
+        currpath = dirlist[i];
         if(dirlist.size()>1){
             cout<< dirlist[i]<<":"<<endl;
         }
         DIR *dirp = opendir(dirlist[i].c_str());       // opendir(paths[i].c_str()); must open path
         if(dirp == NULL){
             perror("error on opendir");
+
+            exit(1);
         }
         dirent *direntp;
         while ((direntp = readdir(dirp))){      ///// create directory divided display function
             if(direntp < 0 ){
                 perror("error on readdir");
+
             }
             if(direntp->d_name[0]  == '.' && !(flaga) ){
                 //do nothing
@@ -246,11 +243,12 @@ int main(int argc,char *argv[]){
         // sort the filenames
         sort(filenames.begin(),filenames.end(), nocasenodot);
 
-        printls(filenames,flaga,flagl,flagr);
+        printls(filenames,flaga,flagl,flagr, currpath);
         filenames.clear();      //empty the file names
                                             ////////////}
         if(-1==closedir(dirp)){
             perror("error on closedir");
+            exit(1);
         }
     }
 }
