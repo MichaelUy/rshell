@@ -46,7 +46,7 @@ string permissiontags (struct stat &the_goods){
 
 int totalblocks(vector<string> filenames){
     int ret = 0;
-    for(int i=0; i < filenames.size();i++){
+    for(size_t i=0; i < filenames.size();i++){
        struct stat the_goods;
        if(-1 == stat(filenames[i].c_str(), &the_goods)){
            perror("error on maxsize stat");
@@ -58,23 +58,35 @@ int totalblocks(vector<string> filenames){
 }
 
 void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr ){
+    string dirc = "\033[1;34m";     //blue
+    string exec = "\033[0;32m";    //green
+    string filec = "\033[m";        // nothing
+    string linkc = "\033[1;36m";    // cyan
+    string socketc = "\033[1;35m";  //magenta
+    string pipec = "\033[0;40;33m"; //
+    string blockc = "\033[1;33;40m";   //bold  yellow black bgd
+    string hidden = ";47m";   // white background   -unfinished
+
     string displaytime;
+    string color="";                 // default color = green
+
+
     if(flagl){
          cout << "total " << totalblocks(filenames)/2 << endl;
     }
-    for(int i=0; i < filenames.size();i++){
-        if(flagl){
-            struct stat the_goods;
+    for(size_t i=0; i < filenames.size();i++){
+        struct stat the_goods;
             if(-1== stat(filenames[i].c_str(), &the_goods)){
                 perror("error on stat");
                 exit(1);
             }
-                                                                    ////requires iomanip formating
+        if(flagl){
             cout << permissiontags(the_goods) << " ";
             cout << the_goods.st_nlink << " ";
             struct passwd *pwuid = getpwuid(the_goods.st_uid);
             if(pwuid == NULL){
                 perror("error on getpwuid");
+                exit(1);
             }
             else{
                 cout << pwuid->pw_name << " ";
@@ -82,6 +94,7 @@ void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr ){
             struct group *grgid = getgrgid(the_goods.st_gid);
             if(grgid == NULL){
                 perror("error on getgrgid");
+                exit(1);
             }
             else{
                 cout << grgid->gr_name << " ";
@@ -94,7 +107,22 @@ void printls(vector<string> &filenames,bool flaga,bool flagl,bool flagr ){
             displaytime="";
         }
 
-        cout << filenames[i] <<" ";
+
+    switch (the_goods.st_mode & S_IFMT){        // SUPPORTS:
+    case S_IFBLK:    color = blockc;    break;  // BLOCK DEVICES
+    case S_IFCHR:    color = blockc;    break;  // CHARACTER DRIVERS
+    case S_IFDIR:    color = dirc;      break;  // DIRECTORIES
+    case S_IFIFO:    color = pipec;     break;  // PIPES
+    case S_IFLNK:    color = linkc;     break;  // LINKS
+    case S_IFREG:    color = filec;     break;  // REGULAR NON- EXE FILES
+    case S_IXUSR:    color = exec;      break;  // EXE FILES
+    case S_IFSOCK:   color = socketc;   break;  // SOCKETS
+    default:         color = filec;     break;
+    }
+    if(filenames[i][0] == '.'){                 // COMBINABLE HIDDEN FILES!
+        color= color.substr(0,color.size()-1) + hidden;
+    }
+        cout << color << filenames[i] <<"\033[m" <<" " ;
         if(flagl && i != filenames.size()-1){
             cout<< endl;
         }
@@ -108,7 +136,9 @@ void printdirs(){                           // handles -R
 
 
 bool isalink(){                                    ////implement
+    bool ret=false;
 
+    return ret;
 }
 
 int numlink(){                                    ///// implement
@@ -138,8 +168,8 @@ bool nocasenodot(string f,string s){
 
 void getflags(const int argc,char *argv[]
     ,bool &flaga,bool &flagl,bool &flagr ,vector<string> &dirlist){
-
-    for(int i=1;i<argc;i++){
+    size_t argcount = argc;
+    for(size_t i=1;i<argcount;i++){
         if(argv[i][0]=='-'){
             if(argv[i][1]=='\0'){
                 perror("ls: cannot access -: ");
@@ -192,7 +222,7 @@ int main(int argc,char *argv[]){
         dirlist.push_back(".");
     }
 
-    for(int i=0;i<dirlist.size();i++){
+    for(size_t i=0;i<dirlist.size();i++){
         if(dirlist.size()>1){
             cout<< dirlist[i]<<":"<<endl;
         }
