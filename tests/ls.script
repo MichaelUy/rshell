@@ -1,6 +1,6 @@
-Script started on Sun 08 Feb 2015 11:44:36 PM PST
+Script started on Mon 09 Feb 2015 12:17:58 AM PST
 ~
-muy003@hammer $ exit../ -R[1P[C[C[C[Ccd cs100/rshell
+muy003@hammer $ cd cs100/rshell
 ~/cs100/rshell
 muy003@hammer $ make
 mkdir -p ./bin
@@ -9,6 +9,13 @@ g++ ./src/ls.cpp -Wall -Werror -ansi -pedantic -o ./bin/ls
 ~/cs100/rshell
 muy003@hammer $ bin/ls
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+~/cs100/rshell
+muy003@hammer $ bin.
+bash: bin.: command not found
+~/cs100/rshell
+muy003@hammer $ bin/ls ,/ -R
+,:
+error on opendir: No such file or directory
 ~/cs100/rshell
 muy003@hammer $ bin/ls ./ -R
 .:
@@ -23,7 +30,7 @@ muy003@hammer $ bin/ls ./ -R
 ./tests:
 [mexec.script[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls ./ -R[C[4h.[4l
+muy003@hammer $ bin/ls ../ -R
 ..:
 [1;34mrshell[m 
 
@@ -39,21 +46,24 @@ muy003@hammer $ bin/ls ./ -R[C[4h.[4l
 ../rshell/tests:
 [mexec.script[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls ../ -R[1P-R[1PR[K[K[K[K-a
+muy003@hammer $ bin/ls -a
 [1;34;45m.[m [1;34;45m..[m [ma.out[m [1;34mbin[m [1;34;45m.git[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls -a[Kl
-total 220
--rwx------ 1 muy003 classes 179612 Feb  8 19:46 [ma.out[m 
-drwx------ 2 muy003 classes   4096 Feb  8 23:41 [1;34mbin[m 
--rw------- 1 muy003 classes  18027 Jan 20 20:29 [mLICENSE[m 
--rw------- 1 muy003 classes      0 Feb  8 23:41 [mls.script[m 
--rw------- 1 muy003 classes    463 Feb  8 13:55 [mMakefile[m 
--rw------- 1 muy003 classes    122 Jan 20 20:29 [mREADME.md[m 
-drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34msrc[m 
-drwx------ 2 muy003 classes   4096 Jan 23 19:18 [1;34mtests[m 
+muy003@hammer $ bin/ 
+bash: bin/: is a directory
 ~/cs100/rshell
-muy003@hammer $ bin/ls -l[KR
+muy003@hammer $ bin/ls -l
+total 224
+-rwx------ 1 muy003 classes 179612 Feb  8 19:46 [ma.out[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:14 [1;34mbin[m 
+-rw------- 1 muy003 classes  18027 Jan 20 20:29 [mLICENSE[m 
+-rw------- 1 muy003 classes      0 Feb  9 00:14 [mls.script[m 
+-rw------- 1 muy003 classes    463 Feb  8 13:55 [mMakefile[m 
+-rw------- 1 muy003 classes   6052 Feb  9 00:11 [mREADME.md[m 
+drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34msrc[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:12 [1;34mtests[m 
+~/cs100/rshell
+muy003@hammer $ bin/ls -R
 .:
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
 
@@ -66,10 +76,16 @@ muy003@hammer $ bin/ls -l[KR
 ./tests:
 [mexec.script[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls -R[Kz
+muy003@hammer $ bin/ls -z
 ls: cannot run invalid flag 'z'
 ~/cs100/rshell
-muy003@hammer $ bin/ls -z[KR -R
+muy003@hammer $ bin/ls -T 
+ls: cannot run invalid flag 'T'
+~/cs100/rshell
+muy003@hammer $ bin/ls -R -TR
+ls: cannot run invalid flag 'T'
+~/cs100/rshell
+muy003@hammer $ bin/ls -R -R
 .:
 [ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
 
@@ -82,62 +98,62 @@ muy003@hammer $ bin/ls -z[KR -R
 ./tests:
 [mexec.script[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls -R -R[1P-R
-ls: cannot run invalid flag '-'
+muy003@hammer $ bin/ls -lar
+ls: cannot run invalid flag 'r'
 ~/cs100/rshell
-muy003@hammer $ bin/ls -R-R[K[K[Klar[KR
+muy003@hammer $ bin/ls -laR
 .:
-total 232
-drwx------ 6 muy003 classes   4096 Feb  8 23:41 [1;34;45m.[m 
+total 236
+drwx------ 6 muy003 classes   4096 Feb  9 00:14 [1;34;45m.[m 
 drwx------ 3 muy003 classes   4096 Jan 20 20:29 [1;34;45m..[m 
 -rwx------ 1 muy003 classes 179612 Feb  8 19:46 [ma.out[m 
-drwx------ 2 muy003 classes   4096 Feb  8 23:41 [1;34mbin[m 
-drwx------ 8 muy003 classes   4096 Feb  8 21:59 [1;34;45m.git[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:14 [1;34mbin[m 
+drwx------ 8 muy003 classes   4096 Feb  9 00:11 [1;34;45m.git[m 
 -rw------- 1 muy003 classes  18027 Jan 20 20:29 [mLICENSE[m 
--rw------- 1 muy003 classes      0 Feb  8 23:41 [mls.script[m 
+-rw------- 1 muy003 classes      0 Feb  9 00:14 [mls.script[m 
 -rw------- 1 muy003 classes    463 Feb  8 13:55 [mMakefile[m 
--rw------- 1 muy003 classes    122 Jan 20 20:29 [mREADME.md[m 
+-rw------- 1 muy003 classes   6052 Feb  9 00:11 [mREADME.md[m 
 drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34msrc[m 
-drwx------ 2 muy003 classes   4096 Jan 23 19:18 [1;34mtests[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:12 [1;34mtests[m 
 
 ./bin:
 total 104
-drwx------ 2 muy003 classes   4096 Feb  8 23:41 [1;34;45m.[m 
-drwx------ 6 muy003 classes   4096 Feb  8 23:41 [1;34;45m..[m 
--rwx------ 1 muy003 classes  68674 Feb  8 23:41 [mls[m 
--rwx------ 1 muy003 classes  24245 Feb  8 23:41 [mrshell[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:14 [1;34;45m.[m 
+drwx------ 6 muy003 classes   4096 Feb  9 00:14 [1;34;45m..[m 
+-rwx------ 1 muy003 classes  68674 Feb  9 00:14 [mls[m 
+-rwx------ 1 muy003 classes  24245 Feb  9 00:14 [mrshell[m 
 
 ./.git:
 total 64
-drwx------ 8 muy003 classes   4096 Feb  8 21:59 [1;34;45m.[m 
+drwx------ 8 muy003 classes   4096 Feb  9 00:11 [1;34;45m.[m 
 -rw------- 1 muy003 classes    533 Jan 23 03:00 [m#COMMIT_EDITMSG#[m 
-drwx------ 6 muy003 classes   4096 Feb  8 23:41 [1;34;45m..[m 
+drwx------ 6 muy003 classes   4096 Feb  9 00:14 [1;34;45m..[m 
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34mbranches[m 
--rw------- 1 muy003 classes     40 Feb  8 21:59 [mCOMMIT_EDITMSG[m 
+-rw------- 1 muy003 classes      9 Feb  9 00:05 [mCOMMIT_EDITMSG[m 
 -rw------- 1 muy003 classes    338 Jan 20 22:46 [mCOMMIT_EDITMSG~[m 
--rw------- 1 muy003 classes    425 Feb  6 22:51 [mconfig[m 
+-rw------- 1 muy003 classes    553 Feb  9 00:03 [mconfig[m 
 -rw------- 1 muy003 classes     73 Jan 20 20:29 [mdescription[m 
--rw------- 1 muy003 classes    320 Feb  8 05:32 [mFETCH_HEAD[m 
+-rw------- 1 muy003 classes    320 Feb  9 00:11 [mFETCH_HEAD[m 
 -rw------- 1 muy003 classes     19 Feb  3 16:21 [mHEAD[m 
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34mhooks[m 
--rw------- 1 muy003 classes    664 Feb  8 21:59 [mindex[m 
+-rw------- 1 muy003 classes    568 Feb  9 00:11 [mindex[m 
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34minfo[m 
 drwx------ 3 muy003 classes   4096 Jan 20 20:29 [1;34mlogs[m 
--rw------- 1 muy003 classes    295 Feb  8 05:32 [mMERGE_MSG~[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34mobjects[m 
--rw------- 1 muy003 classes     41 Feb  8 05:32 [mORIG_HEAD[m 
+-rw------- 1 muy003 classes    295 Feb  9 00:05 [mMERGE_MSG~[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34mobjects[m 
+-rw------- 1 muy003 classes     41 Feb  9 00:11 [mORIG_HEAD[m 
 -rw------- 1 muy003 classes     94 Jan 20 20:29 [mpacked-refs[m 
 drwx------ 5 muy003 classes   4096 Jan 20 20:29 [1;34mrefs[m 
 
 ./.git/branches:
 total 8
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 8 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 8 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 
 ./.git/hooks:
 total 52
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 8 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 8 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -rwx------ 1 muy003 classes    452 Jan 20 20:29 [mapplypatch-msg.sample[m 
 -rwx------ 1 muy003 classes    896 Jan 20 20:29 [mcommit-msg.sample[m 
 -rwx------ 1 muy003 classes    160 Jan 20 20:29 [mpost-commit.sample[m 
@@ -152,14 +168,14 @@ drwx------ 8 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m
 ./.git/info:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 8 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 8 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -rw------- 1 muy003 classes    240 Jan 20 20:29 [mexclude[m 
 
 ./.git/logs:
 total 20
 drwx------ 3 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 8 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
--rw------- 1 muy003 classes   4829 Feb  8 21:59 [mHEAD[m 
+drwx------ 8 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-rw------- 1 muy003 classes   5433 Feb  9 00:11 [mHEAD[m 
 drwx------ 4 muy003 classes   4096 Jan 20 23:00 [1;34mrefs[m 
 
 ./.git/logs/refs:
@@ -174,7 +190,7 @@ total 20
 drwx------ 2 muy003 classes   4096 Feb  3 16:21 [1;34;45m.[m 
 drwx------ 4 muy003 classes   4096 Jan 20 23:00 [1;34;45m..[m 
 -rw------- 1 muy003 classes   1672 Jan 23 19:03 [mexec[m 
--rw------- 1 muy003 classes   2409 Feb  8 21:59 [mls[m 
+-rw------- 1 muy003 classes   3013 Feb  9 00:11 [mls[m 
 -rw------- 1 muy003 classes    333 Jan 23 19:18 [mmaster[m 
 
 ./.git/logs/refs/remotes:
@@ -188,56 +204,62 @@ total 20
 drwx------ 2 muy003 classes   4096 Feb  3 20:15 [1;34;45m.[m 
 drwx------ 3 muy003 classes   4096 Jan 20 23:00 [1;34;45m..[m 
 -rw------- 1 muy003 classes   1162 Feb  3 16:17 [mexec[m 
--rw------- 1 muy003 classes   1860 Feb  8 21:59 [mls[m 
+-rw------- 1 muy003 classes   2314 Feb  9 00:11 [mls[m 
 -rw------- 1 muy003 classes    298 Feb  3 16:17 [mmaster[m 
 
 ./.git/objects:
-total 428
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m.[m 
-drwx------ 8 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+total 460
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m.[m 
+drwx------ 8 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 drwx------ 2 muy003 classes   4096 Jan 23 03:05 [1;34m00[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:00 [1;34m02[m 
 drwx------ 2 muy003 classes   4096 Feb  6 23:01 [1;34m04[m 
 drwx------ 2 muy003 classes   4096 Jan 23 18:09 [1;34m05[m 
 drwx------ 2 muy003 classes   4096 Feb  3 20:13 [1;34m09[m 
 drwx------ 2 muy003 classes   4096 Feb  8 18:06 [1;34m0c[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m0d[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m0f[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:04 [1;34m11[m 
 drwx------ 2 muy003 classes   4096 Jan 23 16:27 [1;34m12[m 
 drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34m13[m 
 drwx------ 2 muy003 classes   4096 Feb  8 16:01 [1;34m15[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m17[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:25 [1;34m18[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34m19[m 
 drwx------ 2 muy003 classes   4096 Feb  7 04:07 [1;34m1f[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m20[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:32 [1;34m23[m 
 drwx------ 2 muy003 classes   4096 Jan 23 05:29 [1;34m27[m 
 drwx------ 2 muy003 classes   4096 Feb  7 21:58 [1;34m2a[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:06 [1;34m2b[m 
 drwx------ 2 muy003 classes   4096 Feb  6 23:01 [1;34m2c[m 
 drwx------ 2 muy003 classes   4096 Jan 23 05:25 [1;34m31[m 
 drwx------ 2 muy003 classes   4096 Jan 23 05:25 [1;34m36[m 
 drwx------ 2 muy003 classes   4096 Feb  7 04:07 [1;34m37[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:18 [1;34m39[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34m3a[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34m3b[m 
 drwx------ 2 muy003 classes   4096 Jan 23 19:03 [1;34m3f[m 
 drwx------ 2 muy003 classes   4096 Jan 23 16:24 [1;34m40[m 
-drwx------ 2 muy003 classes   4096 Feb  8 21:17 [1;34m41[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:00 [1;34m41[m 
 drwx------ 2 muy003 classes   4096 Jan 23 02:57 [1;34m42[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m43[m 
-drwx------ 2 muy003 classes   4096 Feb  8 05:32 [1;34m45[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:00 [1;34m45[m 
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34m4b[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m4c[m 
 drwx------ 2 muy003 classes   4096 Feb  8 16:01 [1;34m50[m 
-drwx------ 2 muy003 classes   4096 Feb  8 21:16 [1;34m53[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34m53[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m54[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:25 [1;34m55[m 
 drwx------ 2 muy003 classes   4096 Feb  6 22:47 [1;34m57[m 
 drwx------ 2 muy003 classes   4096 Jan 23 19:03 [1;34m58[m 
 drwx------ 2 muy003 classes   4096 Jan 23 03:00 [1;34m59[m 
 drwx------ 2 muy003 classes   4096 Feb  7 21:08 [1;34m5a[m 
-drwx------ 2 muy003 classes   4096 Jan 23 18:09 [1;34m62[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34m62[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:21 [1;34m64[m 
 drwx------ 2 muy003 classes   4096 Feb  8 21:17 [1;34m65[m 
 drwx------ 2 muy003 classes   4096 Feb  7 21:08 [1;34m68[m 
-drwx------ 2 muy003 classes   4096 Feb  8 21:16 [1;34m6a[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34m6a[m 
 drwx------ 2 muy003 classes   4096 Feb  8 16:01 [1;34m6b[m 
 drwx------ 2 muy003 classes   4096 Feb  8 21:17 [1;34m6d[m 
 drwx------ 2 muy003 classes   4096 Feb  6 22:46 [1;34m6f[m 
@@ -249,6 +271,7 @@ drwx------ 2 muy003 classes   4096 Jan 20 22:46 [1;34m7a[m
 drwx------ 2 muy003 classes   4096 Feb  8 21:16 [1;34m7e[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:21 [1;34m80[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:32 [1;34m81[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34m82[m 
 drwx------ 2 muy003 classes   4096 Jan 23 17:51 [1;34m83[m 
 drwx------ 2 muy003 classes   4096 Feb  6 22:47 [1;34m84[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m87[m 
@@ -257,18 +280,19 @@ drwx------ 2 muy003 classes   4096 Feb  7 04:06 [1;34m8b[m
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m8d[m 
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34m90[m 
 drwx------ 2 muy003 classes   4096 Jan 23 05:29 [1;34m93[m 
-drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m95[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34m95[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34m97[m 
 drwx------ 2 muy003 classes   4096 Jan 20 22:46 [1;34m99[m 
 drwx------ 2 muy003 classes   4096 Feb  7 04:07 [1;34m9c[m 
 drwx------ 2 muy003 classes   4096 Jan 23 17:51 [1;34m9e[m 
-drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34ma0[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34ma0[m 
 drwx------ 2 muy003 classes   4096 Feb  7 21:08 [1;34ma2[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:21 [1;34ma4[m 
 drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34ma5[m 
 drwx------ 2 muy003 classes   4096 Feb  8 18:06 [1;34ma6[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:35 [1;34ma7[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:20 [1;34ma8[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:00 [1;34mad[m 
 drwx------ 2 muy003 classes   4096 Jan 23 03:05 [1;34mb1[m 
 drwx------ 2 muy003 classes   4096 Feb  8 18:06 [1;34mb6[m 
 drwx------ 2 muy003 classes   4096 Feb  8 05:25 [1;34mb7[m 
@@ -286,7 +310,7 @@ drwx------ 2 muy003 classes   4096 Jan 23 02:57 [1;34md7[m
 drwx------ 2 muy003 classes   4096 Feb  8 16:01 [1;34md8[m 
 drwx------ 2 muy003 classes   4096 Feb  7 21:58 [1;34mda[m 
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34mdb[m 
-drwx------ 2 muy003 classes   4096 Feb  7 21:08 [1;34mdd[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34mdd[m 
 drwx------ 2 muy003 classes   4096 Feb  3 20:13 [1;34mdf[m 
 drwx------ 2 muy003 classes   4096 Feb  6 23:00 [1;34me1[m 
 drwx------ 2 muy003 classes   4096 Feb  6 22:47 [1;34me5[m 
@@ -304,187 +328,225 @@ drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34mpack[m
 ./.git/objects/00:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 03:05 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Jan 23 03:05 [m8b14476d2812c637b848808ed3ba9d3a9805f1[m 
+
+./.git/objects/02:
+total 12
+drwx------ 2 muy003 classes   4096 Feb  9 00:00 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes     83 Feb  9 00:00 [m26193e6a3232c87dc5f61caa3da15fbf517dd2[m 
 
 ./.git/objects/04:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  6 23:01 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  6 23:01 [ma71c0d552938c60c3c1065c6d10eaba0f19259[m 
 
 ./.git/objects/05:
 total 16
 drwx------ 2 muy003 classes   4096 Jan 23 18:09 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Jan 23 18:09 [m2d20dd2fe516f30bb1125664df6504de9d63f5[m 
 -r-------- 1 muy003 classes    229 Jan 23 17:50 [m91faab87ddab361d90bc6087eab032beb1e671[m 
 
 ./.git/objects/09:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 20:13 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  3 20:13 [md8729c3fa148cec331f6492f4c91ae8db7caf1[m 
 
 ./.git/objects/0c:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 18:06 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  8 18:06 [m243998ba53a789a76131d6949a641f2f66e9c4[m 
 
 ./.git/objects/0d:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    172 Feb  3 16:17 [m35a29de37ad40918a5cc93dbd0c485344e6673[m 
 
 ./.git/objects/0f:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  3 16:17 [mf739c80ec7150a119dbb394b5b81466f5f5b56[m 
+
+./.git/objects/11:
+total 12
+drwx------ 2 muy003 classes   4096 Feb  9 00:04 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes   3109 Feb  9 00:04 [mffa68f3b6d00c8ba42260c5e7c27e2452fb90d[m 
 
 ./.git/objects/12:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 16:27 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Jan 23 16:27 [mda6f72a33fa0a25591d8ae10fc82fdcf8fdfc2[m 
 
 ./.git/objects/13:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     80 Feb  8 21:59 [m1200ba1ac3384a074b80239d9d99b2c6961631[m 
 
 ./.git/objects/15:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 16:01 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     80 Feb  8 16:01 [m5fb8c0c7cd77d75e9d1402a89898857d2f6703[m 
 
 ./.git/objects/17:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    848 Feb  3 16:17 [m70dea8f16f5c562763abc910de65cd8ef2e375[m 
 
 ./.git/objects/18:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 05:25 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     80 Feb  8 05:25 [m92c5c648de72c75a137e67fb5f9cf3fa0a34b1[m 
+
+./.git/objects/19:
+total 12
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes   1840 Feb  9 00:11 [mf7523ba6e2842adfe5a3c097b7793930bd6da2[m 
 
 ./.git/objects/1f:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  7 04:07 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    185 Feb  7 04:07 [m77fda33ad42d9042e3c2c0186df12fe47cbc66[m 
 -r-------- 1 muy003 classes    177 Feb  3 16:17 [ma7a08d575cacd3e200e52040f11f23ad6aa922[m 
 
 ./.git/objects/20:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     53 Feb  3 16:17 [mc2bf6abd46d1fc3cf55a372563b3ac909f024a[m 
 -r-------- 1 muy003 classes    739 Jan 23 03:05 [mf4858d0b386777ce7abcd415041b94654131b9[m 
 
 ./.git/objects/23:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  8 05:32 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    113 Feb  8 05:32 [m830f01e6a54e9d0abcaffd81f2c8b54ccd4773[m 
 -r-------- 1 muy003 classes    115 Feb  8 05:25 [me9b1b7a6d772d1cf6ad284323b00ac98fb33c4[m 
 
 ./.git/objects/27:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 05:29 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    151 Jan 23 05:29 [m8a9c5fcddc1ba8d12397f52a6111f0baaf11c5[m 
 
 ./.git/objects/2a:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  7 21:58 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    153 Feb  7 21:58 [m357e407ac4b585ccf40b2179f616f11eb53fc4[m 
+
+./.git/objects/2b:
+total 12
+drwx------ 2 muy003 classes   4096 Feb  9 00:06 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes    245 Feb  9 00:06 [m07510c1c92d75e24b9b5cb163b75288ad9d84a[m 
 
 ./.git/objects/2c:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  6 23:01 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    180 Feb  6 23:01 [mce54db967c818d2a53f9aa078082a38c3f136d[m 
 
 ./.git/objects/31:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 05:25 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    152 Jan 23 05:25 [m5e5050196e7ad5fa1b3ca6477ab3ebc601f21f[m 
 
 ./.git/objects/36:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 05:25 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Jan 23 05:25 [m6c1736b6c526f14872b7e5427e1e78e7fb1b3d[m 
 
 ./.git/objects/37:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  7 04:07 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    180 Feb  7 04:07 [mf582897b2a665faa2b11bc7a11623c0c505822[m 
 
 ./.git/objects/39:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  8 05:18 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   2076 Feb  8 05:18 [m38fd5df23dd1aaaf84301ca46b24afe56e7c0d[m 
 -r-------- 1 muy003 classes    191 Jan 23 16:27 [m5a167b75bc032783382033b739dffb59e89634[m 
+
+./.git/objects/3a:
+total 12
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes    175 Feb  9 00:05 [mc2a15a4cb363661f3f2ed108ce95a3ff0177a9[m 
+
+./.git/objects/3b:
+total 12
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes    176 Feb  9 00:11 [mf9635b99caa87639fe46fc7d0f7ee21533ac16[m 
 
 ./.git/objects/3f:
 total 16
 drwx------ 2 muy003 classes   4096 Jan 23 19:03 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Jan 23 19:03 [m01e6019c438e5b2454203f471b00e80377e9f6[m 
 -r-------- 1 muy003 classes    341 Jan 20 22:46 [m181204e7cdb700d229d011c1a4aeee330b0b8f[m 
 
 ./.git/objects/40:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 16:24 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   1579 Jan 23 16:24 [med82ac843ea25a4f634624277b5385282d78c9[m 
 
 ./.git/objects/41:
-total 12
-drwx------ 2 muy003 classes   4096 Feb  8 21:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+total 16
+drwx------ 2 muy003 classes   4096 Feb  9 00:00 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  8 21:17 [mcc80bb30438693c0df1029a0da0c7812ba087f[m 
+-r-------- 1 muy003 classes    176 Feb  9 00:00 [md286e528b3d3abd9ea292e2adf4a5e959b00a8[m 
 
 ./.git/objects/42:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 02:57 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Jan 23 02:57 [m6af0869dbc84e75cff26258a62b73a01de254b[m 
 
 ./.git/objects/43:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  3 16:17 [mf5b0efa6993b804c121ae26482544dfafcd951[m 
 
 ./.git/objects/45:
-total 12
-drwx------ 2 muy003 classes   4096 Feb  8 05:32 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+total 28
+drwx------ 2 muy003 classes   4096 Feb  9 00:00 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes  15966 Feb  9 00:00 [m0c9a96b1dc614ae7ee8a289a3921ffd8efb203[m 
 -r-------- 1 muy003 classes    177 Feb  8 05:32 [m3c74114767c3ad11e1722e1efeb1be2c0e0ffd[m 
 
 ./.git/objects/4b:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    135 Jan 20 20:29 [m181512337de32184c3af87f5afdb7cfcad5b48[m 
 
 ./.git/objects/4c:
 total 20
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    851 Feb  3 16:17 [m2c752ef35b3e9a6e1946d058b19fa82820c739[m 
 -r-------- 1 muy003 classes    148 Feb  3 16:17 [m3d61d21cbb268dfa1ecfa6bc820cfb345990b8[m 
 -r-------- 1 muy003 classes   1364 Jan 23 18:08 [m7e1914fde5fe7cce8cf2956eabe043160bb5e9[m 
@@ -492,434 +554,452 @@ drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m
 ./.git/objects/50:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 16:01 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   2538 Feb  8 16:01 [m4e4743ae4e19c89608d778b4ad856f373e7939[m 
 
 ./.git/objects/53:
-total 16
-drwx------ 2 muy003 classes   4096 Feb  8 21:16 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+total 20
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes    176 Feb  9 00:05 [m2b33c0c6f90d1b8e637c659440c477fd29c116[m 
 -r-------- 1 muy003 classes    177 Feb  8 21:16 [m73c16c47c260b60b6624b62a60a7bf16b97054[m 
 -r-------- 1 muy003 classes    179 Jan 23 05:29 [mcaa5300f5cd4037f648e36e67bf7e14c71229f[m 
 
 ./.git/objects/54:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    159 Feb  3 16:17 [mf2cc1a637b1820a846d56c99bf41c46749c62f[m 
 
 ./.git/objects/55:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 05:25 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  8 05:25 [mc9e8c5a19f540bcffedb3532e5d89f95d5e3ce[m 
 
 ./.git/objects/57:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  6 22:47 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Jan 20 22:46 [m87c01ce0286e04691e806595b363058ca35335[m 
 -r-------- 1 muy003 classes    178 Feb  6 22:47 [me84ac7c0f3eb72ace1687b1247ba78641051cc[m 
 
 ./.git/objects/58:
 total 8
 drwx------ 2 muy003 classes   4096 Jan 23 19:03 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     56 Jan 23 19:03 [m9647e52ccd56a43f96fd5d4955a4ded8e7f364[m 
 
 ./.git/objects/59:
 total 16
 drwx------ 2 muy003 classes   4096 Jan 23 03:00 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    184 Jan 23 03:00 [m8e44c86f66864b6d2f3dd45e78a9db55d24067[m 
 -r-------- 1 muy003 classes    730 Jan 20 22:46 [ma17b7cf7cccdfbc63880d8955853bca0e30f43[m 
 
 ./.git/objects/5a:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  7 21:08 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    165 Feb  7 21:08 [m153c9052004ee4e2f104f6b9959c991ff46dc6[m 
 
 ./.git/objects/62:
-total 12
-drwx------ 2 muy003 classes   4096 Jan 23 18:09 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+total 16
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes   1836 Feb  9 00:05 [m37033aea04b620b0efc681511b6f7e483c8724[m 
 -r-------- 1 muy003 classes    167 Jan 23 18:09 [ma8870cac5f2aec36fcce0d255b4f7663afdf00[m 
 
 ./.git/objects/64:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  8 05:21 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    147 Feb  8 05:21 [m0e5163b61c31db20515576a9a7056842e30080[m 
 -r-------- 1 muy003 classes    180 Jan 20 22:48 [m46568723f626eee6bcf1790537ce80f0f44f8b[m 
 
 ./.git/objects/65:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  8 21:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Jan 23 17:51 [m36709e3df5fad52cce75bc5d710d32ed8da696[m 
 -r-------- 1 muy003 classes    238 Feb  8 21:17 [mac9e196f1277ac57225a319fa9c5c586606078[m 
 
 ./.git/objects/68:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  7 21:08 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   1749 Feb  7 21:08 [m7ccde8594b7b60ea11935dbcdadb3fe8960151[m 
 
 ./.git/objects/6a:
-total 12
-drwx------ 2 muy003 classes   4096 Feb  8 21:16 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+total 16
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes    186 Feb  9 00:05 [m18d2e2686f637e021fbc2ea1e4e75a48e4d2c5[m 
 -r-------- 1 muy003 classes   3045 Feb  8 21:16 [m4fcf6d96428a4dc1c5452d693096408eccc6d9[m 
 
 ./.git/objects/6b:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 16:01 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  8 16:01 [mc6e858809c409eb00a937dac8cd9c6ebdf572e[m 
 
 ./.git/objects/6d:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 21:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    159 Feb  8 21:17 [m1eb6b558c7a4827d448b90a825aa392364ab8b[m 
 
 ./.git/objects/6f:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  6 22:46 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    295 Feb  6 22:46 [mafdc711b502ff58e58e68b999403c0e3306198[m 
 
 ./.git/objects/70:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     85 Jan 20 20:29 [m6eafd0b3d1cc8fa94696a560ba4fbb3e09dc94[m 
 
 ./.git/objects/72:
 total 16
 drwx------ 2 muy003 classes   4096 Jan 23 19:02 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   7018 Jan 23 19:02 [m93afc2353b2e3319eee1cf716e2dd52184579a[m 
 
 ./.git/objects/75:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 21:16 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    162 Feb  8 21:16 [m5ab1d46cc0692e75d75040a4c74b0302a5bb57[m 
 
 ./.git/objects/76:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  7 21:58 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  7 21:58 [mc09fc1bedc9d6e33a3cad4b685a69567797141[m 
 
 ./.git/objects/7a:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 20 22:46 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    119 Jan 20 22:46 [mf6a7c1e98c997346d6501fe6d282b7327d9d15[m 
 
 ./.git/objects/7e:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 21:16 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     80 Feb  8 21:16 [m8755f6c62b5dde2ca246967303bd3a0c8359e9[m 
 
 ./.git/objects/80:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 05:21 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  8 05:21 [m34b28cd0adde10e39f45f78e449d3797eeeff9[m 
 
 ./.git/objects/81:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  8 05:32 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    168 Feb  8 05:32 [mbc040b725c74587bcf9cf5923ca3a8672bbdd1[m 
 -r-------- 1 muy003 classes    165 Feb  3 16:17 [mfa809ed8e1d8d2fc75a0501a509f493cab2ea6[m 
+
+./.git/objects/82:
+total 12
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes    176 Feb  9 00:05 [m9b3007832170910730c45da5579c120183da85[m 
 
 ./.git/objects/83:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 17:51 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    151 Jan 23 17:51 [mb7d3a6cda84d186d36c7fcf81cc002555d9f39[m 
 
 ./.git/objects/84:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  6 22:47 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    191 Jan 23 03:05 [m95ff116322c750824cc648d7611e54269109d7[m 
 -r-------- 1 muy003 classes    174 Feb  6 22:47 [mf04f323e6cd1561caa06062c0b739146030138[m 
 
 ./.git/objects/87:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     79 Feb  3 16:17 [m9d9cb658284b1383f3138cabaf48b9af6583cd[m 
 
 ./.git/objects/88:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 05:25 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    163 Jan 23 05:25 [m79d45f21d21b153c619f9a70ccf8f9dc5c674c[m 
 
 ./.git/objects/8b:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  7 04:06 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    484 Feb  3 16:17 [m8783607a1807bc258eaed43d3177324e40749b[m 
 -r-------- 1 muy003 classes   1294 Feb  7 04:06 [mc0a755deb2cb1d4aa1b7f803eb23696e7d24f9[m 
 
 ./.git/objects/8d:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  3 16:17 [m3f71e5bb793234d360cf267027e45823fbe2e2[m 
 
 ./.git/objects/90:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    126 Jan 20 20:29 [md95857f5c833ff9c850fafd1ea1272211b0074[m 
 
 ./.git/objects/93:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 05:29 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    971 Jan 23 05:29 [m3b645f32a4e7d95b729018ea75f40e027b2d80[m 
 
 ./.git/objects/95:
-total 12
-drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+total 16
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes     80 Feb  9 00:05 [m2bd4961d59ac587e584a7f3a362000525d8371[m 
 -r-------- 1 muy003 classes    172 Feb  3 16:17 [mf1444a212dda28699cf6bee9758ad11c9d6d89[m 
 
 ./.git/objects/97:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Feb  3 16:17 [mf9c9a5cf390cba191f5f33ff3de66724363d92[m 
 
 ./.git/objects/99:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 20 22:46 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   3468 Jan 20 22:46 [m96c1ef8e72b4b429f5bee0bed16e067901e2d8[m 
 
 ./.git/objects/9c:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  7 04:07 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  7 04:07 [m9d447ce6a9b30bc2ec2501d61df88896a7a7c7[m 
 
 ./.git/objects/9e:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 17:51 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    175 Jan 23 17:51 [mf4abdfb40f0b7890f81e012d925a428940fc24[m 
 
 ./.git/objects/a0:
-total 12
-drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+total 16
+drwx------ 2 muy003 classes   4096 Feb  9 00:05 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   3045 Feb  8 21:59 [m1b6070bf5a1922cb4300b8728998bf99ca113b[m 
+-r-------- 1 muy003 classes    155 Feb  9 00:05 [m48e197346c98f3df068718b06027297b65d381[m 
 
 ./.git/objects/a2:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  7 21:08 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  7 21:08 [m37e1e2af4c6d9f4556c9197be5cc31c1bc1bb5[m 
 
 ./.git/objects/a4:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 05:21 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    170 Feb  8 05:21 [mde638d95b45d9aa9089425c17870015049aac3[m 
 
 ./.git/objects/a5:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  8 21:59 [m01fb70c9b806f9b4cd9d100e1e52209787000f[m 
 
 ./.git/objects/a6:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 18:06 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     80 Feb  8 18:06 [m922430ddca4127f962471653efb7ef717395bf[m 
 
 ./.git/objects/a7:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 05:35 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    284 Feb  8 05:35 [m1389cf2a612351019ca9aae96f592fc1b6378a[m 
 
 ./.git/objects/a8:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 05:20 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    239 Feb  8 05:20 [m9d29ecebb31b5605e443de84157f63973fe908[m 
+
+./.git/objects/ad:
+total 12
+drwx------ 2 muy003 classes   4096 Feb  9 00:00 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+-r-------- 1 muy003 classes    153 Feb  9 00:00 [m987eb5e9ce58025bb6a59e0c9c008142e2aa77[m 
 
 ./.git/objects/b1:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 03:05 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    151 Jan 23 03:05 [me6d30d223f2d6df10c9536178972d7669b16e7[m 
 
 ./.git/objects/b6:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 18:06 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    167 Feb  8 18:06 [m20622617b14044e7d11b922417ab9a8e2ddf61[m 
 
 ./.git/objects/b7:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  8 05:25 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   1364 Jan 23 17:50 [m53ac6b1eae213a23061ee55ae5e657f17dbb00[m 
 -r-------- 1 muy003 classes    173 Feb  8 05:25 [mdde2d0c30d52d57c8b1134ba645b245a2d0be8[m 
 
 ./.git/objects/c4:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 05:25 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    164 Feb  8 05:25 [mb54c5bee1a4b21f7b4c8d7443cb640030ba911[m 
 
 ./.git/objects/c8:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     85 Feb  3 16:17 [m145b3ba568bd47181b7ba75eb5acaacb5e2219[m 
 
 ./.git/objects/c9:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  8 18:04 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Jan 23 05:29 [mbde6bb2cdafaf8e2e4d140122caff2b6c1ce73[m 
 -r-------- 1 muy003 classes   2588 Feb  8 18:04 [me48e0afd896653c61d35678f72eea1780e0dea[m 
 
 ./.git/objects/cc:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 16:27 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    151 Jan 23 16:27 [m3136838e382a50e792086c04586ed42e079d3a[m 
 
 ./.git/objects/cf:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 05:25 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  8 05:25 [m722f0930d84ebd40c75d188822d18c98f495db[m 
 
 ./.git/objects/d1:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 02:56 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    132 Jan 23 02:56 [m35aeaf03c2ecb6c10461a0a9ff7e24c04510eb[m 
 
 ./.git/objects/d2:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  3 20:13 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    161 Jan 23 19:03 [m0372d72bbdfb41a6fde8ccb11d3b5ed0db2e08[m 
 -r-------- 1 muy003 classes    180 Feb  3 20:13 [meca752da102b95ffa7505fc1f50a355318618a[m 
 
 ./.git/objects/d3:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 20 22:46 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes     75 Jan 20 22:46 [mc43ba547f15c61ccf428f3d6f9a35b8e62a09f[m 
 
 ./.git/objects/d4:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    177 Feb  3 16:17 [m0bc6e41cfe51c5ef0ea23add7eaec90b4e0b37[m 
 
 ./.git/objects/d6:
 total 16
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   7710 Jan 20 20:29 [ma93266f748d606b884f9434ff662fe80b9dc21[m 
 
 ./.git/objects/d7:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 02:57 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    152 Jan 23 02:57 [m748cb7e9d68fe3759e231e3775ee33c2ab34f2[m 
 
 ./.git/objects/d8:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  8 16:01 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    167 Feb  8 16:01 [m9dad2823f5cc58adf9c96cc952a579c0a21abf[m 
 
 ./.git/objects/da:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  7 21:58 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   1067 Feb  3 16:17 [m0b0479cf3d861a8f0b1e0d3261190d67c59740[m 
 -r-------- 1 muy003 classes    180 Feb  7 21:58 [m7c73f56fb246e0b07e4e34847137175095005d[m 
 
 ./.git/objects/db:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    120 Feb  3 16:17 [m336bec82a3326e066a2460c13df8a1eadad95c[m 
 
 ./.git/objects/dd:
-total 12
-drwx------ 2 muy003 classes   4096 Feb  7 21:08 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+total 16
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34;45m.[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    180 Feb  7 21:08 [m301f1751af8cd08e45c8f6275cc81a8853ccec[m 
+-r-------- 1 muy003 classes    169 Feb  9 00:11 [mf8ee40e74ad11a63b2b39900b52be978ad12c4[m 
 
 ./.git/objects/df:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 20:13 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    132 Feb  3 20:13 [m1fd879f1a946c134b82336fc49d0b8ef86b7a4[m 
 
 ./.git/objects/e1:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  6 23:00 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    303 Feb  6 23:00 [m576532bddc69886fec4cee57fa6cc642833f72[m 
 
 ./.git/objects/e5:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  6 22:47 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    180 Feb  6 22:47 [m08692e4dc2a899d7780797d2d152c9b076b2ff[m 
 
 ./.git/objects/e6:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    148 Feb  3 16:17 [m3be06b954fd8380173c8ccea4a3a3f17edf097[m 
 
 ./.git/objects/ef:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  7 21:58 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes   1743 Feb  7 21:58 [m94eb492f0de4b0461d0974d5a22753326d2fe5[m 
 -r-------- 1 muy003 classes    165 Feb  6 23:01 [m982f4a0d69f04cef0e2d7041d61248705213e6[m 
 
 ./.git/objects/f1:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    164 Feb  3 16:17 [mbc461e1d7410d7d34838552444449af3b2432d[m 
 
 ./.git/objects/f3:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 20:13 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    159 Feb  3 20:13 [m61274faa60710aa00cf1f207ce3d4a75a65009[m 
 
 ./.git/objects/f6:
 total 20
 drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    163 Feb  3 16:17 [mae8810ac4005b43cd78166962e10144ad294ec[m 
 -r-------- 1 muy003 classes    152 Jan 23 18:09 [me7350acd6c73f274f9001293233c810013c864[m 
 -r-------- 1 muy003 classes    176 Feb  8 21:59 [me98e9b1a3d9a862dcfa7166a2ef2da0368659a[m 
@@ -927,61 +1007,61 @@ drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m
 ./.git/objects/fc:
 total 12
 drwx------ 2 muy003 classes   4096 Jan 23 05:25 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    975 Jan 23 05:25 [m161daec50f190c6c53f3d1e6799b556c0cc3ad[m 
 
 ./.git/objects/fe:
 total 16
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    848 Feb  3 16:17 [m47a57a389329ab8f47170bd5250071bbc0fae7[m 
 -r-------- 1 muy003 classes    163 Feb  3 16:17 [m7e0ce49b8084bb680547df68b0f22786ec49f6[m 
 
 ./.git/objects/ff:
 total 12
 drwx------ 2 muy003 classes   4096 Feb  3 16:17 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 -r-------- 1 muy003 classes    168 Feb  3 16:17 [m80730b7d407c15fb210bf2482654e0ad840c7f[m 
 
 ./.git/objects/info:
 total 8
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 
 ./.git/objects/pack:
 total 8
 drwx------ 2 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 107 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
+drwx------ 115 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
 
 ./.git/refs:
 total 20
 drwx------ 5 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
-drwx------ 8 muy003 classes   4096 Feb  8 21:59 [1;34;45m..[m 
-drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34mheads[m 
+drwx------ 8 muy003 classes   4096 Feb  9 00:11 [1;34;45m..[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34mheads[m 
 drwx------ 3 muy003 classes   4096 Jan 20 20:29 [1;34mremotes[m 
 drwx------ 2 muy003 classes   4096 Jan 23 19:19 [1;34mtags[m 
 
 ./.git/refs/heads:
 total 8
-drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34;45m.[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34;45m.[m 
 drwx------ 5 muy003 classes   4096 Jan 20 20:29 [1;34;45m..[m 
 -rw------- 1 muy003 classes     41 Jan 23 19:03 [mexec[m 
--rw------- 1 muy003 classes     41 Feb  8 21:59 [mls[m 
+-rw------- 1 muy003 classes     41 Feb  9 00:11 [mls[m 
 -rw------- 1 muy003 classes     41 Jan 23 19:18 [mmaster[m 
 
 ./.git/refs/remotes:
 total 12
 drwx------ 3 muy003 classes   4096 Jan 20 20:29 [1;34;45m.[m 
 drwx------ 5 muy003 classes   4096 Jan 20 20:29 [1;34;45m..[m 
-drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34morigin[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34morigin[m 
 
 ./.git/refs/remotes/origin:
 total 8
-drwx------ 2 muy003 classes   4096 Feb  8 21:59 [1;34;45m.[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:11 [1;34;45m.[m 
 drwx------ 3 muy003 classes   4096 Jan 20 20:29 [1;34;45m..[m 
 -rw------- 1 muy003 classes     41 Feb  3 16:17 [mexec[m 
 -rw------- 1 muy003 classes     32 Jan 20 20:29 [mHEAD[m 
--rw------- 1 muy003 classes     41 Feb  8 21:59 [mls[m 
+-rw------- 1 muy003 classes     41 Feb  9 00:11 [mls[m 
 -rw------- 1 muy003 classes     41 Feb  3 16:17 [mmaster[m 
 
 ./.git/refs/tags:
@@ -993,7 +1073,7 @@ drwx------ 5 muy003 classes   4096 Jan 20 20:29 [1;34;45m..[m
 ./src:
 total 156
 drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34;45m.[m 
-drwx------ 6 muy003 classes   4096 Feb  8 23:41 [1;34;45m..[m 
+drwx------ 6 muy003 classes   4096 Feb  9 00:14 [1;34;45m..[m 
 -rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
 -rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
 -rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
@@ -1002,130 +1082,64 @@ drwx------ 6 muy003 classes   4096 Feb  8 23:41 [1;34;45m..[m
 
 ./tests:
 total 88
-drwx------ 2 muy003 classes   4096 Jan 23 19:18 [1;34;45m.[m 
-drwx------ 6 muy003 classes   4096 Feb  8 23:41 [1;34;45m..[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:12 [1;34;45m.[m 
+drwx------ 6 muy003 classes   4096 Feb  9 00:14 [1;34;45m..[m 
 -rw------- 1 muy003 classes  73784 Jan 23 19:18 [mexec.script[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls -laR[K[K[K[K/////
+muy003@hammer $ bin/ls /////
 [1;34mbin[m [1;34mboot[m [mC:\nppdf32Log\debuglog.txt[m [1;34mcgroup[m [1;34mclass[m [1;34mdev[m [1;34metc[m [1;34mextra[m [1;34mhome[m [1;34mlib[m [1;34mlib64[m [1;34mlost+found[m [1;34mmedia[m [1;34mmisc[m [1;34mmnt[m [1;34mnet[m [1;34mopt[m [1;34mproc[m [1;34mroot[m [1;34msbin[m [1;34mselinux[m [1;34msrv[m [1;34msys[m [1;34mtmp[m [1;34musr[m [1;34mvar[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls /////[K[K[K[K[K- - -
+muy003@hammer $ bin/ls - - - -
 ls: cannot access -: : Success
 ~/cs100/rshell
-muy003@hammer $ bin/ls - - -[K[K[K[K[Ksrc
+muy003@hammer $ bin/ls src
 [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
 ~/cs100/rshell
 muy003@hammer $ bin/ls src -a
 [1;34;45m.[m [1;34;45m..[m [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m [;45m.nfs000000000041ddf400000024[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls src -a[Kl
+muy003@hammer $ bin/ls src -l
 total 108
 -rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
 -rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
 -rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
 -rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls src -l[KR
+muy003@hammer $ bin/ls src -R
 src:
 [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls src -R[KRla
+muy003@hammer $ bin/ls src -laR
 src:
 total 156
 drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34;45m.[m 
-drwx------ 6 muy003 classes   4096 Feb  8 23:41 [1;34;45m..[m 
+drwx------ 6 muy003 classes   4096 Feb  9 00:14 [1;34;45m..[m 
 -rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
 -rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
 -rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
 -rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
 -rw------- 1 muy003 classes  40960 Feb  8 23:38 [;45m.nfs000000000041ddf400000024[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls src -Rla[K[K[Kl
-total 108
--rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
--rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
--rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
--rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls src -l[K[K[K/ -R
-src:
-[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls src/ -R[K[K[K[K src
-src:
-[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls src src -a
+muy003@hammer $ bin/ls -a src src
 src:
 [1;34;45m.[m [1;34;45m..[m [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m [;45m.nfs000000000041ddf400000024[m 
 [1;34;45m.[m [1;34;45m..[m [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m [;45m.nfs000000000041ddf400000024[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls src src -a[Kl
-src:
-total 108
--rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
--rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
--rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
--rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
-total 108
--rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
--rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
--rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
--rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
+muy003@hammer $ bin/ls - l
+ls: cannot access -: : Success
 ~/cs100/rshell
-muy003@hammer $ bin/ls src src -l[KR
-src:
-[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-
-src:
-[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls src src -R[K[K[C[4h-[4l[4ha[4l[4h [4l
-src:
-[1;34;45m.[m [1;34;45m..[m [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m [;45m.nfs000000000041ddf400000024[m 
-[1;34;45m.[m [1;34;45m..[m [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m [;45m.nfs000000000041ddf400000024[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls -a src src [1P[4hl[4l
-src:
-total 108
--rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
--rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
--rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
--rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
+muy003@hammer $ bin/ls -l src
 total 108
 -rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
 -rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
 -rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
 -rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls -l src src [1P[4hR[4l
-src:
-[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-
+muy003@hammer $ bin/ls -R src
 src:
 [ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls -R src src [1P[4hl[4l[4ha[4l
-src:
-total 156
-drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34;45m.[m 
-drwx------ 6 muy003 classes   4096 Feb  8 23:41 [1;34;45m..[m 
--rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
--rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
--rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
--rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
--rw------- 1 muy003 classes  40960 Feb  8 23:38 [;45m.nfs000000000041ddf400000024[m 
-total 156
-drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34;45m.[m 
-drwx------ 6 muy003 classes   4096 Feb  8 23:41 [1;34;45m..[m 
--rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
--rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
--rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
--rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
--rw------- 1 muy003 classes  40960 Feb  8 23:38 [;45m.nfs000000000041ddf400000024[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls -la src src [1P[4hR[4l
+muy003@hammer $ bin/ls -lR src src
 src:
 total 108
 -rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
@@ -1140,453 +1154,64 @@ total 108
 -rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
 -rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
 ~/cs100/rshell
-muy003@hammer $ bin/ls -lR src src [K[K[K[KSRC
+muy003@hammer $ bin/ls . src src
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
 src:
-total 108
--rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
--rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
--rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
--rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
-
-SRC:
+[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
+[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
+~/cs100/rshell
+muy003@hammer $ bin/ls ...
 error on opendir: No such file or directory
 ~/cs100/rshell
-muy003@hammer $ bin/ls -lR src SRC[K[K[K[K[K[K[K[K[K[K[K. src src ..
-.:
-[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-src:
-[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-src:
-[ma.out[m [mls[m [mls.cpp[m [mmain.cpp[m 
-[1;34mrshell[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls . src src ..[K[K[K[K[K[K[K[K[K[K[K..
-error on opendir: No such file or directory
-~/cs100/rshell
-muy003@hammer $ bin/ls ...[K[K[K-lll
-total 252
--rwx------ 1 muy003 classes 179612 Feb  8 19:46 [ma.out[m 
-drwx------ 2 muy003 classes   4096 Feb  8 23:41 [1;34mbin[m 
--rw------- 1 muy003 classes  18027 Jan 20 20:29 [mLICENSE[m 
--rw------- 1 muy003 classes  32768 Feb  8 23:43 [mls.script[m 
--rw------- 1 muy003 classes    463 Feb  8 13:55 [mMakefile[m 
--rw------- 1 muy003 classes    122 Jan 20 20:29 [mREADME.md[m 
-drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34msrc[m 
-drwx------ 2 muy003 classes   4096 Jan 23 19:18 [1;34mtests[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls -lll[K[K[K[Kls[K[Kfakefile
-error on opendir: No such file or directory
-~/cs100/rshell
-muy003@hammer $ bin/ls fakefile[K[K[K[K[K[K[K[K..............
-error on opendir: No such file or directory
-~/cs100/rshell
-muy003@hammer $ bin/ls ..............[K[K[K[K[K[K[K[K[K[K[K[K[K . . . . .
-.:
-[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-.:
-[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-.:
-[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-.:
-[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-.:
-[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
-~/cs100/rshell
-muy003@hammer $ ~[Kbin/ls . . . . . .[K[K[K[K[K[K[K[K[K[K[K~
-[massn6sub2.asm[m [1;34mcs100[m [mcs10_homeworks.zip[m [mcs10_labs.zip[m [mdata10.txt[m [mdatadefault[m [1;34mDesktop[m [1;34mDocuments[m [1;34mDownloads[m [mex1.asm[m [mEX3.ASM[m [mfirefox-20.0.tar.bz2[m [mFirefox_wallpaper.png[m [1;34mlab4[m [mmain.cpp[m [mmakefile[m [mmessagefile.txt[m [1;34mMusic[m [mnotmain.cpp[m [1;34mPictures[m [mposix.cpp[m [mprivate.zip[m [1;34mPublic[m [mt.cpp[m [1;34mTemplates[m [1;34mucr-cs100[m [muserfile.txt[m [1;34mVideos[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls ~[K\
-loop $ .// l[K-l
-total 252
--rwx------ 1 muy003 classes 179612 Feb  8 19:46 [ma.out[m 
-drwx------ 2 muy003 classes   4096 Feb  8 23:41 [1;34mbin[m 
--rw------- 1 muy003 classes  18027 Jan 20 20:29 [mLICENSE[m 
--rw------- 1 muy003 classes  32768 Feb  8 23:43 [mls.script[m 
--rw------- 1 muy003 classes    463 Feb  8 13:55 [mMakefile[m 
--rw------- 1 muy003 classes    122 Jan 20 20:29 [mREADME.md[m 
-drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34msrc[m 
-drwx------ 2 muy003 classes   4096 Jan 23 19:18 [1;34mtests[m 
-~/cs100/rshell
-muy003@hammer $ .////// -lR
-bash: .//////: is a directory
-~/cs100/rshell
-muy003@hammer $ .////// -lR[KR[4hb[4l[4hi[4l[4hn[4l[4h/[4l[4hl[4l[4hs[4l[4h [4l
-.:
-total 252
--rwx------ 1 muy003 classes 179612 Feb  8 19:46 [ma.out[m 
-drwx------ 2 muy003 classes   4096 Feb  8 23:41 [1;34mbin[m 
--rw------- 1 muy003 classes  18027 Jan 20 20:29 [mLICENSE[m 
--rw------- 1 muy003 classes  32768 Feb  8 23:43 [mls.script[m 
--rw------- 1 muy003 classes    463 Feb  8 13:55 [mMakefile[m 
--rw------- 1 muy003 classes    122 Jan 20 20:29 [mREADME.md[m 
-drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34msrc[m 
-drwx------ 2 muy003 classes   4096 Jan 23 19:18 [1;34mtests[m 
-
-./bin:
-total 96
--rwx------ 1 muy003 classes  68674 Feb  8 23:41 [mls[m 
--rwx------ 1 muy003 classes  24245 Feb  8 23:41 [mrshell[m 
-
-./src:
-total 108
--rwx------ 1 muy003 classes  42977 Feb  7 20:40 [ma.out[m 
--rwx------ 1 muy003 classes  47873 Feb  8 13:56 [mls[m 
--rw------- 1 muy003 classes  10611 Feb  8 23:38 [mls.cpp[m 
--rw------- 1 muy003 classes   3988 Jan 23 19:18 [mmain.cpp[m 
-
-./tests:
-total 80
--rw------- 1 muy003 classes  73784 Jan 23 19:18 [mexec.script[m 
-~/cs100/rshell
-muy003@hammer $ bin/ls .////// -lR[K[K[K[K[K[K[K[K[K[K[K()
-loop $ exit
-bash: syntax error near unexpected token `exit'
-~/cs100/rshell
-muy003@hammer $ ls
-[0m[01;32ma.out[0m*  [01;34mbin[0m/  LICENSE  ls.script  Makefile  README.md  [01;34msrc[0m/  [01;34mtests[0m/
-[m~/cs100/rshell
-muy003@hammer $ mv ls.script tests
-~/cs100/rshell
-muy003@hammer $ ls
-[0m[01;32ma.out[0m*  [01;34mbin[0m/  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtests[0m/
-[m~/cs100/rshell
-muy003@hammer $ bin clean
+muy003@hammer $ bin;
 bash: bin: command not found
 ~/cs100/rshell
-muy003@hammer $ make clean
-rm -rf ./bin
+muy003@hammer $ bin/ls -lll
+total 256
+-rwx------ 1 muy003 classes 179612 Feb  8 19:46 [ma.out[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:14 [1;34mbin[m 
+-rw------- 1 muy003 classes  18027 Jan 20 20:29 [mLICENSE[m 
+-rw------- 1 muy003 classes  32768 Feb  9 00:18 [mls.script[m 
+-rw------- 1 muy003 classes    463 Feb  8 13:55 [mMakefile[m 
+-rw------- 1 muy003 classes   6052 Feb  9 00:11 [mREADME.md[m 
+drwx------ 2 muy003 classes   4096 Feb  8 23:38 [1;34msrc[m 
+drwx------ 2 muy003 classes   4096 Feb  9 00:12 [1;34mtests[m 
 ~/cs100/rshell
-muy003@hammer $ ls
-[0m[01;32ma.out[0m*  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtests[0m/
-[m~/cs100/rshell
-muy003@hammer $  [Kcd ter[Kst
-bash: cd: test: No such file or directory
+muy003@hammer $ bin/ls falsefile
+error on opendir: No such file or directory
 ~/cs100/rshell
-muy003@hammer $ cd tests
-~/cs100/rshell/tests
-muy003@hammer $ ls
-exec.script  ls.script
-~/cs100/rshell/tests
-muy003@hammer $ vim.ls[K[K[K ls.script 
-[?1000h[?1049h[?1h=[1;57r[?12;25h[?12l[?25h[27m[m[37m[H[2J[?25l[57;1H"ls.script" 701L, 32768C[>c[1;1H[33m  1 [m[37mScript started on Sun 08 Feb 2015 11:44:36 PM PST
-[33m  2 [m[37m~[34m^M^M[m[37m
-[33m  3 [m[37mmuy003@hammer $ exit[34m^H^H^H^H[m[37m../ -R[34m^H^H^H^H^H^[[m[37m[1P[34m^[[m[37m[C[34m^[[m[37m[C[34m^[[m[37m[C[34m^[[m[37m[C[34m^H^H^H^H^H[m[37mcd cs100/rshell[34m^M[m[37m
-[33m  4 [m[37m~/cs100/rshell[34m^M^M[m[37m
-[33m  5 [m[37mmuy003@hammer $ make[34m^M[m[37m
-[33m  6 [m[37mmkdir -p ./bin[34m^M[m[37m
-[33m  7 [m[37mg++ ./src/main.cpp -Wall -Werror -ansi -pedantic -o ./bin/rshell[34m^M[m[37m
-[33m  8 [m[37mg++ ./src/ls.cpp -Wall -Werror -ansi -pedantic -o ./bin/ls[34m^M[m[37m
-[33m  9 [m[37m~/cs100/rshell[34m^M^M[m[37m
-[33m 10 [m[37mmuy003@hammer $ bin/ls[34m^M[m[37m
-[33m 11 [m[37m[34m^[[m[37m[ma.out[34m^[[m[37m[m [34m^[[m[37m[1;34mbin[34m^[[m[37m[m [34m^[[m[37m[mLICENSE[34m^[[m[37m[m [34m^[[m[37m[mls.script[34m^[[m[37m[m [34m^[[m[37m[mMakefile[34m^[[m[37m[m [34m^[[m[37m[mREADME.md[34m^[[m[37m[mm[12;1H[33m    [m[37m [34m^[[m[37m[1;34msrc[34m^[[m[37m[m [34m^[[m[37m[1;34mtests[34m^[[m[37m[m [34m^M[m[37m
-[33m 12 [m[37m~/cs100/rshell[34m^M^M[m[37m
-[33m 13 [m[37mmuy003@hammer $ bin/ls ./ -R[34m^M[m[37m
-[33m 14 [m[37m.:[34m^M[m[37m
-[33m 15 [m[37m[34m^[[m[37m[ma.out[34m^[[m[37m[m [34m^[[m[37m[1;34mbin[34m^[[m[37m[m [34m^[[m[37m[mLICENSE[34m^[[m[37m[m [34m^[[m[37m[mls.script[34m^[[m[37m[m [34m^[[m[37m[mMakefile[34m^[[m[37m[m [34m^[[m[37m[mREADME.md[34m^[[m[37m[mm[17;1H[33m    [m[37m [34m^[[m[37m[1;34msrc[34m^[[m[37m[m [34m^[[m[37m[1;34mtests[34m^[[m[37m[m [34m^M[m[37m
-[33m 16 [m[37m[34m^M[m[37m
-[33m 17 [m[37m./bin:[34m^M[m[37m
-[33m 18 [m[37m[34m^[[m[37m[mls[34m^[[m[37m[m [34m^[[m[37m[mrshell[34m^[[m[37m[m [34m^M[m[37m
-[33m 19 [m[37m[34m^M[m[37m
-[33m 20 [m[37m./src:[34m^M[m[37m
-[33m 21 [m[37m[34m^[[m[37m[ma.out[34m^[[m[37m[m [34m^[[m[37m[mls[34m^[[m[37m[m [34m^[[m[37m[mls.cpp[34m^[[m[37m[m [34m^[[m[37m[mmain.cpp[34m^[[m[37m[m [34m^M[m[37m
-[33m 22 [m[37m[34m^M[m[37m
-[33m 23 [m[37m./tests:[34m^M[m[37m
-[33m 24 [m[37m[34m^[[m[37m[mexec.script[34m^[[m[37m[m [34m^M[m[37m
-[33m 25 [m[37m~/cs100/rshell[34m^M^M[m[37m
-[33m 26 [m[37mmuy003@hammer $ bin/ls ./ -R[34m^H^H^H^H^H^[[m[37m[C[34m^[[m[37m[4h.[34m^[[m[37m[4l[34m^H^M[m[37m
-[33m 27 [m[37m..:[34m^M[m[37m
-[33m 28 [m[37m[34m^[[m[37m[1;34mrshell[34m^[[m[37m[m [34m^M[m[37m
-[33m 29 [m[37m[34m^M[m[37m
-[33m 30 [m[37m../rshell:[34m^M[m[37m
-[33m 31 [m[37m[34m^[[m[37m[ma.out[34m^[[m[37m[m [34m^[[m[37m[1;34mbin[34m^[[m[37m[m [34m^[[m[37m[mLICENSE[34m^[[m[37m[m [34m^[[m[37m[mls.script[34m^[[m[37m[m [34m^[[m[37m[mMakefile[34m^[[m[37m[m [34m^[[m[37m[mREADME.md[34m^[[m[37m[mm[34;1H[33m    [m[37m [34m^[[m[37m[1;34msrc[34m^[[m[37m[m [34m^[[m[37m[1;34mtests[34m^[[m[37m[m [34m^M[m[37m
-[33m 32 [m[37m[34m^M[m[37m
-[33m 33 [m[37m../rshell/bin:[34m^M[m[37m
-[33m 34 [m[37m[34m^[[m[37m[mls[34m^[[m[37m[m [34m^[[m[37m[mrshell[34m^[[m[37m[m [34m^M[m[37m
-[33m 35 [m[37m[34m^M[m[37m
-[33m 36 [m[37m../rshell/src:[34m^M[m[37m
-[33m 37 [m[37m[34m^[[m[37m[ma.out[34m^[[m[37m[m [34m^[[m[37m[mls[34m^[[m[37m[m [34m^[[m[37m[mls.cpp[34m^[[m[37m[m [34m^[[m[37m[mmain.cpp[34m^[[m[37m[m [34m^M[m[37m
-[33m 38 [m[37m[34m^M[m[37m
-[33m 39 [m[37m../rshell/tests:[34m^M[m[37m
-[33m 40 [m[37m[34m^[[m[37m[mexec.script[34m^[[m[37m[m [34m^M[m[37m
-[33m 41 [m[37m~/cs100/rshell[34m^M^M[m[37m
-[33m 42 [m[37mmuy003@hammer $ bin/ls ../ -R[34m^H^H^H^[[m[37m[1P-R[34m^H^H^[[m[37m[1PR[34m^H^[[m[37m[K[34m^H^[[m[37m[K[34m^H^[[m[37m[K[34m^H^[[m[37m[K-a[34m^M[m[37m
-[33m 43 [m[37m[34m^[[m[37m[1;34;45m.[34m^[[m[37m[m [34m^[[m[37m[1;34;45m..[34m^[[m[37m[m [34m^[[m[37m[ma.out[34m^[[m[37m[m [34m^[[m[37m[1;34mbin[34m^[[m[37m[m [34m^[[m[37m[1;34;45m.git[34m^[[m[37m[m [34m^[[m[37m[mLICENSE[34m^[[[m[37m[47;1H[33m    [m[37m[m [34m^[[m[37m[mls.script[34m^[[m[37m[m [34m^[[m[37m[mMakefile[34m^[[m[37m[m [34m^[[m[37m[mREADME.md[34m^[[m[37m[m [34m^[[m[37m[1;34msrc[34m^[[m[37m[m [34m^[[m[37m[1;34mtests[34m^[[m[37m[m [34m^M[m[37m
-[33m 44 [m[37m~/cs100/rshell[34m^M^M[m[37m
-[33m 45 [m[37mmuy003@hammer $ bin/ls -a[34m^H^[[m[37m[Kl[34m^M[m[37m
-[33m 46 [m[37mtotal 220[34m^M[m[37m
-[33m 47 [m[37m-rwx------ 1 muy003 classes 179612 Feb  8 19:46 [34m^[[m[37m[ma.out[34m^[[m[37m[m [34m^M[m[37m
-[33m 48 [m[37mdrwx------ 2 muy003 classes   4096 Feb  8 23:41 [34m^[[m[37m[1;34mbin[34m^[[m[37m[m [34m^M[m[37m
-[33m 49 [m[37m-rw------- 1 muy003 classes  18027 Jan 20 20:29 [34m^[[m[37m[mLICENSE[34m^[[m[37m[m [34m^M[m[37m
-[33m 50 [m[37m-rw------- 1 muy003 classes      0 Feb  8 23:41 [34m^[[m[37m[mls.script[34m^[[m[37m[m [34m^M[m[37m
-[33m 51 [m[37m-rw------- 1 muy003 classes    463 Feb  8 13:55 [34m^[[m[37m[mMakefile[34m^[[m[37m[m [34m^M[m[37m
-[33m 52 [m[37m-rw------- 1 muy003 classes    122 Jan 20 20:29 [34m^[[m[37m[mREADME.md[34m^[[m[37m[m [34m^M[m[37m[57;85H1,1[11CTop[1;5H[?12l[?25h[?1000l[?1002hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[57;85H40,19-21[43;25H[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[57;85H15,18[16;25H[?12l[?25h[?25l[57;1H[K[57;1H:[?12l[?25hw[?25l[?12l[?25h[?25l[57;2H[K[57;2H[?12l[?25hq[?25l[?12l[?25h[?25l[?1002l[57;1H[K[57;1H[?1l>[?12l[?25h[?1049l~/cs100/rshell/tests
-muy003@hammer $ git status
-error: Malformed value for push.default: simple
-error: Must be one of nothing, matching, tracking or current.
-fatal: bad config file line 6 in /class/classes/muy003/.gitconfig
-~/cs100/rshell/tests
-muy003@hammer $ git status[K[K[K[K[K[K[K[K[K[Kls
-exec.script  ls.script
-~/cs100/rshell/tests
-muy003@hammer $ cd ..
+muy003@hammer $ bin/ls . . . . . . . . . . . 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+.:
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
+[ma.out[m [1;34mbin[m [mLICENSE[m [mls.script[m [mMakefile[m [mREADME.md[m [1;34msrc[m [1;34mtests[m 
 ~/cs100/rshell
-muy003@hammer $ git status
-error: Malformed value for push.default: simple
-error: Must be one of nothing, matching, tracking or current.
-fatal: bad config file line 6 in /class/classes/muy003/.gitconfig
+muy003@hammer $ bin/ls ~
+[massn6sub2.asm[m [1;34mcs100[m [mcs10_homeworks.zip[m [mcs10_labs.zip[m [mdata10.txt[m [mdatadefault[m [1;34mDesktop[m [1;34mDocuments[m [1;34mDownloads[m [mex1.asm[m [mEX3.ASM[m [mfirefox-20.0.tar.bz2[m [mFirefox_wallpaper.png[m [1;34mlab4[m [mmain.cpp[m [mmakefile[m [mmessagefile.txt[m [1;34mMusic[m [mnotmain.cpp[m [1;34mPictures[m [mposix.cpp[m [mprivate.zip[m [1;34mPublic[m [mt.cpp[m [1;34mTemplates[m [1;34mucr-cs100[m [muserfile.txt[m [1;34mVideos[m 
 ~/cs100/rshell
-muy003@hammer $ git status[K[Ks[Kus
-error: Malformed value for push.default: simple
-error: Must be one of nothing, matching, tracking or current.
-fatal: bad config file line 6 in /class/classes/muy003/.gitconfig
+muy003@hammer $ bin/ls \
+loop $ bin/ls
+error on opendir: Not a directory
 ~/cs100/rshell
-muy003@hammer $ ls -a
-[0m[01;34m.[0m/  [01;34m..[0m/  [01;32ma.out[0m*  [01;34m.git[0m/  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtests[0m/
-[m~/cs100/rshell
-muy003@hammer $ cd .git/
-~/cs100/rshell/.git
-muy003@hammer $ ls
-[0m[01;34mbranches[0m/         COMMIT_EDITMSG~  FETCH_HEAD  index  MERGE_MSG~  packed-refs
-#COMMIT_EDITMSG#  config           HEAD        [01;34minfo[0m/  [01;34mobjects[0m/    [01;34mrefs[0m/
-COMMIT_EDITMSG    description      [01;34mhooks[0m/      [01;34mlogs[0m/  ORIG_HEAD
-[m~/cs100/rshell/.git
-muy003@hammer $ vim git[K[K[Kconfig
-[?1000h[?1049h[?1h=[1;57r[?12;25h[?12l[?25h[27m[m[37m[H[2J[?25l[57;1H"config" 20L, 425C[>c[1;1H[33m  1 [m[37m[92m[46m[[m[37m[92mcore[m[37m[92m[46m][m[37m
-[33m  2 [m[37m    [37mrepositoryformatversion[m[37m = [38;5;36m0[m[37m
-[33m  3 [m[37m    [37mfilemode[m[37m = [38;5;36mtrue[m[37m
-[33m  4 [m[37m    [37mbare[m[37m = [38;5;36mfalse[m[37m
-[33m  5 [m[37m    [37mlogallrefupdates[m[37m = [38;5;36mtrue[m[37m
-[33m  6 [m[37m[92m[remote "origin"][m[37m
-[33m  7 [m[37m    [37mfetch[m[37m = +refs/heads/*:refs/remotes/origin/*
-[33m  8 [m[37m    [37murl[m[37m = https://github.com/MichaelUy[38;5;36m627[m[37m/rshell
-[33m  9 [m[37m[92m[branch "master"][m[37m
-[33m 10 [m[37m    [37mremote[m[37m = origin
-[33m 11 [m[37m    [37mmerge[m[37m = refs/heads/master
-[33m 12 [m[37m[92m[branch "exec"][m[37m
-[33m 13 [m[37m    [37mremote[m[37m = origin
-[33m 14 [m[37m    [37mmerge[m[37m = refs/heads/exec
-[33m 15 [m[37m[92m[user][m[37m
-[33m 16 [m[37m    [37mname[m[37m = Michael Uy
-[33m 17 [m[37m    [37memail[m[37m = muy[38;5;36m003[m[37m@ucr.edu
-[33m 18 [m[37m[92m[branch "ls"][m[37m
-[33m 19 [m[37m    [37mremote[m[37m = origin
-[33m 20 [m[37m    [37mmerge[m[37m = refs/heads/ls
-[1m[34m~                                                                                                     [22;1H~                                                                                                     [23;1H~                                                                                                     [24;1H~                                                                                                     [25;1H~                                                                                                     [26;1H~                                                                                                     [27;1H~                                                                                                     [28;1H~                                                                                                     [29;1H~                                                                                                     [30;1H~                                                                                                     [31;1H~                                                                                                     [32;1H~                                                                                                     [33;1H~                                                                                                     [34;1H~                                                                                                     [35;1H~                                                                                                     [36;1H~                                                                                                     [37;1H~                                                                                                     [38;1H~                                                                                                     [39;1H~                                                                                                     [40;1H~                                                                                                     [41;1H~                                                                                                     [42;1H~                                                                                                     [43;1H~                                                                                                     [44;1H~                                                                                                     [45;1H~                                                                                                     [46;1H~                                                                                                     [47;1H~                                                                                                     [48;1H~                                                                                                     [49;1H~                                                                                                     [50;1H~                                                                                                     [51;1H~                                                                                                     [52;1H~                                                                                                     [53;1H~                                                                                                     [54;1H~                                                                                                     [55;1H~                                                                                                     [56;1H~                                                                                                     [m[37m[57;85H1,1[11CAll[1;5H[?12l[?25h[?1000l[?1002hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[57;1H[K[57;1H:[?12l[?25hq[?25l[?12l[?25h[?25l[?1002l[57;1H[K[57;1H[?1l>[?12l[?25h[?1049l~/cs100/rshell/.git
-muy003@hammer $ ls -a[Kla
-total 64
-drwx------   8 muy003 classes 4096 Feb  8 23:52 [0m[01;34m.[0m/
-drwx------   5 muy003 classes 4096 Feb  8 23:48 [01;34m..[0m/
-drwx------   2 muy003 classes 4096 Jan 20 20:29 [01;34mbranches[0m/
--rw-------   1 muy003 classes  533 Jan 23 03:00 #COMMIT_EDITMSG#
--rw-------   1 muy003 classes   40 Feb  8 21:59 COMMIT_EDITMSG
--rw-------   1 muy003 classes  338 Jan 20 22:46 COMMIT_EDITMSG~
--rw-------   1 muy003 classes  425 Feb  6 22:51 config
--rw-------   1 muy003 classes   73 Jan 20 20:29 description
--rw-------   1 muy003 classes  320 Feb  8 05:32 FETCH_HEAD
--rw-------   1 muy003 classes   19 Feb  3 16:21 HEAD
-drwx------   2 muy003 classes 4096 Jan 20 20:29 [01;34mhooks[0m/
--rw-------   1 muy003 classes  664 Feb  8 21:59 index
-drwx------   2 muy003 classes 4096 Jan 20 20:29 [01;34minfo[0m/
-drwx------   3 muy003 classes 4096 Jan 20 20:29 [01;34mlogs[0m/
--rw-------   1 muy003 classes  295 Feb  8 05:32 MERGE_MSG~
-drwx------ 107 muy003 classes 4096 Feb  8 21:59 [01;34mobjects[0m/
--rw-------   1 muy003 classes   41 Feb  8 05:32 ORIG_HEAD
--rw-------   1 muy003 classes   94 Jan 20 20:29 packed-refs
-drwx------   5 muy003 classes 4096 Jan 20 20:29 [01;34mrefs[0m/
-[m~/cs100/rshell/.git
-muy003@hammer $ cd ..
-~/cs100/rshell
-muy003@hammer $ cd ..ls -la[1Pcd ..[K[Kgitconfi[K[K[K[K[K[K[K[K.gitcong[Kfig
-bash: cd: .gitconfig: No such file or directory
-~/cs100/rshell
-muy003@hammer $ ls[K[Kgit status
-error: Malformed value for push.default: simple
-error: Must be one of nothing, matching, tracking or current.
-fatal: bad config file line 6 in /class/classes/muy003/.gitconfig
-~/cs100/rshell
-muy003@hammer $ git add ls/[K.script
-error: Malformed value for push.default: simple
-error: Must be one of nothing, matching, tracking or current.
-fatal: bad config file line 6 in /class/classes/muy003/.gitconfig
-~/cs100/rshell
-muy003@hammer $ git checkout
-error: Malformed value for push.default: simple
-error: Must be one of nothing, matching, tracking or current.
-fatal: bad config file line 6 in /class/classes/muy003/.gitconfig
-~/cs100/rshell
-muy003@hammer $ git[K[K[Kcd ..
-~/cs100
-muy003@hammer $ ls
-[0m[01;34mrshell[0m/
-[m~/cs100
-muy003@hammer $ cd ..
-~
-muy003@hammer $ ls
-assn6sub2.asm        [0m[01;34mDesktop[0m/               [01;32mFirefox_wallpaper.png[0m*  [01;32mnotmain.cpp[0m*  [01;34mTemplates[0m/
-[01;34mcs100[0m/               [01;34mDocuments[0m/             [01;34mlab4[0m/                   [01;34mPictures[0m/     [01;34mucr-cs100[0m/
-[01;32mcs10_homeworks.zip[0m*  [01;34mDownloads[0m/             [01;32mmain.cpp[0m*               [01;32mposix.cpp[0m*    [01;32muserfile.txt[0m*
-[01;32mcs10_labs.zip[0m*       [01;32mex1.asm[0m*               [01;32mmakefile[0m*               [01;32mprivate.zip[0m*  [01;34mVideos[0m/
-[01;32mdata10.txt[0m*          [01;32mEX3.ASM[0m*               [01;32mmessagefile.txt[0m*        [01;34mPublic[0m/
-[01;32mdatadefault[0m*         [01;32mfirefox-20.0.tar.bz2[0m*  [01;34mMusic[0m/                  t.cpp
-[m~
-muy003@hammer $ .[Kls -al
-total 28508
-drwx------   50 muy003 classes     8192 Feb  8 23:52 [0m[01;34m.[0m/
-drwx--x--x 1853 root   root      835584 Jan 30 20:26 [01;34m..[0m/
-drwx------    4 muy003 classes     4096 Oct 29  2013 [01;34m.adobe[0m/
--rw-------    1 muy003 classes     7523 Feb 22  2014 assn6sub2.asm
--rwx------    1 muy003 classes     1024 Feb  8 23:40 [01;32m.bash_history[0m*
--rw-------    1 muy003 classes       24 Sep 19  2008 .bash_logout
--rw-------    1 muy003 classes     1270 Jan  8  2014 .bashrc
--rw-------    1 muy003 classes     1291 Jan  8  2014 .bashrc~
-drwx------    5 muy003 classes     4096 Mar 13  2014 [01;34m.cache[0m/
-drwx------    8 muy003 classes     4096 Mar 13  2014 [01;34m.config[0m/
-drwx------    3 muy003 classes     4096 Jan 20 20:29 [01;34mcs100[0m/
--rwx------    1 muy003 classes    11006 Apr 23  2013 [01;32mcs10_homeworks.zip[0m*
--rwx------    1 muy003 classes    20671 Apr 23  2013 [01;32mcs10_labs.zip[0m*
--rwx------    1 muy003 classes     1571 Mar 14  2014 [01;32mdata10.txt[0m*
--rwx------    1 muy003 classes     1570 Mar 15  2014 [01;32mdatadefault[0m*
-drwx------    3 muy003 classes     4096 Oct  1  2013 [01;34m.dbus[0m/
--rwx------    1 muy003 classes       66 Feb  5  2014 [01;32m.DCOPserver_alpha-14.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       66 Jan 22  2014 [01;32m.DCOPserver_alpha-19.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       66 Jan 29  2014 [01;32m.DCOPserver_alpha-32.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       68 Feb 26  2014 [01;32m.DCOPserver_alpha-33.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       68 Mar  5  2014 [01;32m.DCOPserver_alpha-40.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       68 Jan 15  2014 [01;32m.DCOPserver_alpha-46.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       67 Feb 26  2014 [01;32m.DCOPserver_kilo-10.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       65 Jan 10  2014 [01;32m.DCOPserver_kilo-11.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       67 Feb 26  2014 [01;32m.DCOPserver_kilo-14.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       67 Feb  4  2014 [01;32m.DCOPserver_kilo-20.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       65 Feb 25  2014 [01;32m.DCOPserver_kilo-22.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       67 Jan 16  2014 [01;32m.DCOPserver_kilo-23.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       65 Mar  6  2014 [01;32m.DCOPserver_kilo-31.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       64 Jan 28  2014 [01;32m.DCOPserver_kilo-5.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       66 Jan 23  2014 [01;32m.DCOPserver_kilo-6.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       69 Mar  6  2014 [01;32m.DCOPserver_sierra-13.cs.ucr.edu__0[0m*
--rwx------    1 muy003 classes       66 Jan 30  2014 [01;32m.DCOPserver_tango-17.cs.ucr.edu__0[0m*
--rw-------    1 muy003 classes       64 Feb 22  2014 .DCOPserver_well.cs.ucr.edu__1026
-lrwxrwxrwx    1 muy003 classes       55 Sep 23 22:51 [01;36m.DCOPserver_well.cs.ucr.edu_:1026[0m -> /class/classes/muy003/.DCOPserver_well.cs.ucr.edu__1026
--rw-------    1 muy003 classes       60 Feb 15  2014 .DCOPserver_well.cs.ucr.edu__1037
-lrwxrwxrwx    1 muy003 classes       55 Sep 23 22:51 [01;36m.DCOPserver_well.cs.ucr.edu_:1037[0m -> /class/classes/muy003/.DCOPserver_well.cs.ucr.edu__1037
-drwx------    6 muy003 classes     4096 Mar 19  2014 [01;34mDesktop[0m/
--rwx------    1 muy003 classes       27 Mar 15  2014 [01;32m.dmrc[0m*
-drwx------    2 muy003 classes     4096 Oct  1  2013 [01;34mDocuments[0m/
-drwx------    2 muy003 classes     4096 Mar 13  2014 [01;34mDownloads[0m/
-drwx------    2 muy003 classes     4096 Apr  2  2013 [01;34m.eggcups[0m/
-drwx------    3 muy003 classes     4096 Feb 22  2014 [01;34m.emacs.d[0m/
--rwx------    1 muy003 classes       16 Apr  2  2013 [01;32m.esd_auth[0m*
--rwx------    1 muy003 classes        1 Feb 25  2014 [01;32mex1.asm[0m*
--rwx------    1 muy003 classes     4931 Feb 26  2014 [01;32mEX3.ASM[0m*
--rwx------    1 muy003 classes     4096 Feb 12  2014 [01;32m.execooo06Fzfu[0m*
--rwx------    1 muy003 classes     4096 Feb 27  2014 [01;32m.execooo32vcqJ[0m*
--rwx------    1 muy003 classes     4096 Feb 27  2014 [01;32m.execooo3gpTfd[0m*
--rwx------    1 muy003 classes     4096 Feb 12  2014 [01;32m.execooo6wtEX2[0m*
--rwx------    1 muy003 classes     4096 Feb 27  2014 [01;32m.execooo7a7yev[0m*
--rwx------    1 muy003 classes     4096 Feb 12  2014 [01;32m.execoooakjoXP[0m*
--rwx------    1 muy003 classes     4096 Feb 12  2014 [01;32m.execooodpR6rp[0m*
--rwx------    1 muy003 classes     4096 Feb 27  2014 [01;32m.execooodQWt7N[0m*
--rwx------    1 muy003 classes     4096 Feb 27  2014 [01;32m.execoooFsTLXG[0m*
--rwx------    1 muy003 classes     4096 Feb 12  2014 [01;32m.execoook0P5M8[0m*
--rwx------    1 muy003 classes     4096 Feb 27  2014 [01;32m.execoooL1BcGY[0m*
--rwx------    1 muy003 classes     4096 Feb 12  2014 [01;32m.execoooP7y0TJ[0m*
--rwx------    1 muy003 classes     4096 Feb 12  2014 [01;32m.execoootESePj[0m*
--rwx------    1 muy003 classes     4096 Feb 27  2014 [01;32m.execoooXRtmBQ[0m*
--rwx------    1 muy003 classes 23435135 Apr  2  2013 [01;32mfirefox-20.0.tar.bz2[0m*
--rwx------    1 muy003 classes  4349199 Jan 10  2014 [01;32mFirefox_wallpaper.png[0m*
-drwx------    2 muy003 classes     8192 Mar 18  2014 [01;34m.fontconfig[0m/
-drwx------    4 muy003 classes     4096 Mar 19  2014 [01;34m.gconf[0m/
-drwx------    2 muy003 classes     4096 Mar 20  2014 [01;34m.gconfd[0m/
--rw-------    1 muy003 classes       83 Feb  6 23:04 .gitconfig
-drwx------    3 muy003 classes     4096 Jan 21 17:28 [01;34m.gitlearn[0m/
-drwx------    3 muy003 classes     4096 Apr  2  2013 [01;34m.gnome[0m/
-drwx------   10 muy003 classes    20480 Mar 16  2014 [01;34m.gnome2[0m/
-drwx------    2 muy003 classes     4096 Apr  2  2013 [01;34m.gnome2_private[0m/
-drwx------    3 muy003 classes     4096 Oct  1  2013 [01;34m.gnote[0m/
-drwx------    2 muy003 classes     4096 Feb  8 13:33 [01;34m.gnupg[0m/
-drwx------    2 muy003 classes     4096 Mar 18  2014 [01;34m.gstreamer-0.10[0m/
--rwx------    1 muy003 classes      274 Mar 18  2014 [01;32m.gtk-bookmarks[0m*
--rwx------    1 muy003 classes       97 Apr  2  2013 [01;32m.gtkrc-1.2-gnome2[0m*
-drwx------    2 muy003 classes     4096 Oct  1  2013 [01;34m.gvfs[0m/
--rwx------    1 muy003 classes     6570 Mar 18  2014 [01;32m.ICEauthority[0m*
-drwx------    2 muy003 classes     4096 Jan 30  2014 [01;34m.icons[0m/
--rwx------    1 muy003 classes      657 Mar 18  2014 [01;32m.imsettings.log[0m*
-drwx------    6 muy003 classes     4096 Feb 26  2014 [01;34m.kde[0m/
-drwx------    3 muy003 classes     4096 Feb  2 11:24 [01;34mlab4[0m/
--rw-------    1 muy003 classes       35 Jan 22 21:21 .lesshst
-drwx------    3 muy003 classes     4096 Jun  4  2013 [01;34m.local[0m/
-drwx------    3 muy003 classes     4096 Apr  2  2013 [01;34m.macromedia[0m/
--rwx------    1 muy003 classes        1 Mar 11  2014 [01;32mmain.cpp[0m*
--rwx------    1 muy003 classes        1 Mar 11  2014 [01;32mmakefile[0m*
--rwx------    1 muy003 classes     1570 Mar 13  2014 [01;32mmessagefile.txt[0m*
-drwx------    3 muy003 classes     4096 Apr  2  2013 [01;34m.metacity[0m/
-drwx------    8 muy003 classes     4096 Mar 19  2014 [01;34m.minecraft[0m/
-drwx------    4 muy003 classes     4096 Apr  2  2013 [01;34m.mozilla[0m/
-drwx------    2 muy003 classes     4096 Oct  1  2013 [01;34mMusic[0m/
-drwx------    3 muy003 classes     4096 Mar 16  2014 [01;34m.nautilus[0m/
--rwx------    1 muy003 classes     2003 Mar 12  2014 [01;32mnotmain.cpp[0m*
-drwx------    3 muy003 classes     4096 Apr  2  2013 [01;34m.nv[0m/
-drwx------   29 muy003 classes     4096 Mar 13  2014 [01;34m.nx[0m/
-drwx------    3 muy003 classes     4096 Feb 12  2014 [01;34m.openoffice.org[0m/
-drwx------    2 muy003 classes     4096 Oct  1  2013 [01;34mPictures[0m/
-drwx------    3 muy003 classes     4096 Mar 13  2014 [01;34m.pki[0m/
--rwx------    1 muy003 classes        1 Mar  1  2014 [01;32mposix.cpp[0m*
--rwx------    1 muy003 classes    13567 May  2  2013 [01;32mprivate.zip[0m*
--rwx------    1 muy003 classes       84 Mar 28  2013 [01;32m.procmailrc[0m*
--rw-------    1 muy003 classes      965 Sep 19  2008 .profile
-drwx------    2 muy003 classes     4096 Oct  1  2013 [01;34mPublic[0m/
-drwx------    2 muy003 classes     4096 Apr  2  2013 [01;34m.pulse[0m/
--rwx------    1 muy003 classes      256 Apr  2  2013 [01;32m.pulse-cookie[0m*
-drwx------    2 muy003 classes     4096 Mar  7  2014 [01;34m.qt[0m/
--rwx------    1 muy003 classes     6335 Mar 18  2014 [01;32m.recently-used.xbel[0m*
-drwx------    3 muy003 classes     4096 Apr  2  2013 [01;34m.redhat[0m/
-drwx------    2 muy003 classes     4096 Jan 10  2014 [01;34m.ssh[0m/
--rw-------    1 muy003 classes       48 Jan  8  2014 t.cpp
-drwx------    2 muy003 classes     4096 Oct  1  2013 [01;34mTemplates[0m/
-drwx------    2 muy003 classes     4096 Jan 30  2014 [01;34m.themes[0m/
-drwx------    4 muy003 classes     4096 Jan 29  2014 [01;34m.thumbnails[0m/
-drwx------   29 muy003 classes     8192 Mar 19  2014 [01;34m.Trash[0m/
-drwx------    8 muy003 classes     4096 Jan 13 11:19 [01;34mucr-cs100[0m/
--rwx------    1 muy003 classes       76 Mar 13  2014 [01;32muserfile.txt[0m*
-drwx------    2 muy003 classes     4096 Oct  1  2013 [01;34mVideos[0m/
-drwx------    3 muy003 classes     4096 Feb  6 22:49 [01;34m.vim[0m/
--rwx------    1 muy003 classes    10969 Feb  8 23:52 [01;32m.viminfo[0m*
--rw-------    1 muy003 classes     2080 Feb  3 16:47 .vimrc
--rw-------    1 muy003 classes    12288 Jan 22 13:56 .vimrc.swp
--rw-------    1 muy003 classes     2192 Oct 14 15:21 .Xauthority
-[m~
-muy003@hammer $ vim .gitconfig 
-[?1000h[?1049h[?1h=[1;57r[?12;25h[?12l[?25h[27m[m[37m[H[2J[?25l[57;1H".gitconfig" 5L, 83C[>c[1;1H[33m  1 [m[37m[92m[user][m[37m
-[33m  2 [m[37m    [37mname[m[37m = Michael Uy
-[33m  3 [m[37m    [37memail[m[37m = michaeluy[38;5;36m627[m[37m@gmail.com
-[33m  4 [m[37m[92m[push][m[37m
-[33m  5 [m[37m    [37mdefault[m[37m = simple
-[1m[34m~                                                                                                     [7;1H~                                                                                                     [8;1H~                                                                                                     [9;1H~                                                                                                     [10;1H~                                                                                                     [11;1H~                                                                                                     [12;1H~                                                                                                     [13;1H~                                                                                                     [14;1H~                                                                                                     [15;1H~                                                                                                     [16;1H~                                                                                                     [17;1H~                                                                                                     [18;1H~                                                                                                     [19;1H~                                                                                                     [20;1H~                                                                                                     [21;1H~                                                                                                     [22;1H~                                                                                                     [23;1H~                                                                                                     [24;1H~                                                                                                     [25;1H~                                                                                                     [26;1H~                                                                                                     [27;1H~                                                                                                     [28;1H~                                                                                                     [29;1H~                                                                                                     [30;1H~                                                                                                     [31;1H~                                                                                                     [32;1H~                                                                                                     [33;1H~                                                                                                     [34;1H~                                                                                                     [35;1H~                                                                                                     [36;1H~                                                                                                     [37;1H~                                                                                                     [38;1H~                                                                                                     [39;1H~                                                                                                     [40;1H~                                                                                                     [41;1H~                                                                                                     [42;1H~                                                                                                     [43;1H~                                                                                                     [44;1H~                                                                                                     [45;1H~                                                                                                     [46;1H~                                                                                                     [47;1H~                                                                                                     [48;1H~                                                                                                     [49;1H~                                                                                                     [50;1H~                                                                                                     [51;1H~                                                                                                     [52;1H~                                                                                                     [53;1H~                                                                                                     [54;1H~                                                                                                     [55;1H~                                                                                                     [56;1H~                                                                                                     [m[37m[57;85H3,2-5[9CAll[3;9H[?12l[?25h[?1000l[?1002hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[57;85H5,17-20[5;24H[?12l[?25h[?25l[57;1H[K[57;1H:[?12l[?25hw[?25l[?12l[?25h[?25l".gitconfig" 5L, 83C written[56C5,17-20[7CAll[57;85H[K[57;85H5,17-20[7CAll[5;24H[?12l[?25h[?25l[57;1H[K[57;1H:[?12l[?25hq[?25l[?12l[?25h[?25l[?1002l[57;1H[K[57;1H[?1l>[?12l[?25h[?1049l~
-muy003@hammer $ git status
-fatal: Not a git repository (or any of the parent directories): .git
-~
-muy003@hammer $ cd r[Kgit[K[K[Kcs100/cs[K[Krshell/[K
-~/cs100/rshell
-muy003@hammer $ git status
-error: Malformed value for push.default: simple
-error: Must be one of nothing, matching, tracking or current.
-fatal: bad config file line 6 in /class/classes/muy003/.gitconfig
-~/cs100/rshell
-muy003@hammer $ git status[Kcd.[K 
-~
-muy003@hammer $ cd git statuscd cs100/rshell[5Pgit statusvim .gitconfig 
-[?1000h[?1049h[?1h=[1;57r[?12;25h[?12l[?25h[27m[m[37m[H[2J[?25l[57;1H".gitconfig" 5L, 83C[>c[1;1H[33m  1 [m[37m[92m[user][m[37m
-[33m  2 [m[37m    [37mname[m[37m = Michael Uy
-[33m  3 [m[37m    [37memail[m[37m = michaeluy[38;5;36m627[m[37m@gmail.com
-[33m  4 [m[37m[92m[push][m[37m
-[33m  5 [m[37m    [37mdefault[m[37m = simple
-[1m[34m~                                                                                                     [7;1H~                                                                                                     [8;1H~                                                                                                     [9;1H~                                                                                                     [10;1H~                                                                                                     [11;1H~                                                                                                     [12;1H~                                                                                                     [13;1H~                                                                                                     [14;1H~                                                                                                     [15;1H~                                                                                                     [16;1H~                                                                                                     [17;1H~                                                                                                     [18;1H~                                                                                                     [19;1H~                                                                                                     [20;1H~                                                                                                     [21;1H~                                                                                                     [22;1H~                                                                                                     [23;1H~                                                                                                     [24;1H~                                                                                                     [25;1H~                                                                                                     [26;1H~                                                                                                     [27;1H~                                                                                                     [28;1H~                                                                                                     [29;1H~                                                                                                     [30;1H~                                                                                                     [31;1H~                                                                                                     [32;1H~                                                                                                     [33;1H~                                                                                                     [34;1H~                                                                                                     [35;1H~                                                                                                     [36;1H~                                                                                                     [37;1H~                                                                                                     [38;1H~                                                                                                     [39;1H~                                                                                                     [40;1H~                                                                                                     [41;1H~                                                                                                     [42;1H~                                                                                                     [43;1H~                                                                                                     [44;1H~                                                                                                     [45;1H~                                                                                                     [46;1H~                                                                                                     [47;1H~                                                                                                     [48;1H~                                                                                                     [49;1H~                                                                                                     [50;1H~                                                                                                     [51;1H~                                                                                                     [52;1H~                                                                                                     [53;1H~                                                                                                     [54;1H~                                                                                                     [55;1H~                                                                                                     [56;1H~                                                                                                     [m[37m[57;85H5,2-5[9CAll[5;9H[?12l[?25h[?1000l[?1002hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?25l[57;85H3,31-34[3;38H[?12l[?25h[?25l[57;88H0-33[3;37H[?12l[?25h[?25l[57;87H29-32[3;36H[?12l[?25h[?25l[57;88H8-31[3;35H[?12l[?25h[?25l[57;88H7-30[3;34H[?12l[?25h[?25l[57;88H6-29[3;33H[?12l[?25h[?25l[57;88H5-28[3;32H[?12l[?25h[?25l[57;88H4-27[3;31H[?12l[?25h[?25l[57;88H3-26[3;30H[?12l[?25h[?25l[57;88H2-25[3;29H[?12l[?25h[?25l[57;88H1-24[3;28H[?12l[?25h[?25l[57;88H0-23[3;27H[?12l[?25h[?25l[57;87H19-22[3;26H[?12l[?25h[?25l[57;88H8-21[3;25H[?12l[?25h[?25l[57;88H7-20[3;24H[?12l[?25h[?25l[57;88H6-19[3;23H[?12l[?25h[?25l[57;88H5-18[3;22H[?12l[?25h[?25l[57;88H4-17[3;21H[?12l[?25h[?25l[57;88H3-16[3;20H[?12l[?25h[?25l[57;88H2-15[3;19H[?12l[?25h[?25l[57;88H1-14[3;18H[?12l[?25h[?25l[57;88H0-13[3;17H[?12l[?25h[?25l[57;87H9-12 [3;16H[?12l[?25h[?25l[57;87H8-11[3;15H[?12l[?25h[?25l[4;5H[92m[46m[[4C][m[37m[57;85H4,6   [4;10H[?12l[?25h[?25l[92m[push][m[37m[57;85H5,8-11[5;15H[?12l[?25h[?25l[4;5H[92m[46m[[4C][m[37m[57;85H4,6   [4;10H[?12l[?25h[?25l[92m[push][m[37m[57;85H3,8-11[3;15H[?12l[?25h[?25l[57;85H2[2;15H[?12l[?25h[?25l[57;85H3[3;15H[?12l[?25h[?25l[4;5H[92m[46m[[4C][m[37m[57;85H4,6   [4;10H[?12l[?25h[?25l[92m[push][m[37m[57;85H5,8-11[5;15H[?12l[?25h[?25l[57;1H[K[57;1H:[?12l[?25hq[?25l[?12l[?25h[?25l[?1002l[57;1H[K[57;1H[?1l>[?12l[?25h[?1049l~
-muy003@hammer $ vim .gitconfig cd [Kgit statuscd cs100/rshell
-~/cs100/rshell
-muy003@hammer $ ls
-[0m[01;32ma.out[0m*  LICENSE  Makefile  README.md  [01;34msrc[0m/  [01;34mtests[0m/
-[m~/cs100/rshell
-muy003@hammer $ ls[K[Kexit
+muy003@hammer $ exit
 exit
 
-Script done on Mon 09 Feb 2015 12:03:11 AM PST
+Script done on Mon 09 Feb 2015 12:27:23 AM PST
