@@ -1,5 +1,5 @@
 FILEPATH= ./src/main.cpp
-FILEPATH1=./src/ls.cpp
+FILEPATH1=./src/scriptls.cpp
 OUTPATH= ./bin/rshell
 OUTPATH1= ./bin/ls
 CPPFLAGS = -Wall -Werror -ansi -pedantic
