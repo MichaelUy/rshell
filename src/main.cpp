@@ -79,6 +79,12 @@ int main(){
     char* args[3333];
     bool run=true;
     string connector="";
+    // I/O redirection
+    char directin[]={'<','\0'};
+    char directiout[]={'>','\0'};
+    char apdirectout[]={'>','>','\0'};
+    char piper[]={'|','\0'};
+
     char andd[]={'&','&','\0'};
     char orr[]={'|','|','\0'};
     char semi[]={';','\0'};
@@ -102,13 +108,46 @@ int main(){
             myvector.push_back(cmd[i]);
             myvector.push_back(' ');
         }
-        else if(( cmd[i]=='&'&& cmd[i+1]=='&')||( cmd[i]=='|'&& cmd[i+1]=='|')){
+        else if( cmd[i]=='&'&& cmd[i+1]=='&'){
             myvector.push_back(' ');
             myvector.push_back(cmd[i]);
             myvector.push_back(cmd[i]);
             myvector.push_back(' ');
             i++;
         }
+        else if(cmd[i]=='|'){       // | and ||
+            if(cmd[i+1]!='|'){
+                myvector.push_back(' ');
+                myvector.push_back(cmd[i]);
+                myvector.push_back(' ');
+
+            
+            }
+            else{
+                myvector.push_back(' ');
+                myvector.push_back(cmd[i]);
+                myvector.push_back(cmd[i]);
+                myvector.push_back(' ');i
+                i++;
+            }
+        }
+        else if(cmd[i]=='>'){           // > and >>
+            if(cmd[i+1]!='>'){
+                myvector.push_back(' ');
+                myvector.push_back(cmd[i]);
+                myvector.push_back(' ');
+
+            
+            }
+            else{
+                myvector.push_back(' ');
+                myvector.push_back(cmd[i]);
+                myvector.push_back(cmd[i]);
+                myvector.push_back(' ');i
+                i++;
+            }
+        }
+
         else{
             myvector.push_back(cmd[i]);
          }
