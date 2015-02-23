@@ -15,6 +15,7 @@ using namespace std;
 char exitS[]="exit";
 char exitB[]="Exit";
 bool execute(char* args[],int contype); // execvp function
+void piping(char* savedtokens[]   );
 
 int main(){
 
@@ -48,14 +49,20 @@ int main(){
     tokenindex = 0;
     cout<<user<<"@"<<host<< "$ ";
     getline(cin,str);		// get input at str
+    
+    int loc=0;                                              // erase comments
+    if((loc = str.find("#"))!=0){
+        str = str.substr(0,loc);
+    }
+    else{
+        continue;
+    }
+
+
     strcpy(cmd,str.c_str());	// get c string of str
     strcpy(connectorparsed,str.c_str());
     for(int i=0;cmd[i]!='\0';i++){
-        if( cmd[i]=='#' ){
-            myvector.push_back('\0');
-        break;
-        }
-        else if( cmd[i]==';' ){
+        if( cmd[i]==';' ){
             myvector.push_back(' ');
             myvector.push_back(cmd[i]);
             myvector.push_back(' ');
@@ -174,8 +181,13 @@ int main(){
 //EXEC HELPER FUNCTION
 bool execute(char* args[],int contype){
 
+   // int savein;
+   // vector<string> connectors;
+   // if(-1==(savein=dup(STDIN_FILENO))){
+   // perror("error in stdin dup");    
+   // }
     int pid=fork();
-    int status;
+    int status=0;
     if(pid==-1){
 		perror("error in fork");
         exit(1);
@@ -184,12 +196,14 @@ bool execute(char* args[],int contype){
     //IF IN CHILD PROCESS
     /////////////////////////////////
     else if (pid ==0) {
-		status=execvp(args[0],args);
-
+	
+       // piping
+                        status=execvp(args[0],args); // normal code
+        
         if(status!=0){
             perror("error in execvp");
         }
-
+       
         exit(1);
 	}
     //////////////////////////////
@@ -225,5 +239,21 @@ bool execute(char* args[],int contype){
 return true;
 }
 
+void piping(char* savedtokens[]){
 
+   // char* firsthalf;
+
+
+    
+
+
+
+
+
+
+
+
+
+
+}
 
