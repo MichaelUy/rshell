@@ -1,0 +1,133 @@
+Script started on Tue 24 Feb 2015 01:00:09 AM PST
+~
+muy003@hammer $ [Kmuy003@hammer $ [Kmuy003@hammer $ [Kmuy003@hammer $ cd cs100/rshell
+~/cs100/rshell
+muy003@hammer $ make
+mkdir -p ./bin
+g++ ./src/main.cpp  -Wall -Werror -ansi -pedantic -o ./bin/rshell
+g++ ./src/ls.cpp -Wall -Werror -ansi -pedantic -o ./bin/ls
+g++ ./src/cp.cpp -Wall -Werror -ansi -pedantic -o ./bin/cp
+~/cs100/rshell
+muy003@hammer $ bin/rshell
+muy003@hammer.cs.ucr.edu$ ls
+a.out  bin  LICENSE  Makefile  README.md  redirect  src  tests
+muy003@hammer.cs.ucr.edu$ ls > text # text will be created and hold ls's output
+muy003@hammer.cs.ucr.edu$ ls
+a.out  bin  LICENSE  Makefile  README.md  redirect  src  tests	text
+muy003@hammer.cs.ucr.edu$ #text now exists
+muy003@hammer.cs.ucr.edu$ cat < text # cat will cout ls's output which was in text and also show input redirection
+a.out
+bin
+LICENSE
+Makefile
+README.md
+redirect
+src
+tests
+text
+muy003@hammer.cs.ucr.edu$ wc < text > newtext # will show that my rshell can do both input and output redirection together
+muy003@hammer.cs.ucr.edu$ cat < newtext # should ot output the wc of text
+ 9  9 61
+muy003@hammer.cs.ucr.edu$ # now i have shown input redirection, outpur output redirection and the commbination
+muy003@hammer.cs.ucr.edu$ ls >> newtext # should append the numbers with the ls output
+muy003@hammer.cs.ucr.edu$ cat < newtext
+ 9  9 61
+a.out
+bin
+LICENSE
+Makefile
+newtext
+README.md
+redirect
+src
+tests
+text
+muy003@hammer.cs.ucr.edu$ # this text file now shows that my appending opperator works
+muy003@hammer.cs.ucr.edu$ wc < text > newtext #this should replace the text with only the wc output of text
+muy003@hammer.cs.ucr.edu$ cat < newtext
+ 9  9 61
+muy003@hammer.cs.ucr.edu$ # sucess
+muy003@hammer.cs.ucr.edu$ wc < text >> newtext # this should append new text with another wc of text and prove this combition combination
+muy003@hammer.cs.ucr.edu$ cat < newtext
+ 9  9 61
+ 9  9 61
+muy003@hammer.cs.ucr.edu$ # now I will run texts on commectors connectors and miscilanious miscellaneous tests
+muy003@hammer.cs.ucr.edu$ true && false && ls > textfile
+muy003@hammer.cs.ucr.edu$ true && false || ls > textfile
+a.out  bin  LICENSE  Makefile  newtext	README.md  redirect  src  tests  text
+muy003@hammer.cs.ucr.edu$ # error/ limitation there are some incompatibilities with connectors
+muy003@hammer.cs.ucr.edu$ false && ls > text
+muy003@hammer.cs.ucr.edu$ false || ls > text
+a.out  bin  LICENSE  Makefile  newtext	README.md  redirect  src  tests  text
+muy003@hammer.cs.ucr.edu$ # there seems to be entire incombpatibility
+muy003@hammer.cs.ucr.edu$ truw
+error on execvp in execute: No such file or directory
+muy003@hammer.cs.ucr.edu$ true && wc < text
+
+
+e
+exit
+ls
+^C
+~/cs100/rshell
+muy003@hammer $ # more errors
+~/cs100/rshell
+muy003@hammer $ bin/rshell
+muy003@hammer.cs.ucr.edu$ wc<<
+error on access: No such file or directory
+muy003@hammer.cs.ucr.edu$ wc<text>newtext
+muy003@hammer.cs.ucr.edu$ cat <     newtext
+ 9  9 61
+muy003@hammer.cs.ucr.edu$ cat < < < newtext
+error on access: No such file or directory
+muy003@hammer.cs.ucr.edu$ false ; ls > text1
+a.out  bin  LICENSE  Makefile  newtext	README.md  redirect  src  tests  text
+muy003@hammer.cs.ucr.edu$ ls > text1 && ls te  >text2
+muy003@hammer.cs.ucr.edu$ cout
+error on execvp in execute: No such file or directory
+muy003@hammer.cs.ucr.edu$ cat < text1
+a.out
+bin
+LICENSE
+Makefile
+newtext
+README.md
+redirect
+src
+tests
+text
+text1
+muy003@hammer.cs.ucr.edu$ cat < text2
+error on access: No such file or directory
+muy003@hammer.cs.ucr.edu$  # bug && does not function with c ioredirection
+Segmentation fault
+~/cs100/rshell
+muy003@hammer $ bin/rshell
+muy003@hammer.cs.ucr.edu$ ls > test3 ; ls > test2
+muy003@hammer.cs.ucr.edu$ cat < test3
+a.out
+bin
+LICENSE
+Makefile
+newtext
+README.md
+redirect
+src
+test3
+tests
+text
+text1
+muy003@hammer.cs.ucr.edu$ cat < test2
+error on access: No such file or directory
+muy003@hammer.cs.ucr.edu$ # semicolen de oesn't work
+muy003@hammer.cs.ucr.edu$ # piping does not function still
+muy003@hammer.cs.ucr.edu$ wc < test3 | tail -n 2
+^C
+~/cs100/rshell
+muy003@hammer $ ls
+[0m[01;32ma.out[0m*  [01;34mbin[0m/  LICENSE  Makefile  [01;32mnewtext[0m*  README.md  redirect  [01;34msrc[0m/  [01;32mtest3[0m*  [01;34mtests[0m/  [01;32mtext[0m*  [01;32mtext1[0m*
+[m~/cs100/rshell
+muy003@hammer $ bin
+exit
+
+Script done on Tue 24 Feb 2015 01:31:06 AM PST
