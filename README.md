@@ -1,5 +1,17 @@
 #Summary
 rshell is a simple shell that is able to run basic syscalls utilizing:
+
+#HW2 Summary
+For HW2 I implemented my own I/O Redirection symbols  which requires  the manipulation of file descriptors
+- supports:
+- executable<file #(existentfile or not) 
+- executable>file #(existentfile or not)
+- executalbe>>file #(existentfile or not; if existent it will append) 
+- wc<text>text2 #this passes text into word count and reaps the output into text2
+- wc<text>>text2 #this passes text into word count and reaps the output and appends it to text2
+- CONNECTORS ARE NOT FUNCTIONING I TRIED I DID BUT MY BEST WAS NOT IN THE LEAST SUFFICENT
+- PIPING DOES NOT WORK, I DEVOTED HALF MY CODE TO THEM, BUT ALAS THE SLINGS AND ARROWS OF FATE
+
 # HW1 Summary
 For HW1 I implemented my own ls command. It is as close to GNU ls as possible (plus magenta "hidden" colorizing):
 - supports: -a,-l,-R, and any combination of the three (i.e. -al, -lR, -Rla, and ect.)
