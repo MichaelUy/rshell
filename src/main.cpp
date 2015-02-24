@@ -13,7 +13,7 @@
 #include <fcntl.h>
 using namespace std;
 
-
+bool green = true;
 char exitS[]="exit";
 char exitB[]="Exit";
 char directin[]={'<','\0'};
@@ -24,6 +24,7 @@ char piper[]={'|','\0'};
 char andd[]={'&','&','\0'};
 char orr[]={'|','|','\0'};
 char semi[]={';','\0'};
+void rshell();
 bool isin(char** savedTokens,string search ){
     bool ret = false;
     for(size_t i=0;savedTokens[i]!=NULL;i++){
@@ -52,61 +53,17 @@ void execute(char* args[],string ctype,char** savedTokens  ){
    // if(-1==(savein=dup(STDIN_FILENO))){
    // perror("error in stdin dup");    
    // }
+   //
+   //cout << " execution" << endl;
     bool inp=false;
     bool outp=false;
     int fd;
     int fd2;
+    //int file;
     int savestdin;
     int savestdout;
 
-
-
-    if(isin(savedTokens,">")== true){ // output reg
-        outp=true;
-        int savestdout = dup(1);
-            if(-1==savestdout){
-                perror("error on dup");
-                exit(1);
-            }
-        size_t i=0;
-        for(;strcmp(savedTokens[i],directout)!=0;i++){
-        }
-        
-        i++;
-        //cout<< "execute i: " << savedtoken 
-        fd2 = open(savedTokens[i], O_WRONLY|O_CREAT|O_TRUNC,0777);
-        if(-1==fd2){
-            perror("error on open in execute in redirout");
-            exit(0);
-        }
-        if(-1== dup2(fd2,1)){
-        perror("error on dup2 exec");
-        exit(1);
-        }
-    }
-    else if(isin(savedTokens,">>" )== true ){
-        outp=true;
-         savestdout = dup(1);
-            if(-1==savestdout){
-                perror("error on dup");
-                exit(1);
-            }
-
-
-        size_t i=0;
-        for(;strcmp(savedTokens[i],apdirectout)!=0;i++){
-        }
-        i++;
-        //cout<< "execute i: " << savedtoken 
-        fd2 = open(savedTokens[i], O_WRONLY|O_CREAT|O_APPEND,0777);
-        if(-1==fd2){
-            perror("error on open in execute in aredirout");
-            exit(0);
-        }
-
-    }
-
-    if(isin(savedTokens,"<")== true){ // is input redir
+if(isin(savedTokens,"<")== true){ // is input redir
         inp=true;
          savestdin = dup(0);
             if(-1==savestdin){
@@ -120,66 +77,158 @@ void execute(char* args[],string ctype,char** savedTokens  ){
         }
         //cout<< savedTokens[i][0]<<endl;
         i++;
+    //access
         if(-1==access(savedTokens[i],F_OK)){
             perror("error on access");
             exit(1);
         }
+    // open
         fd = open(savedTokens[i], O_RDONLY);
         if(-1==fd){
             perror("error on open in execute");
             exit(0);
         }
+    // dup2
         if(-1== dup2(fd,0)){
         perror("error on dup2 exec");
         exit(1);
     }
-
+    //????
 
         }
-//cout << " have arrived to exec"<< endl;
+
+////////////////////////////////////////////////////////////output replace
+    if(isin(savedTokens,">")== true){ // output reg
+        outp=true;
+     //save out
+        savestdout = dup(1);
+            if(-1==savestdout){
+                perror("error on dup");
+                exit(1);
+            }
+        size_t i=0;
+        for(;strcmp(savedTokens[i],directout)!=0;i++){
+        }
+        i++;
+    //access
+        if(access(savedTokens[i],F_OK)!=-1){
+    //open and exists
+            fd2 = open(savedTokens[i], O_WRONLY|O_TRUNC,00777);
+        if(-1==fd2){
+            perror("error on open in execute in redirout");
+            exit(0);
+        }
+        }  // open and created
+          else{
+        fd2 = open(savedTokens[i], O_WRONLY|O_CREAT,00777);
+        
+        if(-1==fd2){
+            perror("error on open in execute in redirout");
+            exit(0);
+        }
+        }
+    // dup2
+        if(-1== dup2(fd2,1)){
+        perror("error on dup2 exec");
+        exit(1);
+        }
+        
+    }////////////////////////////////////////////////////////////output append
+    else if(isin(savedTokens,">>" )== true ){
+        outp=true;
+     //save out
+         savestdout = dup(1);
+            if(-1==savestdout){
+                perror("error on dup");
+                exit(1);
+            }
+
+
+        size_t i=0;
+        for(;strcmp(savedTokens[i],apdirectout)!=0;i++){
+        }
+        i++;
+    // access
+        if(access(savedTokens[i],F_OK)!=-1){
+
+    //open    append
+        fd2 = open(savedTokens[i], O_WRONLY|O_APPEND,00744);
+        if(-1==fd2){
+            perror("error on open in execute in aredirout");
+            exit(0);
+        }
+        }
+    // open create
+        else{
+        fd2 = open(savedTokens[i], O_WRONLY|O_CREAT,00744);
+        if(-1==fd2){
+            perror("error on open in execute in aredirout");
+            exit(0);
+        }
+        }
+   // dup2
+        if(-1== dup2(fd2,1)){
+        perror("error on dup2 exec");
+        exit(1);
+        }
+        
+
+    }
+///////////////////////////////////////////////////////////////////////////input
+    //save in
+    //cout << " have arrived to exec"<< endl;///////////////////////execvp
 if(-1== execvp(args[0],args)){
     perror("error on execvp in execute");
     exit(1);
 }
+
 /*
-if(-1== close(fd)){
+if(-1== close(fd)){////////////////////////////////////////// restore
  
                 perror("error on close in exec");
                 exit(1);
  } */
 if( inp){
+    inp=false;
 
+    ///////////////////////////////////////////////////close input to file
 if(-1== close(fd)){
  
                 perror("error on close in exec");
                 exit(1);
  }
-    if(-1== dup2(savestdin,0)){
+ //////////////////////////////////////////////////////////// restore save stdin
+ if(-1== dup2(savestdin,0)){
         perror("error on dup2 exec");
         exit(1);
     }
-}
+
+
+   }
 if(outp ){
+    outp = false;
+   //////////////////////////////////////////////////////  close output to file 
     if(-1== close(fd2)){
  
                 perror("error on close in exec");
                 exit(1);
- }
-    if(-1== dup2(savestdout,1)){
+///////////////////////////////////////////////////////// restore save stdout
+     if(-1== dup2(savestdout,1)){
         perror("error on dup2 exec");
         exit(1);
     }
-}
+ }
+   }
 
 
-cout << "exec over" << endl;
+//cout << "exec over" << endl;
 exit(0);
 }
 
 
 void piping(char** args,string &ctype,bool &run,char** savedTokens) { 
     int pipefd[2];
-    char* lhs[3200];
+    //char* lhs[3200];
     char* rhs[3200];
     
     //size_t j=0;
@@ -188,45 +237,21 @@ void piping(char** args,string &ctype,bool &run,char** savedTokens) {
     int status;
     if(isin(savedTokens,"|")==false) {
         execute(args,ctype,savedTokens);
-        
-      // cout <<" status: " << status<< endl;   
-      /*
-        if(status){ // SUCCESSS
-            if(ctype=="eol")       // EOL
-                run= true;
-            else if(ctype=="or")      // OR
-                run= false;
-            else if(ctype=="semi")      // SEMI
-                run= true;
-            else if(ctype=="and")   // AND
-                run= true;
-       }
-       else if(status) { //FAILURE
-              if(ctype=="eol")   //EOL
-                run= true;
-              else if(ctype=="or")   //OR
-                run= true;
-              else if(ctype=="semi")   //SEMI
-                run= true;
-              else if(ctype=="and")    //AND
-                run= false;
-        }
-         //   cout <<" status" << status<< endl; 
-         */
     }
-    else{
+        else{
         int i=0;
         int j=0;
+        
         for(; strcmp(savedTokens[i],piper)!=0;i++){
-          cout<<i<< ": " << lhs[i] <<endl;
-          lhs[i] = savedTokens[i];
+         // cout<<i<< ":: " << savedTokens[i] <<endl;
+         // lhs[i] = savedTokens[i];
             
         }
-        cout << i << ": last" << endl;
-        lhs[i]=NULL;
+       // cout << i << ": last == null" << endl;
+        //lhs[i]=NULL;
         i++;
         for(;savedTokens[i]!='\0';i++,j++){
-            cout<<j<<"::last"<<rhs[j]<<endl;
+         //   cout<<j<<"::last"<<rhs[j]<<endl;
             rhs[j] = savedTokens[i];
             
         }
@@ -238,6 +263,8 @@ void piping(char** args,string &ctype,bool &run,char** savedTokens) {
         }
 
         int pid = fork();
+
+
         if(-1== pid){
             perror("error on fork");
             exit(1);
@@ -247,107 +274,22 @@ void piping(char** args,string &ctype,bool &run,char** savedTokens) {
         /////////////////////////////////
         
         else if (pid ==0) {
-                        bool inp=false;
-    bool outp=false;
-    int fd=-1;
-    int savestdin;
-    int savestdout;
-    if(isin(savedTokens,">")== true){ // output reg
-        outp=true;
-    savestdin = dup(0);
-            if(-1==savestdin){
-                perror("error on dup");
-                exit(1);
-            }
 
-        size_t i=0;
-        for(;strcmp(savedTokens[i],directout)!=0;i++){
-        }
-        
-        i++;
-        //cout<< "execute i: " << savedtoken 
-        fd = open(savedTokens[i], O_WRONLY|O_CREAT|O_TRUNC,0777);
-        if(-1==fd){
-            perror("error on open in execute in redirout");
-            exit(0);
-        }
-
-    }
-    else if(isin(savedTokens,">>" )== true ){
-        outp=true;
-    savestdin = dup(0);
-            if(-1==savestdin){
-                perror("error on dup");
-                exit(1);
-            }
-
-        size_t i=0;
-        for(;strcmp(savedTokens[i],apdirectout)!=0;i++){
-        }
-        i++;
-        //cout<< "execute i: " << savedtoken 
-        fd = open(savedTokens[i], O_WRONLY|O_CREAT|O_APPEND,0777);
-        if(-1==fd){
-            perror("error on open in execute in aredirout");
-            exit(0);
-        }
-
-    }
-
-    if(isin(savedTokens,"<")== true){ // is input redir
-        inp=true;
-             savestdout = dup(1);
-            if(-1==savestdout){
-                perror("error on dup");
-                exit(1);
-            }
-        
-            int err = dup2(pipefd[1],1);
-            if(-1==err){
-                perror("error on dup2 in child");
-                exit(1);
-            }
-
-        size_t i=0;
-        for(;strcmp(savedTokens[i],piper)!=0;i++){
-        }
-        i++;
-        //cout<< "execute i: " << savedtoken 
-        fd = open(savedTokens[i], O_RDONLY);
-        if(-1==fd){
-            perror("error on open in execute");
-            exit(0);
-        }
-    }
-//cout << " have arrived to exec"<< endl;
-if(-1== execvp(args[0],args)){
-    perror("error on execvp in execute");
-    exit(1);
-}
-if(-1== close(pipefd[0])){
- 
-                perror("error on close in exec");
-                exit(1);
- }
-if( inp){
-    if(-1== dup2(savestdin,0)){
-        perror("error on dup2 exec");
+        if(dup2(pipefd[1],1) == -1){
+        perror("error on dup2");
         exit(1);
-    }
-}
-if(outp ){
-    
-    if(-1== dup2(savestdout,1)){
-        perror("error on dup2 exec");
-        exit(1);
-    }
-}
-       //     execute(lhs,ctype,savedTokens);
+        }
 
-                    // cout <<" status" << status<< endl; 
-            //status=
-                  
+        if(close(pipefd[0]) == -1){
+            perror("error on close");
+            exit(1);
+        }
 
+       
+        if(-1== execvp(args[0],args)){
+         perror("error on execvp in child");
+         exit(1);
+        }     
         }
 
         //////////////////////////////
@@ -356,7 +298,7 @@ if(outp ){
         
         else if(pid>0){
             
-            cerr << " PARENT " << endl;
+           // cerr << " PARENT " << endl;
             if(close(pipefd[1]) == -1){
                 perror("error on close in parent");
                 exit(1);
@@ -370,7 +312,7 @@ if(outp ){
                 perror("error on dup2 in parent");
                 exit(1);
             }
-            cout << " in parent, wait"<<endl;
+            //cout << " in parent, wait"<<endl;
             if(waitpid(pid,&status,0) == -1){
                 perror("error on wait in parent");
                 exit(1);
@@ -385,6 +327,12 @@ if(outp ){
                 run= true;
             else if(ctype=="and")   // AND
                 run= true;
+           else if (ctype=="directout")
+               run=false;
+           else if(ctype=="directin")
+               run=false;
+            else
+                run= true;
        }
        else if(status>0) { //FAILURE
               if(ctype=="eol")   //EOL
@@ -395,9 +343,16 @@ if(outp ){
                 run= true;
               else if(ctype=="and")    //AND
                 run= false;
+              else if (ctype=="directout")
+               run=false;
+              else if(ctype=="apdirectout")
+               run=false;
+              else
+                  run = false;
         }
-
+            if( rhs[0] != NULL){
             piping(rhs,ctype,run,savedTokens);
+            }
             if(-1== dup2(savestdin,0)){
                 perror("error on restoring dup2 in parent");
                 exit(1);
@@ -408,10 +363,10 @@ if(outp ){
 
     }
    // cout << " in piping checking run: " << run<< endl;
-
+   rshell();
 }
  
-int main(){
+void rshell(){
 
     string user;
     char host[3200];
@@ -554,21 +509,20 @@ int main(){
 
 
         if(strcmp(exitS,savedTokens[0])==0||strcmp(exitB,savedTokens[0])==0){
-            return 0; // called exit
+            green= false;
+           exit(1); // called exit
         }
         //cout << " not yet" << endl;
         char* args[3333];
         string ctype="eol";
-        for(int i=0, j=0;run;i++,j++){
-            //cout<< "error check i: "<< i<< " j: "<<j<< " run: " << run <<endl;
-           // for(size_t q=0;savedTokens[i][q]!='\0';q++){
-           //     cout << savedTokens[i][q];
-           // }
-           // cout<< endl;
 
-            if(savedTokens[i]==NULL){
-               // cout << "piping in from if" << endl;
+
+        for(int i=0, j=0;run;i++,j++){
+
+                if(savedTokens[i]==NULL){
+                //cout << "piping in from if" << endl;
                 args[j]=NULL;
+                
                 int status;
                 int pid = fork();
 
@@ -589,7 +543,7 @@ int main(){
                     perror("error on wait in parent");
                     exit(1);
                 }
-                 cout <<" superstatus: " << status<< endl;   
+                // cout <<" superstatus: " << status<< endl;   
                 if(status==0){ // SUCCESSS
                     if(ctype=="eol")       // EOL
                         run= false;
@@ -599,6 +553,12 @@ int main(){
                         run= true;
                     else if(ctype=="and")   // AND
                         run= true;
+                    else if (ctype=="directout")
+                        run=false;
+                    else if(ctype=="directin")// edited to direct in
+                        run=false;
+                    else 
+                        run = true;
                }
                else if(status>0) { //FAILURE
                       if(ctype=="eol")   //EOL
@@ -607,9 +567,22 @@ int main(){
                         run= true;
                       else if(ctype=="semi")   //SEMI
                         run= true;
-                      else if(ctype=="and")    //AND
+                      else if(ctype=="and")    //ANnD
                         run= false;
+                         else if (ctype=="directout")
+                        run=false;
+                      else if(ctype=="apdirectout")
+                        run=false;
+                      else
+                        run= true;
                 }
+                //exit(0);
+                
+                //rshell();
+                //exit(0);
+              //continue;
+              
+                
               break;
             }
             }
@@ -649,16 +622,89 @@ int main(){
               // cout<< "andd: " << andd << endl;
                 continue;
             }
-           // cout << "piping at end of loop" << endl; 
-            piping(args,ctype,run,savedTokens); 
-            cout<< "check run: " <<run<< endl;
-            //run=execute(args,ctype);
-            j=-1;
-            cout <<"GOOD JOB"<< endl;
-        }
 
+           // cout << "piping at end of loop run : "<< run << endl; 
+            
+                int status;
+                int pid = fork();
+
+                if(-1== pid){
+                perror("error on fork");
+                exit(1);
+                
+                }
+                else if (pid== 0){
+                // child
+                piping(args,ctype,run,savedTokens); 
+                //children should exit right?
+                exit(1);
+                }
+                else if(pid>0){
+                   //  cout << " in parent, wait"<<endl;
+                if(waitpid(pid,&status,0) == -1){
+                    perror("error on wait in parent");
+                    exit(1);
+                }
+                // cout <<" superstatus: " << status<< endl;   
+                if(status==0){ // SUCCESSS
+                    if(ctype=="eol")       // EOL
+                        run= false;
+                    else if(ctype=="or")      // OR
+                        run= false;
+                    else if(ctype=="semi")      // SEMI
+                        run= true;
+                    else if(ctype=="and")   // AND
+                        run= true;
+                     else if (ctype=="directout")
+                         run=false;
+                     else if(ctype=="directin")
+                     run=false;
+                    else 
+                        run = false;
+               }
+               else if(status>0) { //FAILURE
+                      if(ctype=="eol")   //EOL
+                        run= false;
+                      else if(ctype=="or")   //OR
+                        run= true;
+                      else if(ctype=="semi")   //SEMI
+                        run= true;
+                      else if(ctype=="and")    //AND
+                        run= false;
+                       else if (ctype=="directout")
+                         run=false;
+                      else if(ctype=="apdirectout")
+                         run=false;
+
+                      else
+                         run= false;
+                }
+                }
+                // exit(0);
+                //rshell();
+                //exit(1);
+                //continue;
+             // break;
+            
+
+
+/*
+            piping(args,ctype,run,savedTokens);
+
+            rshell();
+            */
+            j=-1;
+        
+    }
         
    }
 }
 
+int main(){
 
+while( green){
+rshell();
+}
+return 0;
+
+}
