@@ -24,14 +24,20 @@ char piper[]={'|','\0'};
 char andd[]={'&','&','\0'};
 char orr[]={'|','|','\0'};
 char semi[]={';','\0'};
+void nothing(int sig){
+
+   cerr << "\n[1]+ Stopped        PRESS ENTER TO RESUME:^) " << endl;
+    return;
+    //exit(0);
+}
 void handler(int sig){
-    if(sig==SIGINT){
-        raise(SIGSTOP);
-        cout << endl;
+        
+    int pid= getpid();
+    if (-1==kill(pid,sig)){
+        perror("error on kill");
+
+        exit(1);
     }
-
-   // else if(sig==SIGSTP)
-
 
 
 }
@@ -66,6 +72,8 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
    // }
    //
    //cout << " execution" << endl;
+
+    signal(SIGTSTP, handler);
     bool inp=false;
     bool outp=false;
     char cd[3]={'c','d','\0'};
@@ -81,7 +89,7 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
     cout << endl;
     */
     if(strcmp(args[0],cd)==0){
-        cout<< "caught" << endl;
+       // cout<< "caught" << endl;
         if(args[1] == '\0'){
             run=false;
             cout<< "no directory specified" <<endl;
@@ -94,7 +102,7 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
         }
         else
             run=true;
-        cout<< "changed dir" << endl;
+     //   cout<< "changed dir" << endl;
 
         exit(1);
     }
@@ -411,8 +419,8 @@ void rshell(){
     gethostname(host,3200);
 	string str="";
 	char cmd[320000];
-
-
+    signal(SIGINT, nothing);
+    //signal(SIGINT, SIG_IGN);
 	char* savedTokens[32000];
 
     vector<char> myvector;
@@ -421,11 +429,15 @@ void rshell(){
     string connector="";
     // I/O redirection
     
-    string masterstring="";
     while(1){
         run=true;
         myvector.clear();
-        cout<<user<<"@"<<host<< masterstring<< "$ ";
+        char masterpath [BUFSIZ];
+        if(NULL==getcwd(masterpath,sizeof(masterpath))){
+            perror("error on getcwd");
+            exit(1);
+        }
+        cout<<user<<"@"<<host<<":~"<< masterpath <<"$ ";
         getline(cin,str);		// get input at str
         int loc=0;              // erase comments
         if((loc = str.find("#"))!=0){
@@ -447,6 +459,9 @@ void rshell(){
     cout << endl;
     */
     //strcpy(connectorparsed,cmd);
+    if(cmd[0]=='\0'){
+        continue;
+    }
     for(int i=0;cmd[i]!='\0';i++){
         //cout<< " #: " << i << endl;
         if( cmd[i]==';' ){
@@ -758,7 +773,7 @@ void rshell(){
 }
 
 int main(){
-signal(SIGINT,handler);
+//signal(SIGINT,SIG_IGN);
 while( green){    
 rshell();
 }
