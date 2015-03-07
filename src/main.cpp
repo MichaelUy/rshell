@@ -24,6 +24,17 @@ char piper[]={'|','\0'};
 char andd[]={'&','&','\0'};
 char orr[]={'|','|','\0'};
 char semi[]={';','\0'};
+void handler(int sig){
+    if(sig==SIGINT){
+        raise(SIGSTOP);
+        cout << endl;
+    }
+
+   // else if(sig==SIGSTP)
+
+
+
+}
 void rshell();
 bool isin(char** savedTokens,string search ){
     bool ret = false;
@@ -47,7 +58,7 @@ bool isin(char** savedTokens,string search ){
 
 
 //EXEC HELPER FUNCTION
-void execute(char* args[],string ctype,char** savedTokens  ){
+void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
    // int savein;
    // vector<string> connectors;
    // if(-1==(savein=dup(STDIN_FILENO))){
@@ -57,13 +68,37 @@ void execute(char* args[],string ctype,char** savedTokens  ){
    //cout << " execution" << endl;
     bool inp=false;
     bool outp=false;
+    char cd[3]={'c','d','\0'};
     int fd;
     int fd2;
     //int file;
     int savestdin;
     int savestdout;
+   /*
+    printf(args[0],4);
+    cout << endl;
+    printf(args[1],4);
+    cout << endl;
+    */
+    if(strcmp(args[0],cd)==0){
+        cout<< "caught" << endl;
+        if(args[1] == '\0'){
+            run=false;
+            cout<< "no directory specified" <<endl;
+             
+        }
+        else if(chdir(args[1])==-1){
+            run=false;
+            perror("error on chdir");
+            
+        }
+        else
+            run=true;
+        cout<< "changed dir" << endl;
 
-if(isin(savedTokens,"<")== true){ // is input redir
+        exit(1);
+    }
+    if(isin(savedTokens,"<")== true){ // is input redir
         inp=true;
          savestdin = dup(0);
             if(-1==savestdin){
@@ -230,13 +265,15 @@ void piping(char** args,string &ctype,bool &run,char** savedTokens) {
     int pipefd[2];
     //char* lhs[3200];
     char* rhs[3200];
-    
+  
     //size_t j=0;
     //int len=0;
     //bool status=false;
     int status;
     if(isin(savedTokens,"|")==false) {
-        execute(args,ctype,savedTokens);
+       
+
+        execute(args,ctype,savedTokens,run);
     }
         else{
         int i=0;
@@ -384,11 +421,11 @@ void rshell(){
     string connector="";
     // I/O redirection
     
-
+    string masterstring="";
     while(1){
         run=true;
         myvector.clear();
-        cout<<user<<"@"<<host<< "$ ";
+        cout<<user<<"@"<<host<< masterstring<< "$ ";
         getline(cin,str);		// get input at str
         int loc=0;              // erase comments
         if((loc = str.find("#"))!=0){
@@ -515,7 +552,7 @@ void rshell(){
         //cout << " not yet" << endl;
         char* args[3333];
         string ctype="eol";
-
+          char cd[3]={'c','d','\0'};
 
         for(int i=0, j=0;run;i++,j++){
 
@@ -617,6 +654,26 @@ void rshell(){
              }
             else{                                          // when it is a command
                 args[j]=savedTokens[i];
+            if(strcmp(args[0],cd)==0 && i>0){
+                //cout<< "caught" << endl;
+                if(args[1] == '\0'){
+                    run=false;
+                    cout<< "no directory specified" <<endl;
+                     
+                }
+                else if(chdir(args[1])==-1){
+                    run=false;
+                    perror("error on chdir");
+                    
+                }
+                else
+                    run=true;
+                //cout<< "changed dir" << endl;
+                args[j-1]='\0';
+                args[j]='\0';
+                j=0;
+                
+            }
               // cout << "arg: "<<savedTokens[i]<<endl;
 //cout<< "error argcheck i: "<< i<< " j: "<<j<< " run: " << run <<endl;
               // cout<< "andd: " << andd << endl;
@@ -701,8 +758,8 @@ void rshell(){
 }
 
 int main(){
-
-while( green){
+signal(SIGINT,handler);
+while( green){    
 rshell();
 }
 return 0;
