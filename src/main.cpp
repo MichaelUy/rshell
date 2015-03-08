@@ -26,7 +26,7 @@ char orr[]={'|','|','\0'};
 char semi[]={';','\0'};
 void nothing(int sig){
 
-   cerr << "\n[1]+ Stopped        PRESS ENTER TO RESUME:^) " << endl;
+   cerr << "\n[1]+ Stopped- KILLED CHILD PROCESS        " << endl;
     return;
     //exit(0);
 }
@@ -220,10 +220,49 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
 ///////////////////////////////////////////////////////////////////////////input
     //save in
     //cout << " have arrived to exec"<< endl;///////////////////////execvp
+    
+    vector<string> mypathvector;
+
+    char masterpath [BUFSIZ];
+        if(NULL==getcwd(masterpath,sizeof(masterpath))){
+            perror("error on getcwd");
+            exit(1);
+        }
+    string currentdirectory= string(masterpath);
+    mypathvector.push_back(masterpath);
+    
+    // gather paths
+    
+    const char*env = getenv("PATH");
+    if(env==NULL){
+        perror("error on getenv");
+        exit(1);
+    }
+
+    char *hold = new char[strlen(env + 1)];
+    strcpy(hold, env);
+    char * tokeniz = strtok(hold,":");
+    
+    // while loop
+    while (tokeniz != NULL){
+
+        mypathvector.push_back(tokeniz);
+        tokeniz=strtok(NULL,":");
+    }
+    delete[] hold;
+
+ for(size_t  i=0; i< mypathvector.size();i++){
+    string attemptpath=mypathvector[i];
+    attemptpath +="/";
+    attemptpath += args[0];
+    execv(attemptpath.c_str(),args);
+  }
+/*
 if(-1== execvp(args[0],args)){
     perror("error on execvp in execute");
     exit(1);
 }
+*/
 
 /*
 if(-1== close(fd)){////////////////////////////////////////// restore
@@ -329,12 +368,44 @@ void piping(char** args,string &ctype,bool &run,char** savedTokens) {
             perror("error on close");
             exit(1);
         }
+            vector<string> mypathvector;
 
+    char masterpath [BUFSIZ];
+        if(NULL==getcwd(masterpath,sizeof(masterpath))){
+            perror("error on getcwd");
+            exit(1);
+        }
+    string currentdirectory= string(masterpath);
+    mypathvector.push_back(masterpath);
+    
+    // gather paths
+    
+    const char*env = getenv("PATH");
+    if(env==NULL){
+        perror("error on getenv");
+        exit(1);
+    }
+
+    char *hold = new char[strlen(env + 1)];
+    strcpy(hold, env);
+    char * tokeniz = strtok(hold,":");
+    
+    // while loop
+    while (tokeniz != NULL){
+
+        mypathvector.push_back(tokeniz);
+        tokeniz=strtok(NULL,":");
+    }
+    delete[] hold;
+
+ for(size_t  i=0; i< mypathvector.size();i++){
+    string attemptpath=mypathvector[i];
+    attemptpath +="/";
+    attemptpath += args[0];
+    execv(attemptpath.c_str(),args);
+  }
        
-        if(-1== execvp(args[0],args)){
-         perror("error on execvp in child");
-         exit(1);
-        }     
+             
         }
 
         //////////////////////////////
