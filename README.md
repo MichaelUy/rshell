@@ -1,5 +1,23 @@
 #Summary
 rshell is a simple shell that is able to run basic syscalls utilizing:
+#HW3 Summary
+For HW3 I implemented my own version of cd, custom SIGNAL ^C,and used the execv syscall instead of the execvp syscall which required getenv() to get the PATH variable.
+-supports:
+- cd to a directory with a relative path
+- cd to a directory with an absolute path
+- cd to previous (..) directory
+- Special Case: cd without a directoy notifies the user there there is noe directory specified
+- ^c signal  is ignored in rshell when nothing is running
+- ^c signal kills the child when an executable is running, such as cat
+-  my rshell supports commands that are located in diffrent directories by using getenv() and attempting to find the commands in multiple directories
+-  if the command does not exist, my rshell throws an error notifying the user that the command does not exists
+
+#known bugs and limitations
+- did not implement ^z
+- STILL DOES NOT HAVE PIPING, PIPING HURTS,OH GOD
+- connectors usually don't work
+- io redirection does not work for ls and cd
+
 
 #HW2 Summary
 For HW2 I implemented my own I/O Redirection symbols  which requires  the manipulation of file descriptors
