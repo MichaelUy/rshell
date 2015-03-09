@@ -24,12 +24,13 @@ char piper[]={'|','\0'};
 char andd[]={'&','&','\0'};
 char orr[]={'|','|','\0'};
 char semi[]={';','\0'};
+
 void nothing(int sig){
 
-   cerr << "\n[1]+ Stopped- KILLED CHILD PROCESS        " << endl;
-    return;
+     return;
     //exit(0);
 }
+/*
 void handler(int sig){
         
     int pid= getpid();
@@ -41,7 +42,20 @@ void handler(int sig){
 
 
 }
+*/
 void rshell();
+/*
+bool commandexits(const char *command){
+    struct stat the_goods;
+    if( -1== stat(command, the_goods)){
+        
+
+
+    }
+
+
+}
+*/
 bool isin(char** savedTokens,string search ){
     bool ret = false;
     for(size_t i=0;savedTokens[i]!=NULL;i++){
@@ -72,8 +86,7 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
    // }
    //
    //cout << " execution" << endl;
-
-    signal(SIGTSTP, handler);
+    signal(SIGINT, SIG_DFL);
     bool inp=false;
     bool outp=false;
     char cd[3]={'c','d','\0'};
@@ -82,6 +95,8 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
     //int file;
     int savestdin;
     int savestdout;
+   // signal(SIGTSTP, handler);
+
    /*
     printf(args[0],4);
     cout << endl;
@@ -217,6 +232,11 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
         
 
     }
+/*
+ for(int r=0;savedTokens[r]!='\0';r++){      // super memory leak fix attempt
+        free(savedTokens[r]);
+        }
+*/
 ///////////////////////////////////////////////////////////////////////////input
     //save in
     //cout << " have arrived to exec"<< endl;///////////////////////execvp
@@ -250,13 +270,24 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
         tokeniz=strtok(NULL,":");
     }
     delete[] hold;
-
+ bool checking=false;
  for(size_t  i=0; i< mypathvector.size();i++){
     string attemptpath=mypathvector[i];
-    attemptpath +="/";
-    attemptpath += args[0];
+    attemptpath = attemptpath + "/" + args[0];
+    
+    if(access(attemptpath.c_str(),F_OK)==0){
+        checking=true;
+    }
+     
     execv(attemptpath.c_str(),args);
+    
+   
   }
+
+
+ if(!checking){
+        cerr<< "rshell: " << string(args[0]) << ": command not found"<<endl;
+    }
 /*
 if(-1== execvp(args[0],args)){
     perror("error on execvp in execute");
@@ -479,6 +510,11 @@ void piping(char** args,string &ctype,bool &run,char** savedTokens) {
 
     }
    // cout << " in piping checking run: " << run<< endl;
+   /*
+    for(int r=0;savedTokens[r]!='\0';r++){
+        free(savedTokens[r]);
+        }
+    */
    rshell();
 }
  
@@ -603,7 +639,10 @@ void rshell(){
     //cout << "token indexes " << tokenindex <<endl;
     while(tokens!= NULL){
     
-        savedTokens[tokenindex]= strdup(tokens);
+       savedTokens[tokenindex]= strdup(tokens);
+      
+  //     free(tokens); 
+      
        // cout << " tokenizer : " <<endl; 
        // for(size_t q=0;savedTokens[tokenindex][q]!='\0';q++){
        //     cout << savedTokens[tokenindex][q];
@@ -614,7 +653,11 @@ void rshell(){
         //cout<< tokenindex << endl;
 		tokens=strtok(NULL," ");
 	}                   // done tokenizing
-    
+   
+   
+   //
+   
+   
     savedTokens[tokenindex]=NULL;
     tokenindex=0; 
         //
@@ -632,6 +675,7 @@ void rshell(){
 
 
         if(strcmp(exitS,savedTokens[0])==0||strcmp(exitB,savedTokens[0])==0){
+            
             green= false;
            exit(1); // called exit
         }
@@ -740,6 +784,7 @@ void rshell(){
              }
             else{                                          // when it is a command
                 args[j]=savedTokens[i];
+
             if(strcmp(args[0],cd)==0 && i>0){
                 //cout<< "caught" << endl;
                 if(args[1] == '\0'){
@@ -752,8 +797,9 @@ void rshell(){
                     perror("error on chdir");
                     
                 }
-                else
+                else{
                     run=true;
+                }
                 //cout<< "changed dir" << endl;
                 args[j-1]='\0';
                 args[j]='\0';
@@ -839,8 +885,12 @@ void rshell(){
             j=-1;
         
     }
-        
-   }
+    
+     for(int r=0;savedTokens[r]!='\0';r++){
+        free(savedTokens[r]);
+        }
+       
+       }
 }
 
 int main(){
