@@ -56,7 +56,11 @@ repeat this line
 muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ ls
 bin	 Makefile  README.md	  src	  tester.cpp  typescript
 LICENSE  newtext   signalsscript  tester  tests
-muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ exit
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ # tests for absolute path  cd
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100$ cd /bin
+muy003@hammer.cs.ucr.edu:~/bin$ pwd
+/bin
+muy003@hammer.cs.ucr.edu:~/bin$ exit
 
 ================================================================================
 [s%%%%%%%%%%[u[0;32mmuy003[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (signal) [0;36m$[0m cat[K[K[Kbin/rshell
