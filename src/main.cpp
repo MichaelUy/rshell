@@ -27,22 +27,21 @@ char semi[]={';','\0'};
 
 void nothing(int sig){
 
-     return;
-    //exit(0);
-}
-/*
-void handler(int sig){
+
         
     int pid= getpid();
-    if (-1==kill(pid,sig)){
-        perror("error on kill");
-
+    if(pid==-1){
+        perror("error on getpid");
         exit(1);
+    }
+    if(pid==0){
+       // raise(SIGINT);
+        exit(0);     
     }
 
 
 }
-*/
+
 void rshell();
 /*
 bool commandexits(const char *command){
@@ -86,7 +85,7 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
    // }
    //
    //cout << " execution" << endl;
-    signal(SIGINT, SIG_DFL);
+   // signal(SIGINT, SIG_DFL);
     bool inp=false;
     bool outp=false;
     char cd[3]={'c','d','\0'};
@@ -343,7 +342,7 @@ void piping(char** args,string &ctype,bool &run,char** savedTokens) {
     int pipefd[2];
     //char* lhs[3200];
     char* rhs[3200];
-  
+   // signal(SIGINT,nothing);
     //size_t j=0;
     //int len=0;
     //bool status=false;

@@ -1,0 +1,63 @@
+Script started on Sun 08 Mar 2015 09:43:09 PM PDT
+~
+muy003@hammer $ cs100
+[0;91m
+===============================================================================
+|                                                                             |
+| You have enabled settings specific for cs100.  Everything you do is being   |
+| recorded to measure your progress in the class.                             |
+|                                                                             |
+| Important commands for the class:                                           |
+|   * calcgrade.sh          displays a detailed breakdown of your grade       |
+|   * typespeed             practice typing unix commands                     |
+|                                                                             |
+| Important commands for general C++ programming:                             |
+|   * make                  don't call g++ manually; let make do the work!    |
+|   * gdb                   the GNU debugger                                  |
+|   * valgrind              get rid of your memory leaks                      |
+|   * cppcheck              static analysis tool                              |
+|   * man                   find help about any syscall / terminal command    |
+|                                                                             |
+===============================================================================
+[0m
+[s%%%%%%%%%%[u[0;32mmuy003[0;36m@[0;32mcs100[0;36m:[0;32m~[0;95m [0;36m$[0m cd cs100/rshell
+[s%%%%%%%%%%[u[0;32mmuy003[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (signal) [0;36m$[0m make
+mkdir -p ./bin
+g++ ./src/main.cpp  -Wall -Werror -ansi -pedantic -o ./bin/rshell
+g++ ./src/ls.cpp -Wall -Werror -ansi -pedantic -o ./bin/ls
+g++ ./src/cp.cpp -Wall -Werror -ansi -pedantic -o ./bin/cp
+[s%%%%%%%%%%[u[0;32mmuy003[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (signal) [0;36m$[0m cs100-runtests bin/rshell tests/signals
+*****************
+* tests/signals *
+*****************
+================================================================================
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ # tests for cd
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ pwd
+/class/classes/muy003/cs100/rshell
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ cd ..
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100$ pwd
+/class/classes/muy003/cs100
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100$ cd rshell
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ pwd
+/class/classes/muy003/cs100/rshell
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ 
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ #commands from different directories
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ # from/usr/bin:
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ md5sum --help >/dev/null
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ #from /usr/bin:
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ ifconfig >/dev/null
+/dev/null: error fetching interface information: Device not found
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ 
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ #test for ctrl+c
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ cat
+repeat this line
+repeat this line
+^Cmuy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ #broke out of cat
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ ls
+bin	 Makefile  README.md	  src	  tester.cpp  typescript
+LICENSE  newtext   signalsscript  tester  tests
+muy003@hammer.cs.ucr.edu:~/class/classes/muy003/cs100/rshell$ exit
+
+================================================================================
+[s%%%%%%%%%%[u[0;32mmuy003[0;36m@[0;32mcs100[0;36m:[0;32m~/cs100/rshell[0;95m (signal) [0;36m$[0m cat[K[K[Kbin/rshell
+
