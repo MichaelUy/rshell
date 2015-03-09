@@ -275,9 +275,13 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
     attemptpath = attemptpath + "/" + args[0];
     
     if(access(attemptpath.c_str(),F_OK)==0){
-        checking=true;
+        perror("error on access");
+        
+    
     }
-     
+     if(access(attemptpath.c_str(),F_OK)==0){
+        checking=true;
+    } 
     execv(attemptpath.c_str(),args);
     
    
