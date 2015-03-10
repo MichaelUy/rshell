@@ -177,6 +177,7 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
         }
         }  // open and created
           else{
+              perror("error on open");
         fd2 = open(savedTokens[i], O_WRONLY|O_CREAT,00777);
         
         if(-1==fd2){
@@ -217,6 +218,7 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
         }
     // open create
         else{
+            perror("error on open");
         fd2 = open(savedTokens[i], O_WRONLY|O_CREAT,00744);
         if(-1==fd2){
             perror("error on open in execute in aredirout");
@@ -270,26 +272,32 @@ void execute(char* args[],string ctype,char** savedTokens, bool &run  ){
     }
     delete[] hold;
  bool checking=false;
+ bool truexec=false;
  for(size_t  i=0; i< mypathvector.size();i++){
     string attemptpath=mypathvector[i];
     attemptpath = attemptpath + "/" + args[0];
     
-    if(access(attemptpath.c_str(),F_OK)==0){
-        perror("error on access");
+    if(access(attemptpath.c_str(),F_OK)==-1){
+       // perror("error on access");
         
-    
-    }
-     if(access(attemptpath.c_str(),F_OK)==0){
+   }
+   else{ 
         checking=true;
     } 
-    execv(attemptpath.c_str(),args);
+   if( execv(attemptpath.c_str(),args)!=-1){
+   // perror("error on execv");
+    truexec=true;
+   }
     
    
   }
-
+if(!truexec){
+     perror("error on execv");
+}
 
  if(!checking){
-        cerr<< "rshell: " << string(args[0]) << ": command not found"<<endl;
+       perror("error: command not found");
+        //cerr<< "rshell: " << string(args[0]) << ": command not found"<<endl;
     }
 /*
 if(-1== execvp(args[0],args)){
@@ -436,7 +444,9 @@ void piping(char** args,string &ctype,bool &run,char** savedTokens) {
     string attemptpath=mypathvector[i];
     attemptpath +="/";
     attemptpath += args[0];
-    execv(attemptpath.c_str(),args);
+    if(-1==execv(attemptpath.c_str(),args)){
+        perror("error on execv");
+    }
   }
        
              
@@ -526,10 +536,17 @@ void rshell(){
     string user;
     char host[3200];
     user= getlogin();
-    gethostname(host,3200);
+    if(getlogin()==NULL){
+        perror("error on getlogin");
+    }
+    if(-1==gethostname(host,3200)){
+        perror("error on gethostname");
+    }
 	string str="";
 	char cmd[320000];
-    signal(SIGINT, nothing);
+    if(SIG_ERR==signal(SIGINT, nothing)){
+        perror("error on signal SIGINT");
+    }
     //signal(SIGINT, SIG_IGN);
 	char* savedTokens[32000];
 
